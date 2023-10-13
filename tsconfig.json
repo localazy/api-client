@@ -19,7 +19,11 @@
       "~/*": [
         "./*"
       ]
-    }
+    },
+    "types": [
+      "@types/lodash-es",
+      "@types/jest"
+    ]
   },
   "include": [
     "src",

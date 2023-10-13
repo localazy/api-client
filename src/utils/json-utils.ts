@@ -1,6 +1,6 @@
 import {
   chunk, isPlainObject, merge, set,
-} from 'lodash';
+} from 'lodash-es';
 import { I18nJson } from '~/types/i18n-json';
 import { Json } from '~/types/json';
 

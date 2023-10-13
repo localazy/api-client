@@ -1,0 +1,16 @@
+{
+  "git": {
+    "push": false,
+    "tagName": "${version}",
+    "commitMessage": "🚀 release: ${version}"
+  },
+  "github": {
+    "releaseName": "${version}"
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "@favoloso/emoji",
+      "infile": "CHANGELOG.md"
+    }
+  }
+}

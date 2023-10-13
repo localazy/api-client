@@ -1,0 +1,75 @@
+{
+  "emojis": {
+    "feature": {
+      "type": "feat",
+      "emoji": "✨",
+      "heading": "✨ Features",
+      "bump": "minor",
+      "inChangelog": true,
+      "index": 20
+    },
+    "fix": {
+      "type": "fix",
+      "emoji": "🐛",
+      "heading": "🐛 Fixes",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 21
+    },
+    "docs": {
+      "type": "docs",
+      "emoji": "📝",
+      "heading": "📝 Documentation",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 22
+    },
+    "style": {
+      "type": "style",
+      "emoji": "💄",
+      "heading": "🧰 Other Commits",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 40
+    },
+    "refactor": {
+      "type": "refactor",
+      "emoji": "♻",
+      "heading": "🧰 Other Commits",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 41
+    },
+    "perf": {
+      "type": "perf",
+      "emoji": "⚡",
+      "heading": "🧰 Other Commits",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 42
+    },
+    "test": {
+      "type": "test",
+      "emoji": "🧪",
+      "heading": "🧰 Other Commits",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 43
+    },
+    "chore": {
+      "type": "chore",
+      "emoji": "🔧",
+      "heading": "🧰 Other Commits",
+      "bump": "patch",
+      "inChangelog": true,
+      "index": 44
+    },
+    "release": {
+      "type": "release",
+      "emoji": "🚀",
+      "bump": "patch",
+      "inChangelog": false,
+      "index": 90
+    }
+  }
+}

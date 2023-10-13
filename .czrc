@@ -1,0 +1,63 @@
+{
+  "path": "./node_modules/cz-emoji",
+  "config": {
+    "cz-emoji": {
+      "symbol": true,
+      "conventional": true,
+      "format": "{emoji} {type}{scope}: {subject}",
+      "skipQuestions": [
+        "issues"
+      ],
+      "types": [
+        {
+          "emoji": "✨",
+          "code": ":sparkles:",
+          "description": "A new feature.",
+          "name": "feature"
+        },
+        {
+          "emoji": "🐛",
+          "code": ":bug:",
+          "description": "A bug fix.",
+          "name": "fix"
+        },
+        {
+          "emoji": "📝",
+          "code": ":pencil:",
+          "description": "Documentation changes.",
+          "name": "docs"
+        },
+        {
+          "emoji": "💄",
+          "code": ":lipstick:",
+          "description": "Changes that do not affect the meaning of the code (white-space, formatting, missing semi-colons, etc).",
+          "name": "style"
+        },
+        {
+          "emoji": "♻️",
+          "code": ":recycle:",
+          "description": "A code change that neither fixes a bug nor adds a feature.",
+          "name": "refactor"
+        },
+        {
+          "emoji": "⚡️",
+          "code": ":zap:",
+          "description": "A code change that improves performance.",
+          "name": "perf"
+        },
+        {
+          "emoji": "🧪",
+          "code": ":test_tube:",
+          "description": "Adding tests or fixing existing tests.",
+          "name": "test"
+        },
+        {
+          "emoji": "🔧",
+          "code": ":wrench:",
+          "description": "Other changes that don't modify src or test files.",
+          "name": "chore"
+        }
+      ]
+    }
+  }
+}

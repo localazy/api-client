@@ -11,6 +11,7 @@ const config: Config = {
   ],
   moduleNameMapper: {
     '^~/(.*)$': '<rootDir>/src/$1',
+    'lodash-es': 'lodash',
   },
   moduleFileExtensions: [
     'ts',
@@ -20,6 +21,9 @@ const config: Config = {
     '^.+\\.ts$': 'ts-jest',
     '^.+\\.js$': 'babel-jest',
   },
+  // transformIgnorePatterns: [
+  //   '<rootDir>/node_modules/(?!lodash-es)',
+  // ],
   collectCoverage: true,
   collectCoverageFrom: [
     '<rootDir>/src/**/*.ts',

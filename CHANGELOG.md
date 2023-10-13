@@ -1,13 +1,13 @@
-# Changelog
+# 2.0.0 (2023-10-13)
 
-All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-## [1.1.0](https://github.com/localazy/ts-api/compare/v1.0.14...v1.1.0) (2023-07-27)
+### ✨ Features
 
-### [1.0.14](https://github.com/localazy/ts-api/compare/v1.0.13...v1.0.14) (2023-07-27)
+* feature: Api client v2 ([df4bcee](https://github.com/localazy/api-client/commit/df4bcee))
 
-# Changelog
 
-All notable changes to this project will be documented in this file.
-See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
+### 🧰 Other Commits
+
+* chore: Add release workflow ([803d60e](https://github.com/localazy/api-client/commit/803d60e))
+
+

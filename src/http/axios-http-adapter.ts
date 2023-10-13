@@ -1,7 +1,7 @@
 import axios, {
   AxiosInstance, AxiosRequestConfig, AxiosResponse, CreateAxiosDefaults,
 } from 'axios';
-import { isNumber, isPlainObject, isString } from 'lodash';
+import { isNumber, isPlainObject, isString } from 'lodash-es';
 import { LocalazyError } from '~/errors/localazy-error';
 import { IHttpAdapter } from '~/http/i-http-adapter';
 import { ApiClientOptions } from '~/types/api-client-options';

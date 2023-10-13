@@ -1,6 +1,6 @@
 import { Locales } from '@localazy/languages';
 import { AxiosRequestConfig } from 'axios';
-import { setWith } from 'lodash';
+import { setWith } from 'lodash-es';
 import { ApiBase } from '~/api/methods/api-base';
 import { ExportJsonRequest } from '~/types/export-json-request';
 import { I18nJson } from '~/types/i18n-json';
