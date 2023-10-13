@@ -132,3 +132,9 @@ dist
 # IDE / Editor
 .idea
 .vscode
+
+# Build dir
+lib
+
+# TypeDoc
+typedoc

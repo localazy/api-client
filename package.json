@@ -1,0 +1,75 @@
+{
+  "name": "@localazy/api-client",
+  "version": "2.0.0",
+  "description": "Node.js module that allows you to easily interact with the Localazy API.",
+  "author": "Localazy <team@localazy.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/localazy/api-client/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/localazy/api-client"
+  },
+  "keywords": [
+    "Localazy",
+    "Localazy API",
+    "TypeScript",
+    "i18n",
+    "l10n",
+    "t10n"
+  ],
+  "homepage": "https://github.com/localazy/api-client#readme",
+  "main": "lib/main.js",
+  "files": [
+    "lib/**/*",
+    "docs/**/*",
+    "src/**/*",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "rimraf lib/* && npx tsc --project tsconfig.build.json && npx tsc-alias",
+    "test": "jest -i",
+    "lint": "eslint src --ext .js,.ts",
+    "lintfix": "npm run lint -- --fix",
+    "docs:html": "rimraf typedoc/html/* && typedoc --tsconfig tsconfig.build.json --out typedoc/html src/main.ts",
+    "docs:md": "rimraf typedoc/md/* && typedoc --plugin typedoc-plugin-markdown --tsconfig tsconfig.build.json --out typedoc/md src/main.ts",
+    "prepare": "npm run build",
+    "prepublishOnly": "npm run lint",
+    "patch": "standard-version",
+    "minor": "standard-version --release-as minor",
+    "major": "standard-version --release-as major",
+    "release": "git push && git push --tags"
+  },
+  "dependencies": {
+    "@localazy/languages": "^0.1.6",
+    "axios": "^1.4.0",
+    "lodash": "^4.17.21",
+    "web-file-polyfill": "^1.0.4"
+  },
+  "devDependencies": {
+    "@babel/preset-env": "^7.22.10",
+    "@types/jest": "^29.5.3",
+    "@types/lodash": "^4.14.197",
+    "@typescript-eslint/eslint-plugin": "^6.3.0",
+    "@typescript-eslint/parser": "^6.3.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "babel-jest": "^29.6.2",
+    "dotenv": "^16.3.1",
+    "eslint": "^8.47.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
+    "eslint-plugin-import": "^2.28.0",
+    "eslint-plugin-jest": "^27.2.3",
+    "jest": "^29.6.2",
+    "rimraf": "^5.0.1",
+    "standard-version": "^9.5.0",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.7",
+    "tsconfig-paths": "^4.2.0",
+    "typedoc": "^0.24.8",
+    "typedoc-plugin-markdown": "^3.15.4",
+    "typescript": "^5.1.6"
+  }
+}
