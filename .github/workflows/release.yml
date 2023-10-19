@@ -38,13 +38,18 @@ jobs:
         if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
         run: npm ci
 
-      # release-it configuration reference
-      # https://github.com/release-it/release-it/blob/fdcf005ced6967a86305a3e10fd1d61a3149407b/docs/configuration.md#configuration
-      # https://github.com/release-it/release-it/blob/HEAD/config/release-it.json
-
-      - name: Bump version and update changelog
+      - name: Decide bump type
         if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npx release-it --no-npm.publish --no-git --no-github.release --ci
+        id: bump-type
+        run: echo "bump=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)" > "$GITHUB_OUTPUT"
+
+      - name: Bump version
+        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
+        run: npm version ${{ steps.bump-type.outputs.bump }} --git-tag-version false
+
+      - name: Update changelog
+        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
+        run: npx conventional-changelog -p @localazy/preset -u -i CHANGELOG.md -s
 
       - name: Preview changelog
         if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
@@ -52,7 +57,7 @@ jobs:
         run: |
           {
             echo 'changelog<<EOF'
-            npx conventional-changelog -p @favoloso/emoji -u
+            npx conventional-changelog -p @localazy/preset -u
             echo EOF
           } > "$GITHUB_OUTPUT"
 
@@ -77,7 +82,7 @@ jobs:
         run: |
           {
             echo 'changelog<<EOF'
-            npx conventional-changelog -p @favoloso/emoji -r 1
+            npx conventional-changelog -p @localazy/preset -r 1
             echo EOF
           } > "$GITHUB_OUTPUT"
 
