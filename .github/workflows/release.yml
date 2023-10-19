@@ -38,14 +38,14 @@ jobs:
         if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
         run: npm ci
 
-      #      - name: Decide bump type
-      #        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-      #        id: bump-type
-      #        run: echo "bump=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)" > "$GITHUB_OUTPUT"
-      #
-      #      - name: Bump version
-      #        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-      #        run: npm version ${{ steps.bump-type.outputs.bump }} --git-tag-version false
+      - name: Decide bump type
+        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
+        id: bump-type
+        run: echo "bump=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)" > "$GITHUB_OUTPUT"
+
+      - name: Bump version
+        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
+        run: npm version ${{ steps.bump-type.outputs.bump }} --git-tag-version false
 
       - name: Update changelog
         if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
