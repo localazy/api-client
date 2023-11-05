@@ -1,3 +1,5 @@
+name: Release CI
+
 on:
   push:
     branches:
@@ -7,15 +9,72 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release
-
-env:
-  IS_MERGED_RELEASE_PR: ${{ startsWith(github.event.head_commit.message, '🚀 release:') }}
-
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  prepare-release:
+    name: Prepare Release Branch
+    if: github.event.head.ref != 'release' && !contains(github.event.commits[0].message, '🚀 release:')
+    runs-on: [ self-hosted, Linux ]
     steps:
+      - name: Set work folder permissions
+        run: pwd && sudo chown -R $USER:$USER ./
+
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup GIT
+        uses: fregante/setup-git-user@v2
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Bump package.json version
+        run: |
+          BUMP_TYPE=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)
+          npm version $BUMP_TYPE --git-tag-version false
+
+      - name: Update CHANGELOG.md
+        run: npx conventional-changelog -p @localazy/preset -u -i CHANGELOG.md -s
+
+      - name: Read package.json version
+        id: package-version
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "current-version=$PACKAGE_VERSION" > "$GITHUB_OUTPUT"
+
+      - name: Generate changelog preview for PR
+        id: preview-changelog
+        run: |
+          {
+            echo 'changelog<<EOF'
+            npx conventional-changelog -p @localazy/preset -u
+            echo EOF
+          } > "$GITHUB_OUTPUT"
+
+      - name: Prepare release branch and create PR
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: "release"
+          commit-message: "🚀 release: ${{ steps.package-version.outputs.current-version }}"
+          delete-branch: true
+          labels: release-preview
+          title: ${{ steps.package-version.outputs.current-version }}
+          body: ${{ steps.preview-changelog.outputs.changelog }}
+
+  release:
+    name: Perform Release
+    if: github.event.head.ref == 'release' || contains(github.event.commits[0].message, '🚀 release:')
+    runs-on: [ self-hosted, Linux ]
+    steps:
+      - name: Set work folder permissions
+        run: pwd && sudo chown -R $USER:$USER ./
+
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
@@ -30,54 +89,16 @@ jobs:
           node-version: 16
           registry-url: 'https://registry.npmjs.org'
 
-      - name: Install dependencies
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npm ci --ignore-scripts
-
       - name: Install dependencies and build package
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
         run: npm ci
-
-      - name: Decide bump type
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        id: bump-type
-        run: echo "bump=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)" > "$GITHUB_OUTPUT"
-
-      - name: Bump version
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npm version ${{ steps.bump-type.outputs.bump }} --git-tag-version false
-
-      - name: Update changelog
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npx conventional-changelog -p @localazy/preset -u -i CHANGELOG.md -s
-
-      - name: Preview changelog
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        id: preview-changelog
-        run: |
-          {
-            echo 'changelog<<EOF'
-            npx conventional-changelog -p @localazy/preset -u
-            echo EOF
-          } > "$GITHUB_OUTPUT"
 
       - name: Read package.json version
         id: package-version
-        uses: martinbeentjes/npm-get-version-action@v1.3.1
+        run: |
+          PACKAGE_VERSION=$(node -p "require('./package.json').version")
+          echo "current-version=$PACKAGE_VERSION" > "$GITHUB_OUTPUT"
 
-      - name: Create release PR
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        uses: peter-evans/create-pull-request@v5
-        with:
-          branch: "release"
-          commit-message: "🚀 release: ${{ steps.package-version.outputs.current-version }}"
-          delete-branch: true
-          labels: release-preview
-          title: ${{ steps.package-version.outputs.current-version }}
-          body: ${{ steps.preview-changelog.outputs.changelog }}
-
-      - name: Read changelog
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
+      - name: Generate changelog for release
         id: read-changelog
         run: |
           {
@@ -86,18 +107,15 @@ jobs:
             echo EOF
           } > "$GITHUB_OUTPUT"
 
-      - name: Git tag, GitHub release
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
-        uses: avakar/tag-and-release@v1
+      - name: Add version tag and publish GitHub release
+        uses: ncipollo/release-action@v1
         with:
-          tag_name: ${{ steps.package-version.outputs.current-version }}
-          release_name: ${{ steps.package-version.outputs.current-version }}
+          name: ${{ steps.package-version.outputs.current-version }}
+          tag: ${{ steps.package-version.outputs.current-version }}
           body: ${{ steps.read-changelog.outputs.changelog }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          removeArtifacts: true
 
-#      - name: Publish NPM package
-#        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
-#        run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish NPM package
+        run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
