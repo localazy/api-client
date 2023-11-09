@@ -58,7 +58,6 @@
     "conventional-changelog-writer": "github:localazy/conventional-changelog-writer",
     "conventional-recommended-bump": "^9.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "cz-emoji": "github:simrobin/cz-emoji#fix_symbol_based_commit",
     "dotenv": "^16.3.1",
     "eslint": "^8.47.0",
     "eslint-config-airbnb-base": "^15.0.0",
