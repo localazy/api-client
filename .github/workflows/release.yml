@@ -10,112 +10,29 @@ permissions:
   pull-requests: write
 
 jobs:
-  prepare-release:
-    name: Prepare Release Branch
+  prepare:
+    name: Prepare Release
     if: github.event.head.ref != 'release' && !contains(github.event.commits[0].message, '🚀 release:')
     runs-on: [ self-hosted, Linux ]
     steps:
-      - name: Set work folder permissions
-        run: pwd && sudo chown -R $USER:$USER ./
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Prepare release branch and PR
+        uses: localazy/release@v1
         with:
-          fetch-depth: 0
-
-      - name: Setup GIT
-        uses: fregante/setup-git-user@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-
-      - name: Install dependencies
-        run: npm ci --ignore-scripts
-
-      - name: Bump package.json version
-        run: |
-          BUMP_TYPE=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)
-          npm version $BUMP_TYPE --git-tag-version false
-
-      - name: Update CHANGELOG.md
-        run: npx conventional-changelog -p @localazy/preset -u -i CHANGELOG.md -s
-
-      - name: Read package.json version
-        id: package-version
-        run: |
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          echo "current-version=$PACKAGE_VERSION" > "$GITHUB_OUTPUT"
-
-      - name: Generate changelog preview for PR
-        id: preview-changelog
-        run: |
-          {
-            echo 'changelog<<EOF'
-            npx conventional-changelog -p @localazy/preset -u
-            echo EOF
-          } > "$GITHUB_OUTPUT"
-
-      - name: Prepare release branch and create PR
-        uses: peter-evans/create-pull-request@v5
-        with:
-          branch: "release"
-          commit-message: "🚀 release: ${{ steps.package-version.outputs.current-version }}"
-          delete-branch: true
-          labels: release-preview
-          title: ${{ steps.package-version.outputs.current-version }}
-          body: ${{ steps.preview-changelog.outputs.changelog }}
+          action: prepare
+          app-id: ${{ secrets.AUTH_APP_ID }}
+          app-key: ${{ secrets.AUTH_APP_KEY }}
 
   release:
-    name: Perform Release
+    name: Release
     if: github.event.head.ref == 'release' || contains(github.event.commits[0].message, '🚀 release:')
     runs-on: [ self-hosted, Linux ]
     steps:
-      - name: Set work folder permissions
-        run: pwd && sudo chown -R $USER:$USER ./
-
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Release new version
+        uses: localazy/release@v1
         with:
-          fetch-depth: 0
-
-      - name: Setup GIT
-        uses: fregante/setup-git-user@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies and build package
-        run: npm ci
-
-      - name: Read package.json version
-        id: package-version
-        run: |
-          PACKAGE_VERSION=$(node -p "require('./package.json').version")
-          echo "current-version=$PACKAGE_VERSION" > "$GITHUB_OUTPUT"
-
-      - name: Generate changelog for release
-        id: read-changelog
-        run: |
-          {
-            echo 'changelog<<EOF'
-            npx conventional-changelog -p @localazy/preset -r 1
-            echo EOF
-          } > "$GITHUB_OUTPUT"
-
-      - name: Add version tag and publish GitHub release
-        uses: ncipollo/release-action@v1
-        with:
-          name: ${{ steps.package-version.outputs.current-version }}
-          tag: ${{ steps.package-version.outputs.current-version }}
-          body: ${{ steps.read-changelog.outputs.changelog }}
-          removeArtifacts: true
-
-      - name: Publish NPM package
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+          action: release
+          app-id: ${{ secrets.AUTH_APP_ID }}
+          app-key: ${{ secrets.AUTH_APP_KEY }}
+          npm-publish: true
+          npm-access: true
+          npm-token: ${{ secrets.NPM_AUTH_TOKEN }}
