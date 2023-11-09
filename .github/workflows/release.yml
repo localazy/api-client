@@ -1,3 +1,5 @@
+name: Release CI
+
 on:
   push:
     branches:
@@ -7,97 +9,30 @@ permissions:
   contents: write
   pull-requests: write
 
-name: release
-
-env:
-  IS_MERGED_RELEASE_PR: ${{ startsWith(github.event.head_commit.message, '🚀 release:') }}
-
 jobs:
-  release:
-    runs-on: ubuntu-latest
+  prepare:
+    name: Prepare Release
+    if: github.event.head.ref != 'release' && !contains(github.event.commits[0].message, '🚀 release:')
+    runs-on: [ self-hosted, Linux ]
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - name: Prepare release branch and PR
+        uses: localazy/release@v1
         with:
-          fetch-depth: 0
+          action: prepare
+          app-id: ${{ secrets.AUTH_APP_ID }}
+          app-key: ${{ secrets.AUTH_APP_KEY }}
 
-      - name: Setup GIT
-        uses: fregante/setup-git-user@v2
-
-      - name: Setup Node
-        uses: actions/setup-node@v3
+  release:
+    name: Release
+    if: github.event.head.ref == 'release' || contains(github.event.commits[0].message, '🚀 release:')
+    runs-on: [ self-hosted, Linux ]
+    steps:
+      - name: Release new version
+        uses: localazy/release@v1
         with:
-          node-version: 16
-          registry-url: 'https://registry.npmjs.org'
-
-      - name: Install dependencies
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npm ci --ignore-scripts
-
-      - name: Install dependencies and build package
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
-        run: npm ci
-
-      - name: Decide bump type
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        id: bump-type
-        run: echo "bump=$(npx conventional-recommended-bump -p @localazy/conventional-changelog-preset)" > "$GITHUB_OUTPUT"
-
-      - name: Bump version
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npm version ${{ steps.bump-type.outputs.bump }} --git-tag-version false
-
-      - name: Update changelog
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        run: npx conventional-changelog -p @localazy/preset -u -i CHANGELOG.md -s
-
-      - name: Preview changelog
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        id: preview-changelog
-        run: |
-          {
-            echo 'changelog<<EOF'
-            npx conventional-changelog -p @localazy/preset -u
-            echo EOF
-          } > "$GITHUB_OUTPUT"
-
-      - name: Read package.json version
-        id: package-version
-        uses: martinbeentjes/npm-get-version-action@v1.3.1
-
-      - name: Create release PR
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'false' }}
-        uses: peter-evans/create-pull-request@v5
-        with:
-          branch: "release"
-          commit-message: "🚀 release: ${{ steps.package-version.outputs.current-version }}"
-          delete-branch: true
-          labels: release-preview
-          title: ${{ steps.package-version.outputs.current-version }}
-          body: ${{ steps.preview-changelog.outputs.changelog }}
-
-      - name: Read changelog
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
-        id: read-changelog
-        run: |
-          {
-            echo 'changelog<<EOF'
-            npx conventional-changelog -p @localazy/preset -r 1
-            echo EOF
-          } > "$GITHUB_OUTPUT"
-
-      - name: Git tag, GitHub release
-        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
-        uses: avakar/tag-and-release@v1
-        with:
-          tag_name: ${{ steps.package-version.outputs.current-version }}
-          release_name: ${{ steps.package-version.outputs.current-version }}
-          body: ${{ steps.read-changelog.outputs.changelog }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-#      - name: Publish NPM package
-#        if: ${{ env.IS_MERGED_RELEASE_PR == 'true' }}
-#        run: npm publish
-#        env:
-#          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          action: release
+          app-id: ${{ secrets.AUTH_APP_ID }}
+          app-key: ${{ secrets.AUTH_APP_KEY }}
+          npm-publish: true
+          npm-access: true
+          npm-token: ${{ secrets.NPM_AUTH_TOKEN }}
