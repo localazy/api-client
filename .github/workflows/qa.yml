@@ -1,0 +1,61 @@
+name: QA checks
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build package
+    runs-on: [ self-hosted, Linux ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Build package
+        run: npm run build
+
+  lint:
+    name: Lint source files
+    runs-on: [ self-hosted, Linux ]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - name: Install dependencies
+        run: npm ci --ignore-scripts
+
+      - name: Lint source files
+        run: npm run lint
+
+#  test:
+#    name: Run tests
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Checkout repository
+#        uses: actions/checkout@v4
+#
+#      - name: Setup Node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: 16
+#
+#      - name: Install dependencies
+#        run: npm ci --ignore-scripts
+#
+#      - name: Run tests
+#        run: npm run test
