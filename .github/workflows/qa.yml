@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  lint:
-    name: Lint source files
+  qa:
+    name: Lint & Build
     runs-on: [ self-hosted, Linux ]
     steps:
       - name: Checkout repository
@@ -24,10 +24,5 @@ jobs:
       - name: Lint source files
         run: npm run lint
 
-  build:
-    name: Build package
-    needs: lint
-    runs-on: [ self-hosted, Linux ]
-    steps:
       - name: Build package
         run: npm run build
