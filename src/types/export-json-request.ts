@@ -8,7 +8,7 @@ export type ExportJsonRequest = {
    */
   project: Project | string;
 
-  file: File;
+  file: File | string;
 
   langs: `${Locales}`[];
 
