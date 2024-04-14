@@ -1,3 +1,14 @@
+## 2.0.2 (2024-04-14)
+
+### 🔀 Pull Requests
+
+- [Update CI QA #5](https://github.com/localazy/api-client/pull/5)
+
+
+### 🧰 Other Commits
+
+- Update CI QA ([a1f439a](https://github.com/localazy/api-client/commit/a1f439a)) ([#5](https://github.com/localazy/api-client/pull/5))
+
 ## 2.0.1 (2024-01-22)
 
 ### 🔀 Pull Requests
