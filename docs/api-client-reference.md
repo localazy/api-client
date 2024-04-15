@@ -348,7 +348,6 @@ const json = await api.export.json({
   project: 'project-id', // or Project object
   file: 'file-id', // or File object
   langs: [Locales.ENGLISH],
-  nestedKeys: true,
 });
 ```
 
