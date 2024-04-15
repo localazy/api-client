@@ -18,6 +18,6 @@ export const textToUint8Array = (text: string): Uint8Array => Buffer.from(text, 
 
 export const getApiClient = (): ApiClient =>
   new ApiClient({
-    apiUrl: 'http://localhost:3000',
-    authToken: '17407780176791600210a5f64753637a263fd6e9cfa84f81a08748ede1c83de0b5320f4cc1761d55b4ae',
+    apiUrl: 'https://api.localazy.com',
+    authToken: 'project-token',
   });
