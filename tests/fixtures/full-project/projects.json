@@ -1,0 +1,15 @@
+[
+  {
+    "id": "_a0000000000000000001",
+    "orgId": "_a000001",
+    "name": "Test project",
+    "slug": "test-project",
+    "image": "",
+    "url": "https://testing.localazy.com/p/test-project",
+    "description": "",
+    "type": "restricted",
+    "tone": "not_specified",
+    "role": "owner",
+    "sourceLanguage": 85
+  }
+]

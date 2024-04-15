@@ -1,0 +1,5 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Keys > api.keys.delete 1`] = `undefined`;
+
+exports[`Keys > api.keys.update 1`] = `"{"comment":"Comment for translators."}"`;

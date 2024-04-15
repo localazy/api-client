@@ -1,0 +1,1 @@
+"{\n  \"app_title\": \"My Application\",\n  \"welcome_message\": \"Welcome to My Application!\",\n  \"login_button\": \"Log In\",\n  \"headers\": {\n    \"role\": \"Project role\",\n    \"email\": \"User email\"\n  },\n  \"table.actions.invite\": \"Invite user\",\n  \"table.actions.refresh\": \"Refresh data\"\n}"
