@@ -41,4 +41,4 @@ jobs:
           app-id: ${{ secrets.AUTH_APP_ID }}
           app-key: ${{ secrets.AUTH_APP_KEY }}
           npm-publish: public
-          npm-token: ${{ secrets.NPM_AUTH_TOKEN }}
+          npm-token: ${{ secrets.NPM_AUTH_TOKEN_PUBLIC }}
