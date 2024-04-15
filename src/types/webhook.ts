@@ -1,4 +1,4 @@
-import { WebhookEvent } from '~/enums/webhook-event';
+import { WebhookEvent } from '@/enums/webhook-event';
 
 export type Webhook = {
   /**

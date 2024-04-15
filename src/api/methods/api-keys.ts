@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
-import { ApiBase } from '~/api/methods/api-base';
-import { KeyDeleteRequest } from '~/types/key-delete-request';
-import { KeyUpdateRequest } from '~/types/key-update-request';
+import { ApiBase } from '@/api/methods/api-base';
+import { KeyDeleteRequest } from '@/types/key-delete-request';
+import { KeyUpdateRequest } from '@/types/key-update-request';
 
 export class ApiKeys extends ApiBase {
   /**

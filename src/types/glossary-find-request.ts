@@ -1,5 +1,5 @@
-import { GlossaryRecord } from '~/types/glossary-record';
-import { Project } from '~/types/project';
+import { GlossaryRecord } from '@/types/glossary-record';
+import { Project } from '@/types/project';
 
 export type GlossaryFindRequest = {
   /**

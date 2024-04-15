@@ -20,51 +20,88 @@
     "l10n",
     "t10n"
   ],
-  "main": "lib/main.js",
+  "type": "module",
+  "main": "./dist/node/localazy-api-client.cjs",
+  "module": "./dist/localazy-api-client.js",
+  "unpkg": "./dist/browser/localazy-api-client.umd.min.js",
+  "jsdelivr": "./dist/browser/localazy-api-client.umd.min.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": {
+        "default": "./dist/index.d.ts"
+      },
+      "browser": {
+        "import": "./dist/localazy-api-client.min.js",
+        "default": "./dist/browser/localazy-api-client.umd.min.js"
+      },
+      "default": {
+        "import": "./dist/localazy-api-client.js",
+        "default": "./dist/node/localazy-api-client.cjs"
+      }
+    }
+  },
   "files": [
-    "lib/**/*",
+    "dist/**/*",
     "docs/**/*",
-    "src/**/*",
     "README.md"
   ],
   "scripts": {
-    "build": "rimraf lib/* && npx tsc --project tsconfig.build.json && npx tsc-alias",
-    "test": "jest -i",
-    "lint": "eslint --ext .js,.ts --ignore-path .gitignore .",
+    "dev": "vite & npm run main-ts:watch",
+    "build": "rimraf dist && npm run main-ts:build && vite build",
+    "main-ts:build": "reexport src/main.ts",
+    "main-ts:watch": "reexport --watch src/main.ts",
+    "check": "npm run typecheck && npm run test:coverage && npm run lint && npm run prettier",
+    "typecheck": "npx tsc --noemit",
+    "test": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "test:ui": "vitest --ui",
+    "test:debug": "vitest --inspect-brk --no-file-parallelism",
+    "lint": "bash -c 'eslint --ext .ts,.js,.mjs,.cjs --ignore-path <(cat .gitignore .eslintignore) .'",
     "lint:fix": "npm run lint -- --fix",
-    "docs:html": "rimraf typedoc/html/* && typedoc --plugin typedoc-plugin-missing-exports --tsconfig tsconfig.build.json --out typedoc/html src/main.ts",
-    "docs:md": "rimraf typedoc/md/* && typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-missing-exports --tsconfig tsconfig.build.json --out typedoc/md src/main.ts",
-    "prepare": "npm run build && npm run docs:html && npm run docs:md"
+    "prettier": "prettier . --check",
+    "prettier:fix": "prettier . --write",
+    "typedoc": "npm run docs:html && npm run docs:md",
+    "typedoc:html": "rimraf typedoc/html/* && typedoc --plugin typedoc-plugin-missing-exports --tsconfig tsconfig.typedoc.json --out typedoc/html src/main.ts",
+    "typedoc:md": "rimraf typedoc/md/* && typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-missing-exports --tsconfig tsconfig.typedoc.json --out typedoc/md src/main.ts",
+    "bundle:visualize": "vite-bundle-visualizer"
   },
   "dependencies": {
     "@localazy/languages": "^0.1.6",
-    "axios": "^1.4.0",
-    "lodash-es": "^4.17.21",
-    "web-file-polyfill": "^1.0.4"
+    "axios": "^1.6.8",
+    "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.22.10",
-    "@types/jest": "^29.5.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@types/isomorphic-fetch": "^0.0.39",
     "@types/lodash-es": "^4.17.9",
-    "@typescript-eslint/eslint-plugin": "^6.3.0",
-    "@typescript-eslint/parser": "^6.3.0",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^29.6.2",
-    "dotenv": "^16.3.1",
-    "eslint": "^8.47.0",
+    "@types/node": "^20.11.28",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "@vitest/coverage-v8": "^1.4.0",
+    "@vitest/ui": "^1.4.0",
+    "axios-mock-adapter": "^1.22.0",
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.1.0",
-    "eslint-plugin-import": "^2.28.0",
-    "eslint-plugin-jest": "^27.2.3",
-    "jest": "^29.6.2",
+    "eslint-config-airbnb-typescript": "^18.0.0",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-prettier": "^5.1.3",
+    "fetch-mock": "^9.11.0",
+    "isomorphic-fetch": "^3.0.0",
+    "prettier": "^3.2.5",
+    "reexport": "^1.4.1",
     "rimraf": "^5.0.5",
-    "ts-jest": "^29.1.1",
-    "ts-node": "^10.9.1",
-    "tsc-alias": "^1.8.7",
-    "tsconfig-paths": "^4.2.0",
-    "typedoc": "^0.24.8",
+    "typedoc": "^0.25.12",
     "typedoc-plugin-markdown": "^3.17.1",
-    "typedoc-plugin-missing-exports": "^2.1.0",
-    "typescript": "^5.1.6"
+    "typedoc-plugin-missing-exports": "^2.2.0",
+    "unplugin-replace": "^0.2.1",
+    "vite": "^5.1.6",
+    "vite-bundle-visualizer": "^1.1.0",
+    "vite-plugin-dts": "^3.7.3",
+    "vite-plugin-node-polyfills": "^0.21.0",
+    "vitest": "^1.4.0"
   }
 }

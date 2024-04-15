@@ -1,6 +1,6 @@
 import { Locales } from '@localazy/languages';
-import { File } from '~/types/file';
-import { Project } from '~/types/project';
+import { File } from '@/types/file';
+import { Project } from '@/types/project';
 
 export type ExportJsonRequest = {
   /**
@@ -11,16 +11,4 @@ export type ExportJsonRequest = {
   file: File | string;
 
   langs: `${Locales}`[];
-
-  /**
-   * Exported object format.
-   * Default: true
-   *
-   * @example
-   * ```
-   * true => { en: { headers: { name: 'Name' } } }
-   * false => { en: { 'headers.name': 'Name' } }
-   * ```
-   */
-  nestedKeys?: boolean
 };

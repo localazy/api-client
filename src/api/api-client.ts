@@ -1,16 +1,16 @@
 import { CreateAxiosDefaults } from 'axios';
-import { ApiExport } from '~/api/methods/api-export';
-import { ApiFiles } from '~/api/methods/api-files';
-import { ApiFormats } from '~/api/methods/api-formats';
-import { ApiGlossary } from '~/api/methods/api-glossary';
-import { ApiImport } from '~/api/methods/api-import';
-import { ApiKeys } from '~/api/methods/api-keys';
-import { ApiProjects } from '~/api/methods/api-projects';
-import { ApiScreenshots } from '~/api/methods/api-screenshots';
-import { ApiWebhooks } from '~/api/methods/api-webhooks';
-import { AxiosHttpAdapter } from '~/http/axios-http-adapter';
-import { IHttpAdapter } from '~/http/i-http-adapter';
-import { ApiClientOptions } from '~/types/api-client-options';
+import { ApiExport } from '@/api/methods/api-export';
+import { ApiFiles } from '@/api/methods/api-files';
+import { ApiFormats } from '@/api/methods/api-formats';
+import { ApiGlossary } from '@/api/methods/api-glossary';
+import { ApiImport } from '@/api/methods/api-import';
+import { ApiKeys } from '@/api/methods/api-keys';
+import { ApiProjects } from '@/api/methods/api-projects';
+import { ApiScreenshots } from '@/api/methods/api-screenshots';
+import { ApiWebhooks } from '@/api/methods/api-webhooks';
+import { AxiosHttpAdapter } from '@/http/axios-http-adapter';
+import { IHttpAdapter } from '@/http/i-http-adapter';
+import { ApiClientOptions } from '@/types/api-client-options';
 
 export class ApiClient {
   public client: IHttpAdapter;

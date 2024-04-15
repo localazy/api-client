@@ -1,8 +1,6 @@
-import {
-  chunk, isPlainObject, merge, set,
-} from 'lodash-es';
-import { I18nJson } from '~/types/i18n-json';
-import { Json } from '~/types/json';
+import { chunk, isPlainObject, merge, set } from 'lodash-es';
+import { I18nJson } from '@/types/i18n-json';
+import { Json } from '@/types/json';
 
 export class JsonUtils {
   /**
@@ -41,20 +39,16 @@ export class JsonUtils {
    * ];
    */
   protected static sliceByValue(json: Json, keys: string[] = []): Json[] {
-    return Object.entries(json)
-      .reduce(
-        (prev: Json[], [key, value]: [string, Json]) => {
-          if (isPlainObject(value)) {
-            prev.push(...JsonUtils.sliceByValue(value, [...keys, key]));
-          } else if (keys.length > 1) {
-            prev.push(set({}, [...keys, key].join('.'), value));
-          } else {
-            prev.push({ [keys[0]]: { [key]: value } });
-          }
-          return prev;
-        },
-        [],
-      );
+    return Object.entries(json).reduce((prev: Json[], [key, value]: [string, Json]) => {
+      if (isPlainObject(value)) {
+        prev.push(...JsonUtils.sliceByValue(value, [...keys, key]));
+      } else if (keys.length > 1) {
+        prev.push(set({}, [...keys, key].join('.'), value));
+      } else {
+        prev.push({ [keys[0]]: { [key]: value } });
+      }
+      return prev;
+    }, []);
   }
 
   protected static mergeChunkValues(values: Json[]): Json {
