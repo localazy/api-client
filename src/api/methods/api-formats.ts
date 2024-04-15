@@ -1,6 +1,6 @@
 import { AxiosRequestConfig } from 'axios';
-import { ApiBase } from '~/api/methods/api-base';
-import { Format } from '~/types/format';
+import { ApiBase } from '@/api/methods/api-base';
+import { Format } from '@/types/format';
 
 export class ApiFormats extends ApiBase {
   /**

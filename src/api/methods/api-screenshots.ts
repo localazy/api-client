@@ -1,13 +1,13 @@
 import { AxiosRequestConfig, AxiosResponseTransformer } from 'axios';
-import { ApiBase } from '~/api/methods/api-base';
-import { Screenshot } from '~/types/screenshot';
-import { ScreenshotCreateRequest } from '~/types/screenshot-create-request';
-import { ScreenshotDeleteRequest } from '~/types/screenshot-delete-request';
-import { ScreenshotTag } from '~/types/screenshot-tag';
-import { ScreenshotUpdateImageDataRequest } from '~/types/screenshot-update-image-data-request';
-import { ScreenshotUpdateRequest } from '~/types/screenshot-update-request';
-import { ScreenshotsListRequest } from '~/types/screenshots-list-request';
-import { ScreenshotsListTagsRequest } from '~/types/screenshots-list-tags-request';
+import { ApiBase } from '@/api/methods/api-base';
+import { Screenshot } from '@/types/screenshot';
+import { ScreenshotCreateRequest } from '@/types/screenshot-create-request';
+import { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request';
+import { ScreenshotTag } from '@/types/screenshot-tag';
+import { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request';
+import { ScreenshotUpdateRequest } from '@/types/screenshot-update-request';
+import { ScreenshotsListRequest } from '@/types/screenshots-list-request';
+import { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request';
 
 export class ApiScreenshots extends ApiBase {
   /**
@@ -56,11 +56,10 @@ export class ApiScreenshots extends ApiBase {
       return json.id;
     };
 
-    return this.api.client.post(
-      `/projects/${projectId}/screenshots`,
-      request.encodedData,
-      { transformResponse, ...config },
-    );
+    return this.api.client.post(`/projects/${projectId}/screenshots`, request.encodedData, {
+      transformResponse,
+      ...config,
+    });
   }
 
   /**
@@ -77,11 +76,7 @@ export class ApiScreenshots extends ApiBase {
     const projectId: string = ApiBase.getId(project, 'project');
     const screenshotId: string = ApiBase.getId(screenshot, 'screenshot');
 
-    await this.api.client.post(
-      `/projects/${projectId}/screenshots/${screenshotId}`,
-      request.encodedData,
-      config,
-    );
+    await this.api.client.post(`/projects/${projectId}/screenshots/${screenshotId}`, request.encodedData, config);
   }
 
   /**

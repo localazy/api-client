@@ -14,11 +14,10 @@ try {
   const json = {
     en: {
       headers: {
-        name: 'Name'
-      }
-    }
+        name: 'Name',
+      },
+    },
   };
-
 
   // Import JSON data.
   await api.import.json({ project, json });

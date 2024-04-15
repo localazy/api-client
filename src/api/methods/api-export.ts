@@ -1,12 +1,10 @@
 import { Locales } from '@localazy/languages';
 import { AxiosRequestConfig } from 'axios';
-import { setWith } from 'lodash-es';
-import { ApiBase } from '~/api/methods/api-base';
-import { ExportJsonRequest } from '~/types/export-json-request';
-import { I18nJson } from '~/types/i18n-json';
-import { Json } from '~/types/json';
-import { Key } from '~/types/key';
-import { KeyValue } from '~/types/key-value';
+import { ApiBase } from '@/api/methods/api-base';
+import { ExportJsonRequest } from '@/types/export-json-request';
+import { I18nJson } from '@/types/i18n-json';
+import { Json } from '@/types/json';
+import { Key } from '@/types/key';
 
 export class ApiExport extends ApiBase {
   /**
@@ -16,37 +14,38 @@ export class ApiExport extends ApiBase {
    * @param config Axios request config.
    */
   public async json(request: ExportJsonRequest, config?: AxiosRequestConfig): Promise<I18nJson> {
-    const {
-      project, file, langs, nestedKeys,
-    }: ExportJsonRequest = request;
+    const { project, file, langs }: ExportJsonRequest = request;
 
     const result: Key[][] = await Promise.all(
-      langs.map(
-        (lang: `${Locales}`): Promise<Key[]> => this.api.files.listKeys({ project, file, lang }, config),
-      ),
+      langs.map((lang: `${Locales}`): Promise<Key[]> => this.api.files.listKeys({ project, file, lang }, config)),
     );
 
-    return Object.fromEntries(ApiExport.mapLangs(langs, result, nestedKeys));
+    return Object.fromEntries(ApiExport.mapLanguages(langs, result));
   }
 
-  protected static mapLangs(langs: `${Locales}`[], result: Key[][], nestedKeys?: boolean) {
-    return langs.map((lang: `${Locales}`, index: number) => [
-      lang,
-      ApiExport.mapResult(result[index], nestedKeys),
-    ]);
+  protected static mapLanguages(languages: `${Locales}`[], result: Key[][]) {
+    return languages.map((lang: `${Locales}`, index: number) => [lang, ApiExport.mapResult(result[index])]);
   }
 
-  protected static mapResult(keysList: Key[], nestedKeys?: boolean): Json {
-    const entries: [string, KeyValue][] = keysList.map((key: Key) => [key.key.join('.'), key.value]);
+  protected static mapResult(keysList: Key[]): Json {
+    return keysList.reduce((acc: Json, cur: Key): Json => {
+      const keys: string[] = [...cur.key];
 
-    if (nestedKeys === false) {
-      return Object.fromEntries(entries);
-    }
+      let key: string | undefined = keys.shift();
+      let path: string = key || '';
 
-    const nestedJson: Json = {};
-    entries.forEach(([path, value]: [string, KeyValue]): void => {
-      setWith(nestedJson, path, value);
-    });
-    return nestedJson;
+      while (key) {
+        if (keys.length === 0) {
+          acc[path] = cur.value;
+        } else if (!acc[path]) {
+          acc[path] = {};
+        }
+
+        key = keys.shift();
+        path = `${path}.${key}`;
+      }
+
+      return acc;
+    }, {});
   }
 }

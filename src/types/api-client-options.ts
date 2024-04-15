@@ -5,5 +5,6 @@ export type ApiClientOptions = {
 
   apiUrl?: string;
 
+  // TODO remove
   axios?: CreateAxiosDefaults;
 };

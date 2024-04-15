@@ -1,5 +1,5 @@
-import { Key } from '~/types/key';
-import { Project } from '~/types/project';
+import { Key } from '@/types/key';
+import { Project } from '@/types/project';
 
 export type KeyUpdateRequest = {
   /**

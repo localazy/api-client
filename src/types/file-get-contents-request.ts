@@ -1,6 +1,6 @@
 import { Locales } from '@localazy/languages';
-import { File } from '~/types/file';
-import { Project } from '~/types/project';
+import { File } from '@/types/file';
+import { Project } from '@/types/project';
 
 export type FileGetContentsRequest = {
   /**

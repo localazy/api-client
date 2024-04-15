@@ -1,6 +1,6 @@
-import { GlossaryRecord } from '~/types/glossary-record';
-import { GlossaryRecordTerm } from '~/types/glossary-record-term';
-import { Project } from '~/types/project';
+import { GlossaryRecord } from '@/types/glossary-record';
+import { GlossaryRecordTerm } from '@/types/glossary-record-term';
+import { Project } from '@/types/project';
 
 export type GlossaryUpdateRequest = {
   /**

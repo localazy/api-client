@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios';
-import { ApiBase } from '~/api/methods/api-base';
-import { Project } from '~/types/project';
-import { ProjectsListRequest } from '~/types/projects-list-request';
+import { ApiBase } from '@/api/methods/api-base';
+import { Project } from '@/types/project';
+import { ProjectsListRequest } from '@/types/projects-list-request';
 
 export class ApiProjects extends ApiBase {
   /**

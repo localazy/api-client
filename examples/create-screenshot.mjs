@@ -21,7 +21,7 @@ try {
     project,
     screenshot: id,
     comment: 'Customers list.',
-    tags: ['customers']
+    tags: ['customers'],
   });
 
   console.log('Screenshot was created! Check this link:');

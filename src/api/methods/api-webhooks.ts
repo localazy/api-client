@@ -1,10 +1,10 @@
 import { AxiosRequestConfig, AxiosResponseTransformer } from 'axios';
-import { ApiBase } from '~/api/methods/api-base';
-import { Webhook } from '~/types/webhook';
-import { WebhooksGetSecretRequest } from '~/types/webhooks-get-secret-request';
-import { WebhooksListRequest } from '~/types/webhooks-list-request';
-import { WebhooksSecret } from '~/types/webhooks-secret';
-import { WebhooksUpdateRequest } from '~/types/webhooks-update-request';
+import { ApiBase } from '@/api/methods/api-base';
+import { Webhook } from '@/types/webhook';
+import { WebhooksGetSecretRequest } from '@/types/webhooks-get-secret-request';
+import { WebhooksListRequest } from '@/types/webhooks-list-request';
+import { WebhooksSecret } from '@/types/webhooks-secret';
+import { WebhooksUpdateRequest } from '@/types/webhooks-update-request';
 
 export class ApiWebhooks extends ApiBase {
   /**

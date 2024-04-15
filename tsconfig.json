@@ -1,41 +1,21 @@
 {
   "compilerOptions": {
-    "moduleResolution": "node",
-    "useDefineForClassFields": true,
+    "target": "ESNext",
+    "module": "ESNext",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "sourceMap": true,
     "resolveJsonModule": true,
-    "target": "ES5",
-    "module": "CommonJS",
-    "declaration": true,
-    "outDir": "lib",
+    "skipLibCheck": true,
     "strict": true,
-    "lib": [
-      "DOM",
-      "ES2023"
-    ],
+    "declaration": true,
     "baseUrl": "src",
     "paths": {
-      "~/*": [
-        "./*"
-      ]
+      "@/*": ["./*"],
+      "@tests/*": ["./../tests/*"]
     },
-    "types": [
-      "@types/lodash-es",
-      "@types/jest"
-    ]
+    "types": ["@types/lodash-es"]
   },
-  "include": [
-    "src",
-    "tests",
-    ".eslintrc.js",
-    "jest.config.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "lib"
-  ],
-  "tsc-alias": {
-    "resolveFullPaths": true
-  }
+  "exclude": ["node_modules", "coverage", "typedoc", "dist"]
 }

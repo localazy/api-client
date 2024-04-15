@@ -1,4 +1,4 @@
-import { Key } from '~/types/key';
+import { Key } from '@/types/key';
 
 export type KeysPaginated = {
   keys: Key[];

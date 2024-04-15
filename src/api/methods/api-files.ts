@@ -1,12 +1,12 @@
 import { AxiosRequestConfig } from 'axios';
-import { Blob } from 'web-file-polyfill';
-import { ApiBase } from '~/api/methods/api-base';
-import { File } from '~/types/file';
-import { FileGetContentsRequest } from '~/types/file-get-contents-request';
-import { FileListKeysRequest } from '~/types/file-list-keys-request';
-import { FilesListRequest } from '~/types/files-list-request';
-import { Key } from '~/types/key';
-import { KeysPaginated } from '~/types/keys-paginated';
+import { Blob } from 'node:buffer';
+import { ApiBase } from '@/api/methods/api-base';
+import { File } from '@/types/file';
+import { FileGetContentsRequest } from '@/types/file-get-contents-request';
+import { FileListKeysRequest } from '@/types/file-list-keys-request';
+import { FilesListRequest } from '@/types/files-list-request';
+import { Key } from '@/types/key';
+import { KeysPaginated } from '@/types/keys-paginated';
 
 export class ApiFiles extends ApiBase {
   /**
@@ -78,9 +78,7 @@ export class ApiFiles extends ApiBase {
    * | Localazy API Docs}
    */
   public async listKeysPage(request: FileListKeysRequest, config?: AxiosRequestConfig): Promise<KeysPaginated> {
-    const {
-      project, file, lang, ...params
-    }: FileListKeysRequest = request;
+    const { project, file, lang, ...params }: FileListKeysRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const fileId: string = ApiBase.getId(file, 'file');
 
@@ -100,10 +98,10 @@ export class ApiFiles extends ApiBase {
     const projectId: string = ApiBase.getId(project, 'project');
     const fileId: string = ApiBase.getId(file, 'file');
 
-    const buffer: Uint8Array = await this.api.client.get(
-      `/projects/${projectId}/files/${fileId}/download/${lang}`,
-      { ...config, responseType: 'arraybuffer' },
-    );
+    const buffer: Uint8Array = await this.api.client.get(`/projects/${projectId}/files/${fileId}/download/${lang}`, {
+      ...config,
+      responseType: 'arraybuffer',
+    });
 
     return new Blob([buffer]);
   }

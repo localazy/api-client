@@ -1,5 +1,5 @@
-import { Project } from '~/types/project';
-import { Webhook } from '~/types/webhook';
+import { Project } from '@/types/project';
+import { Webhook } from '@/types/webhook';
 
 export type WebhooksUpdateRequest = {
   /**

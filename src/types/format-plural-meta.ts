@@ -1,4 +1,4 @@
-import { FormatPluralMetaRequiredParam } from '~/types/format-plural-meta-required-param';
+import { FormatPluralMetaRequiredParam } from '@/types/format-plural-meta-required-param';
 
 export type FormatPluralMeta = {
   type: string;

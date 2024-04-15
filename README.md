@@ -9,27 +9,23 @@
   </a>
 </p>
 
-[//]: # (<p align="center">)
+<p align="center">
 
-[//]: # (  <a href="https://github.com/localazy/api-client"><img src="https://img.shields.io/badge/@localazy-ts--api-066fef?style=for-the-badge" height="22" alt="@localazy/api-client"></a>)
+<a href="https://github.com/localazy/api-client"><img src="https://img.shields.io/badge/@localazy-ts--api-066fef?style=for-the-badge" height="22" alt="@localazy/api-client"></a>
 
-[//]: # (  <a href="https://npmjs.com/package/@localazy/api-client"><img src="https://img.shields.io/github/package-json/v/localazy/ts-api/main?style=for-the-badge&label=version&color=066fef" height="22" alt="npm"></a>)
+<a href="https://npmjs.com/package/@localazy/api-client"><img src="https://img.shields.io/github/package-json/v/localazy/ts-api/main?style=for-the-badge&label=version&color=066fef" height="22" alt="npm"></a>
 
-[//]: # (  <a href="https://github.com/localazy/api-client/blob/main/LICENSE"><img src="https://img.shields.io/github/license/localazy/ts-api?style=for-the-badge&color=066fef" height="22" alt="license">)
+<a href="https://github.com/localazy/api-client/blob/main/LICENSE"><img src="https://img.shields.io/github/license/localazy/ts-api?style=for-the-badge&color=066fef" height="22" alt="license">
 
-[//]: # (</a>)
+</a>
 
-[//]: # (<a href="#">)
+[//]: # '<a href="#">'
+[//]: # '  <img src="https://img.shields.io/badge/schema-OpenAPI-066fef?style=for-the-badge&color=066fef" height="22" alt="schema"></a>'
+[//]: # '  <br>'
+[//]: # '  <a href="#"><img src="https://img.shields.io/badge/build-passing-success?style=for-the-badge" height="22" alt="build"></a>'
+[//]: # '  <a href="#"><img src="https://img.shields.io/badge/coverage-100%25-success?style=for-the-badge" height="22" alt="coverage"></a>'
 
-[//]: # (  <img src="https://img.shields.io/badge/schema-OpenAPI-066fef?style=for-the-badge&color=066fef" height="22" alt="schema"></a>)
-
-[//]: # (  <br>)
-
-[//]: # (  <a href="#"><img src="https://img.shields.io/badge/build-passing-success?style=for-the-badge" height="22" alt="build"></a>)
-
-[//]: # (  <a href="#"><img src="https://img.shields.io/badge/coverage-100%25-success?style=for-the-badge" height="22" alt="coverage"></a>)
-
-[//]: # (</p>)
+</p>
 
 # 📦 Localazy API Client
 
@@ -49,14 +45,14 @@ npm install @localazy/api-client
 ```javascript
 import { ApiClient } from '@localazy/api-client';
 
-const json = { en: { tooltip: 'Elegant unicorn' } };                  // Get text to translate.
+const json = { en: { tooltip: 'Elegant unicorn' } }; // Get text to translate.
 
-const api = new ApiClient({ authToken: 'your-project-token' });       // Create Api client.
-const project = await api.projects.first();                           // Get Localazy project.
-const file = await api.import.json({ project, json });                // Import source keys.
-const fr = await api.export.json({ project, file, langs: ['fr'] });   // Export translated keys.
+const api = new ApiClient({ authToken: 'your-project-token' }); // Create Api client.
+const project = await api.projects.first(); // Get Localazy project.
+const file = await api.import.json({ project, json }); // Import source keys.
+const fr = await api.export.json({ project, file, langs: ['fr'] }); // Export translated keys.
 
-console.log(fr);                                    // 🦄 { fr: { tooltip: 'Licorne élégante' } }
+console.log(fr); // 🦄 { fr: { tooltip: 'Licorne élégante' } }
 ```
 
 ###### TypeScript
@@ -101,12 +97,12 @@ team@localazy.com.
 
 Check out other npm packages from Localazy:
 
-|                                                                                                                                  | NPM package                                                                      | Description                                  | 
-|:---------------------------------------------------------------------------------------------------------------------------------|----------------------------------------------------------------------------------|----------------------------------------------|
-| <img src="https://localazy.com/directus9/assets/3f76ff7b-0e74-4046-bb03-4ca99c3b66d5" width="50" height="50" alt="cli">          | [@localazy/cli](https://www.npmjs.com/package/@localazy/cli)                     | Localazy CLI tool.                           | 
-| <img src="https://localazy.com/directus9/assets/20866781-e69b-4e01-9456-05437487b75c" width="50" height="50" alt="localazy-api"> | [@localazy/api-client](https://www.npmjs.com/package/@localazy/api-client)       | Localazy API client.                         | 
-| <img src="https://localazy.com/directus9/assets/c9e70e4f-8136-432a-8d82-53c3501a9eb4" width="50" height="50" alt="languages">    | [@localazy/languages](https://www.npmjs.com/package/@localazy/languages)         | List of all languages supported by Localazy. | 
-| <img src="https://localazy.com/directus9/assets/1dd05c76-e517-4aea-a3d8-49cfddb40056" width="50" height="50" alt="strapi">       | [@localazy/strapi-plugin](https://www.npmjs.com/package/@localazy/strapi-plugin) | The official Localazy Strapi plugin.         | 
+|                                                                                                                                  | NPM package                                                                      | Description                                  |
+| :------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------- | -------------------------------------------- |
+| <img src="https://localazy.com/directus9/assets/3f76ff7b-0e74-4046-bb03-4ca99c3b66d5" width="50" height="50" alt="cli">          | [@localazy/cli](https://www.npmjs.com/package/@localazy/cli)                     | Localazy CLI tool.                           |
+| <img src="https://localazy.com/directus9/assets/20866781-e69b-4e01-9456-05437487b75c" width="50" height="50" alt="localazy-api"> | [@localazy/api-client](https://www.npmjs.com/package/@localazy/api-client)       | Localazy API client.                         |
+| <img src="https://localazy.com/directus9/assets/c9e70e4f-8136-432a-8d82-53c3501a9eb4" width="50" height="50" alt="languages">    | [@localazy/languages](https://www.npmjs.com/package/@localazy/languages)         | List of all languages supported by Localazy. |
+| <img src="https://localazy.com/directus9/assets/1dd05c76-e517-4aea-a3d8-49cfddb40056" width="50" height="50" alt="strapi">       | [@localazy/strapi-plugin](https://www.npmjs.com/package/@localazy/strapi-plugin) | The official Localazy Strapi plugin.         |
 
 Discover all available [integration options and localization examples](https://github.com/localazy).
 

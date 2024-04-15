@@ -1,10 +1,8 @@
-import axios, {
-  AxiosInstance, AxiosRequestConfig, AxiosResponse, CreateAxiosDefaults,
-} from 'axios';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, CreateAxiosDefaults } from 'axios';
 import { isNumber, isPlainObject, isString } from 'lodash-es';
-import { LocalazyError } from '~/errors/localazy-error';
-import { IHttpAdapter } from '~/http/i-http-adapter';
-import { ApiClientOptions } from '~/types/api-client-options';
+import { LocalazyError } from '@/errors/localazy-error';
+import { IHttpAdapter } from '@/http/i-http-adapter';
+import { ApiClientOptions } from '@/types/api-client-options';
 
 export class AxiosHttpAdapter implements IHttpAdapter {
   public client: AxiosInstance;
@@ -24,6 +22,7 @@ export class AxiosHttpAdapter implements IHttpAdapter {
       headers: {
         common: {
           Authorization: `Bearer ${authToken}`,
+          Accept: `application/json`,
         },
       },
     });
