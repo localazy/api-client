@@ -1,0 +1,15 @@
+[
+  {
+    "id": "_a0000000000000000002",
+    "orgId": "_a000001",
+    "name": "Empty project",
+    "slug": "empty-project",
+    "image": "",
+    "url": "https://testing.localazy.com/p/empty-project",
+    "description": "",
+    "type": "restricted",
+    "tone": "not_specified",
+    "role": "owner",
+    "sourceLanguage": 85
+  }
+]

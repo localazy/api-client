@@ -1,0 +1,46 @@
+{
+  "keys": [
+    {
+      "id": "_a0000000000000000001",
+      "key": ["app_title"],
+      "value": "My Application",
+      "vid": -7407901648464613000
+    },
+    {
+      "id": "_a0000000000000000002",
+      "key": ["welcome_message"],
+      "value": "Welcome to My Application!",
+      "vid": -7407901648464613000
+    },
+    {
+      "id": "_a0000000000000000003",
+      "key": ["login_button"],
+      "value": "Log In",
+      "vid": -7407901648464613000
+    },
+    {
+      "id": "_a0000000000000000004",
+      "key": ["headers", "role"],
+      "value": "Project role",
+      "vid": -7407781050279235000
+    },
+    {
+      "id": "_a0000000000000000005",
+      "key": ["headers", "email"],
+      "value": "User email",
+      "vid": -7407742748700413000
+    },
+    {
+      "id": "_a0000000000000000006",
+      "key": ["table.actions.invite"],
+      "value": "Invite user",
+      "vid": -7407781050279235000
+    },
+    {
+      "id": "_a0000000000000000007",
+      "key": ["table.actions.refresh"],
+      "value": "Refresh data",
+      "vid": -7407742748700413000
+    }
+  ]
+}

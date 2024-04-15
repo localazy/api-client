@@ -1,0 +1,2650 @@
+[
+  {
+    "type": "android-gradle",
+    "name": "Android XML (from Gradle)",
+    "supportStrings": false,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": false
+  },
+  {
+    "type": "android",
+    "name": "Android XML",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false
+  },
+  {
+    "type": "json",
+    "name": "JSON",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "json-multilingual",
+    "name": "Multilingual JSON",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "arb",
+    "name": "Flutter ARB",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "require-js",
+    "name": "RequireJS",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ios-strings",
+    "name": "iOS/macOS .strings",
+    "supportStrings": true,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ios-plist",
+    "name": "iOS/macOS .plist",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "stringsdict",
+        "name": "Plural as defined by iOS's .stringsdict",
+        "isDefault": true,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for iOS's .stringsdict format"
+          }
+        ]
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ios-stringsdict",
+    "name": "iOS/macOS .stringsdict",
+    "supportStrings": false,
+    "supportPlurals": true,
+    "supportArrays": false,
+    "supportStructuredKeys": false,
+    "plurals": [
+      {
+        "type": "stringsdict",
+        "name": "Plural as defined by iOS's .stringsdict",
+        "isDefault": true,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for iOS's .stringsdict format"
+          }
+        ]
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "resx",
+    "name": "Windows RESX",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "yaml",
+    "name": "YAML",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "yaml-rails",
+    "name": "Rails YAML",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "yaml-multilingual",
+    "name": "Multilingual YAML",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "po",
+    "name": "PO/POT file",
+    "supportStrings": true,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "json5",
+    "name": "JSON5",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "json5-multilingual",
+    "name": "Multilingual JSON5",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "hjson",
+    "name": "HJSON",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "hjson-multilingual",
+    "name": "Multilingual HJSON",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "properties",
+    "name": "Java .properties",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ini",
+    "name": "INI",
+    "supportStrings": false,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ini-multilingual",
+    "name": "Multilingual INI",
+    "supportStrings": false,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "php",
+    "name": "PHP",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "php-multilingual",
+    "name": "Multilingual PHP",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "qt-ts",
+    "name": "Qt TS",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": false,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "csv",
+    "name": "CSV/TSV",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "csv-mutlilingual",
+    "name": "Multilingual CSV/TSV",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "neon",
+    "name": "Nette Neon",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "neon-multilingual",
+    "name": "Multilingual Nette Neon",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "toml",
+    "name": "TOML",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "toml-multilingual",
+    "name": "Multilingual TOML",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true,
+    "plurals": [
+      {
+        "type": "plural_postfix_br",
+        "name": "Output plurals as keys suffixed by [pluralForm]",
+        "isDefault": true
+      },
+      {
+        "type": "plural_postfix_sd",
+        "name": "Output plurals as keys suffixed by .pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_dd",
+        "name": "Output plurals as keys suffixed by :pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_us",
+        "name": "Output plurals as keys suffixed by _pluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_postfix_cc",
+        "name": "Output plurals as keys suffixed by PluralForm",
+        "isDefault": false
+      },
+      {
+        "type": "plural_icu",
+        "name": "Output plurals in ICU message format",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_variable",
+            "description": "Variable name for the ICU message format"
+          }
+        ]
+      },
+      {
+        "type": "plural_i18next",
+        "name": "Output plurals in i18Next format",
+        "isDefault": false
+      },
+      {
+        "type": "plural_object",
+        "name": "Output plurals as structured object",
+        "isDefault": false
+      },
+      {
+        "type": "plural_array",
+        "name": "Output plurals as array of objects",
+        "isDefault": false,
+        "requiredParams": [
+          {
+            "type": "plural_type",
+            "description": "Key for the plural form."
+          },
+          {
+            "type": "plural_content",
+            "description": "Key for the textual content."
+          }
+        ]
+      }
+    ],
+    "arrays": [
+      {
+        "type": "array",
+        "name": "Output string-array as array",
+        "isDefault": true
+      },
+      {
+        "type": "array_br",
+        "name": "Output string-array as keys suffixed by [index]",
+        "isDefault": false
+      }
+    ],
+    "keyTransformers": [
+      {
+        "type": "none",
+        "name": "Don't flatten structured keys",
+        "isDefault": true
+      },
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": false
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "xls",
+    "name": "Microsoft Excel",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "xls-multilingual",
+    "name": "Multilingual Microsoft Excel",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ods",
+    "name": "OpenOffice ODS",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "ods-multilingual",
+    "name": "Multilingual OpenOffice ODS",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "tmx",
+    "name": "Translation Memory (TMX)",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": false,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "xcstrings",
+    "name": "XCode String Catalogs",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": false,
+    "supportStructuredKeys": false,
+    "keyTransformers": [
+      {
+        "type": "dot",
+        "name": "Flatten structured keys with '.'",
+        "isDefault": true
+      },
+      {
+        "type": "underscore",
+        "name": "Flatten structured keys with '_'",
+        "isDefault": false
+      },
+      {
+        "type": "dash",
+        "name": "Flatten structured keys with '-'",
+        "isDefault": false
+      },
+      {
+        "type": "double_dot",
+        "name": "Flatten structured keys with ':'",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "type": "api",
+    "name": "Internal API format",
+    "supportStrings": true,
+    "supportPlurals": true,
+    "supportArrays": true,
+    "supportStructuredKeys": true
+  },
+  {
+    "type": "copy",
+    "name": "Internal COPY format",
+    "supportStrings": false,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": true
+  },
+  {
+    "type": "captivate",
+    "name": "Adobe Captivate",
+    "supportStrings": false,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": false
+  },
+  {
+    "type": "ispring",
+    "name": "iSpring Suite XLIFF",
+    "supportStrings": false,
+    "supportPlurals": false,
+    "supportArrays": false,
+    "supportStructuredKeys": false
+  }
+]

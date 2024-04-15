@@ -1,0 +1,17 @@
+{
+  "glossaries": [
+    {
+      "id": "_a0000000000000000001",
+      "term": [
+        {
+          "lang": "en",
+          "term": "Monitor"
+        }
+      ],
+      "description": "A screen used for displaying visual output from a computer.",
+      "translateTerm": false,
+      "caseSensitive": false,
+      "exactMatch": false
+    }
+  ]
+}
