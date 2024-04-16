@@ -1,21 +1,16 @@
 # 2.1.0 (2024-04-15)
 
-
-
 ### ✨ Features
 
 - Use Vite for bundling, support browser bundle, update deps, Prettier ([0da86d2](https://github.com/localazy/api-client/commit/0da86d2))
-
 
 ### 📚 Documentation
 
 - Update reference ([0037ecb](https://github.com/localazy/api-client/commit/0037ecb))
 
-
 ### 🧪 Tests
 
 - Migrate Jest to Vitest, add fixtures and mocks ([d3d50fc](https://github.com/localazy/api-client/commit/d3d50fc))
-
 
 ### 🧰 Other Commits
 
