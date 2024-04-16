@@ -1,3 +1,4 @@
+import { fetchMock } from '@tests/support';
 import fileDownload from '@tests/fixtures/full-project/fileDownload.json';
 import fileKeys from '@tests/fixtures/full-project/fileKeys.json';
 import files from '@tests/fixtures/full-project/files.json';
@@ -6,10 +7,10 @@ import glossary from '@tests/fixtures/full-project/glossary.json';
 import projects from '@tests/fixtures/full-project/projects.json';
 import screenshots from '@tests/fixtures/full-project/screenshots.json';
 import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json';
-import { textToUint8Array } from '@tests/support/utils';
 import webhooks from '@tests/fixtures/full-project/webhooks.json';
 import webhooksSecret from '@tests/fixtures/full-project/webhooksSecret.json';
-import { mockAdapter } from '@tests/support/axios-mock-adapter';
+
+const baseUrl: string = 'https://api.localazy.com';
 
 export const serverResponses = {
   formats,
@@ -48,79 +49,74 @@ export const serverResponses = {
 };
 
 export const mockResponses = (): void => {
-  mockAdapter.reset();
+  fetchMock.reset();
 
   // formats
-  mockAdapter.onGet('/import/formats').reply(200, JSON.stringify(serverResponses.formats));
+  fetchMock.get(`${baseUrl}/import/formats`, serverResponses.formats);
 
   // projects
-  mockAdapter.onGet('/projects').reply(200, JSON.stringify(serverResponses.projects));
+  fetchMock.get(`${baseUrl}/projects`, serverResponses.projects);
 
   // glossary
-  mockAdapter.onGet('/projects/_a0000000000000000001/glossary').reply(200, JSON.stringify(serverResponses.glossary));
-  mockAdapter
-    .onGet('/projects/_a0000000000000000001/glossary/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.glossary.glossaries[0]));
-  mockAdapter.onPost('/projects/_a0000000000000000001/glossary').reply(200, JSON.stringify(serverResponses.resultPost));
-  mockAdapter
-    .onPut('/projects/_a0000000000000000001/glossary/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultPut));
-  mockAdapter
-    .onDelete('/projects/_a0000000000000000001/glossary/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultDelete));
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.glossary);
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`,
+    serverResponses.glossary.glossaries[0],
+  );
+  fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.resultPost);
+  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`, serverResponses.resultPut);
+  fetchMock.delete(
+    `${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`,
+    serverResponses.resultDelete,
+  );
 
   // files
-  mockAdapter.onGet('/projects/_a0000000000000000001/files').reply(200, JSON.stringify(serverResponses.files));
-  mockAdapter
-    .onGet('/projects/_a0000000000000000001/files/_e000000000001/keys/en')
-    .reply(200, JSON.stringify(serverResponses.fileKeys));
-  mockAdapter
-    .onGet('/projects/_a0000000000000000001/files/_e000000000001/download/en')
-    .reply(200, textToUint8Array(serverResponses.fileDownload));
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/files`, serverResponses.files);
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en`, serverResponses.fileKeys);
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/download/en`,
+    serverResponses.fileDownload,
+  );
 
   // keys
-  mockAdapter
-    .onPut('/projects/_a0000000000000000001/keys/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultPut));
-  mockAdapter
-    .onDelete('/projects/_a0000000000000000001/keys/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultDelete));
+  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`, serverResponses.resultPut);
+  fetchMock.delete(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`,
+    serverResponses.resultDelete,
+  );
 
   // import
-  mockAdapter.onPost('/projects/_a0000000000000000001/import').reply(200, JSON.stringify(serverResponses.resultPost));
+  fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/import`, serverResponses.resultPost);
 
   // screenshots
-  mockAdapter
-    .onGet('/projects/_a0000000000000000001/screenshots')
-    .reply(200, JSON.stringify(serverResponses.screenshots));
-  mockAdapter
-    .onGet('/projects/_a0000000000000000001/screenshots/tags')
-    .reply(200, JSON.stringify(serverResponses.screenshotTags));
-  mockAdapter
-    .onPost('/projects/_a0000000000000000001/screenshots')
-    .reply(200, JSON.stringify(serverResponses.resultPostScreenshot));
-  mockAdapter
-    .onPost('/projects/_a0000000000000000001/screenshots/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultPost));
-  mockAdapter
-    .onPut('/projects/_a0000000000000000001/screenshots/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultPut));
-  mockAdapter
-    .onDelete('/projects/_a0000000000000000001/screenshots/_a0000000000000000001')
-    .reply(200, JSON.stringify(serverResponses.resultDelete));
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/screenshots`, serverResponses.screenshots);
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/screenshots/tags`, serverResponses.screenshotTags);
+  fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/screenshots`, serverResponses.resultPostScreenshot);
+  fetchMock.post(
+    `${baseUrl}/projects/_a0000000000000000001/screenshots/_a0000000000000000001`,
+    serverResponses.resultPost,
+  );
+  fetchMock.put(
+    `${baseUrl}/projects/_a0000000000000000001/screenshots/_a0000000000000000001`,
+    serverResponses.resultPut,
+  );
+  fetchMock.delete(
+    `${baseUrl}/projects/_a0000000000000000001/screenshots/_a0000000000000000001`,
+    serverResponses.resultDelete,
+  );
 
   // webhooks
-  mockAdapter.onGet('/projects/_a0000000000000000001/webhooks').reply(200, JSON.stringify(serverResponses.webhooks));
-  mockAdapter
-    .onGet('/projects/_a0000000000000000001/webhooks/secret')
-    .reply(200, JSON.stringify(serverResponses.webhooksSecret));
-  mockAdapter.onPost('/projects/_a0000000000000000001/webhooks').reply(200, JSON.stringify(serverResponses.resultPost));
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/webhooks`, serverResponses.webhooks);
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/webhooks/secret`, serverResponses.webhooksSecret);
+  fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/webhooks`, serverResponses.resultPost);
 
   // errors
-  mockAdapter
-    .onPut('/projects/_a0000000000000000001/keys/unknown-key-id')
-    .reply(400, JSON.stringify(serverResponses.resultInvalidId));
-  mockAdapter
-    .onPut('/projects/_a0000000000000000001/keys/_a1111111111111111111')
-    .reply(401, JSON.stringify(serverResponses.resultUnauthorized));
+  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/unknown-key-id`, {
+    status: 400,
+    body: serverResponses.resultInvalidId,
+  });
+  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/_a1111111111111111111`, {
+    status: 401,
+    body: serverResponses.resultUnauthorized,
+  });
 };

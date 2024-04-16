@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
+import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { File } from '@/types/file';
 import { I18nJson } from '@/types/i18n-json';
@@ -15,17 +15,21 @@ export class ApiImport extends ApiBase {
    * Import source keys from JSON object.
    *
    * @param request Import JSON request config.
-   * @param config Axios request config.
+   * @param config Request config.
    *
    * @see {@link https://localazy.com/docs/api/import#import-content-to-a-project  Localazy API Docs}
    */
-  public async json(request: ImportJsonRequest, config?: AxiosRequestConfig): Promise<File> {
+  public async json(request: ImportJsonRequest, config?: RequestConfig): Promise<File> {
     const { project, json }: ImportJsonRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const chunks: I18nJson[] = JsonUtils.slice(json);
     const data: ImportData = importDataFactory(request, chunks);
 
-    const { result } = await this.api.client.post(`/projects/${projectId}/import`, data, config);
+    const { result }: { result: string } = (await this.api.client.post(
+      `/projects/${projectId}/import`,
+      data,
+      config,
+    )) as { result: string };
 
     await delay();
 

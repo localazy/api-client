@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, test } from 'vitest';
-import { getApiClient, readImageFile, mockAdapter } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import { getApiClient, readImageFile, getToken } from '@tests/support';
 import { fullProject } from '@tests/fixtures';
 import {
   ApiClient,
@@ -38,21 +38,38 @@ describe('Screenshots', (): void => {
   test('api.screenshots.create', async (): Promise<void> => {
     const encodedData: string = readImageFile('./tests/fixtures/screenshot.png', 'image/png');
     const request: ScreenshotCreateRequest = { project, encodedData };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const screenshotId: string = await api.screenshots.create(request);
 
     expect(screenshotId).toBe('_a0000000000000000001');
-    expect(mockAdapter.history.post.length).toBe(1);
-    expect(mockAdapter.history.post[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/screenshots', {
+      body: `"${encodedData}"`,
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+      },
+      method: 'POST',
+    });
   });
 
   test('api.screenshots.updateImageData', async (): Promise<void> => {
     const encodedData: string = readImageFile('./tests/fixtures/screenshot.png', 'image/png');
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
     const request: ScreenshotUpdateImageDataRequest = { project, screenshot: screenshots[0], encodedData };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.screenshots.updateImageData(request);
 
-    expect(mockAdapter.history.post.length).toBe(1);
-    expect(mockAdapter.history.post[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/screenshots/_a0000000000000000001',
+      {
+        body: `"${encodedData}"`,
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+        },
+        method: 'POST',
+      },
+    );
   });
 
   test('api.screenshots.update', async (): Promise<void> => {
@@ -63,18 +80,37 @@ describe('Screenshots', (): void => {
       comment: 'Hey! Nice screenshot.',
       tags: ['blue'],
     };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.screenshots.update(request);
 
-    expect(mockAdapter.history.put.length).toBe(1);
-    expect(mockAdapter.history.put[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/screenshots/_a0000000000000000001',
+      {
+        body: '{"comment":"Hey! Nice screenshot.","tags":["blue"]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+        },
+        method: 'PUT',
+      },
+    );
   });
 
   test('api.screenshots.delete', async (): Promise<void> => {
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
     const request: ScreenshotDeleteRequest = { project, screenshot: screenshots[0] };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.screenshots.delete(request);
 
-    expect(mockAdapter.history.delete.length).toBe(1);
-    expect(mockAdapter.history.delete[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/screenshots/_a0000000000000000001',
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+        },
+        method: 'DELETE',
+      },
+    );
   });
 });

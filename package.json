@@ -68,7 +68,6 @@
   },
   "dependencies": {
     "@localazy/languages": "^0.1.6",
-    "axios": "^1.6.8",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
@@ -80,7 +79,6 @@
     "@typescript-eslint/parser": "^7.2.0",
     "@vitest/coverage-v8": "^1.4.0",
     "@vitest/ui": "^1.4.0",
-    "axios-mock-adapter": "^1.22.0",
     "eslint": "^8.57.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-airbnb-base": "^15.0.0",

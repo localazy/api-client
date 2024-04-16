@@ -1,6 +1,8 @@
-import { mockAdapter } from '@tests/support/axios-mock-adapter';
+import { fetchMock } from '@tests/support';
 import projects from '@tests/fixtures/empty-project/projects.json';
 import files from '@tests/fixtures/empty-project/files.json';
+
+const baseUrl: string = 'https://api.localazy.com';
 
 export const serverResponses = {
   projects,
@@ -8,11 +10,11 @@ export const serverResponses = {
 };
 
 export const mockResponses = (): void => {
-  mockAdapter.reset();
+  fetchMock.reset();
 
   // projects
-  mockAdapter.onGet('/projects').reply(200, JSON.stringify(serverResponses.projects));
+  fetchMock.get(`${baseUrl}/projects`, serverResponses.projects);
 
   // files
-  mockAdapter.onGet('/projects/_a0000000000000000002/files').reply(200, JSON.stringify(serverResponses.files));
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000002/files`, serverResponses.files);
 };

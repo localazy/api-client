@@ -1,5 +1,5 @@
 import { Locales } from '@localazy/languages';
-import { AxiosRequestConfig } from 'axios';
+import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { ExportJsonRequest } from '@/types/export-json-request';
 import { I18nJson } from '@/types/i18n-json';
@@ -11,9 +11,9 @@ export class ApiExport extends ApiBase {
    * Export translated keys as JSON object.
    *
    * @param request Export JSON request config.
-   * @param config Axios request config.
+   * @param config Request config.
    */
-  public async json(request: ExportJsonRequest, config?: AxiosRequestConfig): Promise<I18nJson> {
+  public async json(request: ExportJsonRequest, config?: RequestConfig): Promise<I18nJson> {
     const { project, file, langs }: ExportJsonRequest = request;
 
     const result: Key[][] = await Promise.all(
