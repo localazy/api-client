@@ -1,0 +1,44 @@
+[
+  {
+    "id": "_a0000000000000000001",
+    "orgId": "_a000001",
+    "name": "Test project",
+    "slug": "test-project",
+    "image": "",
+    "url": "https://testing.localazy.com/p/test-project",
+    "description": "",
+    "type": "restricted",
+    "tone": "not_specified",
+    "role": "owner",
+    "organization": {
+      "availableKeys": 50000,
+      "usedKeys": 17431,
+      "figma": true,
+      "screenshotsForFigma": true,
+      "connectedApps": true,
+      "releaseTags": true,
+      "formatConversions": true,
+      "screenshots": true,
+      "additionalMt": true,
+      "mtPretranslate": true,
+      "webhooks": true
+    },
+    "languages": [
+      {
+        "id": 85,
+        "code": "en",
+        "tag": "en",
+        "name": "English",
+        "active": 6,
+        "review": 0,
+        "current": 6,
+        "translated": 6,
+        "sourceChanged": 0,
+        "needImprovement": 0,
+        "enabled": true,
+        "published": true
+      }
+    ],
+    "sourceLanguage": 85
+  }
+]

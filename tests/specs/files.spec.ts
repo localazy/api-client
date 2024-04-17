@@ -61,13 +61,16 @@ describe('Files', (): void => {
     const keys: Key[] = await api.files.listKeys(request);
 
     expect(keys[0].value).toBe('My Application');
-    expect(spy).toHaveBeenCalledWith(`${getApiUrl()}/projects/_a0000000000000000001/files/_e000000000001/keys/en`, {
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${getToken()}`,
+    expect(spy).toHaveBeenCalledWith(
+      `${getApiUrl()}/projects/_a0000000000000000001/files/_e000000000001/keys/en?next=`,
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+        },
+        method: 'GET',
       },
-      method: 'GET',
-    });
+    );
   });
 
   test('api.files.listKeysPage', async (): Promise<void> => {
@@ -76,7 +79,6 @@ describe('Files', (): void => {
       project,
       file,
       lang: Locales.ENGLISH,
-      limit: 1,
     };
     const keys: Key[] = [];
 

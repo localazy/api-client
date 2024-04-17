@@ -55,7 +55,12 @@ export class FetchHttpAdapter implements IHttpAdapter<RequestConfig> {
     config?: RequestConfig,
     data?: unknown,
   ): Promise<object | string | Blob> {
-    const response: Response = await fetch(this.urlFactory(url), this.configFactory(method, config, data));
+    let resolvedUrl: string = this.urlFactory(url);
+    if (method === 'GET' && config?.params) {
+      const params: URLSearchParams = new URLSearchParams(config.params);
+      resolvedUrl += `?${params.toString()}`;
+    }
+    const response: Response = await fetch(resolvedUrl, this.configFactory(method, config, data));
 
     const contentType: string | null = response.headers.get('content-type');
     const isBlob: boolean = config?.responseType === 'blob' || false;

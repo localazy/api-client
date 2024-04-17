@@ -10,6 +10,7 @@ export const readImageFile = (path: string, type: string): string => {
 export const textToUint8Array = (text: string): Uint8Array => Buffer.from(text, 'utf-8');
 
 export const getToken = (): string => 'project-token';
+
 export const getApiUrl = (): string => 'https://api.localazy.com';
 
 export const getApiClient = (): ApiClient =>

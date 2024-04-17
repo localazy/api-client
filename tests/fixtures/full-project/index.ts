@@ -5,6 +5,7 @@ import files from '@tests/fixtures/full-project/files.json';
 import formats from '@tests/fixtures/full-project/formats.json';
 import glossary from '@tests/fixtures/full-project/glossary.json';
 import projects from '@tests/fixtures/full-project/projects.json';
+import projectsOrgsLangs from '@tests/fixtures/full-project/projectsOrgsLangs.json';
 import screenshots from '@tests/fixtures/full-project/screenshots.json';
 import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json';
 import webhooks from '@tests/fixtures/full-project/webhooks.json';
@@ -15,6 +16,7 @@ const baseUrl: string = 'https://api.localazy.com';
 export const serverResponses = {
   formats,
   projects,
+  projectsOrgsLangs,
   glossary,
   files,
   fileKeys,
@@ -56,6 +58,7 @@ export const mockResponses = (): void => {
 
   // projects
   fetchMock.get(`${baseUrl}/projects`, serverResponses.projects);
+  fetchMock.get(`${baseUrl}/projects?languages=true&organization=true`, serverResponses.projectsOrgsLangs);
 
   // glossary
   fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.glossary);
@@ -72,13 +75,17 @@ export const mockResponses = (): void => {
 
   // files
   fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/files`, serverResponses.files);
-  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en`, serverResponses.fileKeys);
   fetchMock.get(
     `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/download/en`,
     serverResponses.fileDownload,
   );
 
   // keys
+  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en`, serverResponses.fileKeys);
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en?next=`,
+    serverResponses.fileKeys,
+  );
   fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`, serverResponses.resultPut);
   fetchMock.delete(
     `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`,
