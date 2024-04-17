@@ -39,6 +39,7 @@ export class FetchHttpAdapter implements IHttpAdapter<RequestConfig> {
         ...(config?.headers || {}),
         Authorization: `Bearer ${this.authToken}`,
         Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
     };
 

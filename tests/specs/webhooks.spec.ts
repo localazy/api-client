@@ -42,6 +42,7 @@ describe('Webhooks', (): void => {
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
       },
       method: 'POST',
     });

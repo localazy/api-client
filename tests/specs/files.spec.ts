@@ -34,6 +34,7 @@ describe('Files', (): void => {
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
       },
       method: 'GET',
     });
@@ -49,6 +50,7 @@ describe('Files', (): void => {
       headers: {
         Accept: 'application/json',
         Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
       },
       method: 'GET',
     });
@@ -67,6 +69,7 @@ describe('Files', (): void => {
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
         },
         method: 'GET',
       },

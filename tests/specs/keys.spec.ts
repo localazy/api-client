@@ -28,6 +28,7 @@ describe('Keys', (): void => {
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
         },
         method: 'PUT',
       },
@@ -47,6 +48,7 @@ describe('Keys', (): void => {
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
         },
         method: 'DELETE',
       },
