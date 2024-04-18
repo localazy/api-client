@@ -1,4 +1,4 @@
-import { chunk, isPlainObject, merge, set } from 'lodash-es';
+import { chunk, isPlainObject, merge, setWith } from 'lodash-es';
 import { I18nJson } from '@/types/i18n-json';
 import { Json } from '@/types/json';
 
@@ -43,7 +43,7 @@ export class JsonUtils {
       if (isPlainObject(value)) {
         prev.push(...JsonUtils.sliceByValue(value, [...keys, key]));
       } else if (keys.length > 1) {
-        prev.push(set({}, [...keys, key].join('.'), value));
+        prev.push(setWith({}, [...keys, key].join('.'), value, Object));
       } else {
         prev.push({ [keys[0]]: { [key]: value } });
       }
