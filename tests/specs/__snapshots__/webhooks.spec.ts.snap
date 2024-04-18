@@ -1,3 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`Webhooks > api.webhooks.update 1`] = `"{"items":[{"enabled":true,"customId":"1","description":"This is a test webhook","url":"https://example.com/webhook","events":["comment_added","import_finished","import_finished_empty","project_published","tag_promoted"]}]}"`;

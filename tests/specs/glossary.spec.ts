@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, test } from 'vitest';
-import { getApiClient, mockAdapter } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import { getApiClient, getToken } from '@tests/support';
 import { fullProject } from '@tests/fixtures';
 import {
   ApiClient,
@@ -30,10 +30,22 @@ describe('Glossary', (): void => {
 
   test('api.glossary.find', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const record: GlossaryRecord = await api.glossary.find({ project, glossaryRecord: records[0].id });
 
     expect(record.term[0].term).toBe('Monitor');
     expect(record.description).toBe('A screen used for displaying visual output from a computer.');
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/glossary/_a0000000000000000001',
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'GET',
+      },
+    );
   });
 
   test('api.glossary.create', async (): Promise<void> => {
@@ -44,9 +56,20 @@ describe('Glossary', (): void => {
       translateTerm: true,
       term: [{ lang: 'en', term: 'Exceptional term' }],
     };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const recordId: string = await api.glossary.create(request);
 
     expect(recordId).toBe(fullProject.serverResponses.resultPost.result);
+    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/glossary', {
+      // eslint-disable-next-line max-len
+      body: '{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"term":[{"lang":"en","term":"Exceptional term"}]}',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
   });
 
   test('api.glossary.update', async (): Promise<void> => {
@@ -59,18 +82,40 @@ describe('Glossary', (): void => {
       translateTerm: true,
       term: [{ lang: 'en', term: 'Exceptional term' }],
     };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.glossary.update(request);
 
-    expect(mockAdapter.history.put.length).toBe(1);
-    expect(mockAdapter.history.put[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/glossary/_a0000000000000000001',
+      {
+        // eslint-disable-next-line max-len
+        body: '{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"term":[{"lang":"en","term":"Exceptional term"}]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'PUT',
+      },
+    );
   });
 
   test('api.glossary.delete', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
     const request: GlossaryDeleteRequest = { project, glossaryRecord: records[0] };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.glossary.delete(request);
 
-    expect(mockAdapter.history.delete.length).toBe(1);
-    expect(mockAdapter.history.delete[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/glossary/_a0000000000000000001',
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'DELETE',
+      },
+    );
   });
 });

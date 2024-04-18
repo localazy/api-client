@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, test } from 'vitest';
-import { getApiClient, mockAdapter } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import { getApiClient, getToken } from '@tests/support';
 import { fullProject } from '@tests/fixtures';
 import { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main';
 
@@ -33,10 +33,19 @@ describe('Webhooks', (): void => {
         },
       ],
     };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.webhooks.update(request);
 
-    expect(mockAdapter.history.post.length).toBe(1);
-    expect(mockAdapter.history.post[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/webhooks', {
+      // eslint-disable-next-line max-len
+      body: '{"items":[{"enabled":true,"customId":"1","description":"This is a test webhook","url":"https://example.com/webhook","events":["comment_added","import_finished","import_finished_empty","project_published","tag_promoted"]}]}',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
   });
 
   test('api.webhooks.getSecret', async (): Promise<void> => {

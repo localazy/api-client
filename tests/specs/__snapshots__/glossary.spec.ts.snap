@@ -1,5 +1,0 @@
-// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
-
-exports[`Glossary > api.glossary.delete 1`] = `undefined`;
-
-exports[`Glossary > api.glossary.update 1`] = `"{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"term":[{"lang":"en","term":"Exceptional term"}]}"`;

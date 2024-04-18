@@ -43,10 +43,9 @@
 
 Create a new instance of ApiClient and pass in your project token.
 
-| Arguments         | Type                                                            | Description           |
-| ----------------- | --------------------------------------------------------------- | :-------------------- |
-| options           | [`ApiClientOptions`](../src/types/api-client-options.ts)        | Api client options.   |
-| config `optional` | [`CreateAxiosDefaults`](https://axios-http.com/docs/req_config) | Axios request config. |
+| Arguments | Type                                                     | Description         |
+| --------- | -------------------------------------------------------- | :------------------ |
+| options   | [`ApiClientOptions`](../src/types/api-client-options.ts) | Api client options. |
 
 | Returns     | Type                                   |
 | ----------- | :------------------------------------- |
@@ -69,7 +68,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/projects#list-projects)
 | Arguments         | Type                                                           | Description                   |
 | ----------------- | -------------------------------------------------------------- | :---------------------------- |
 | request           | [`ProjectsListRequest`](../src/types/projects-list-request.ts) | Projects list request config. |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) | Axios request config.         |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)              | Request config.               |
 
 | Returns              | Type                                 |
 | -------------------- | :----------------------------------- |
@@ -93,7 +92,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/projects#list-projects)
 | Arguments         | Type                                                           | Description                   |
 | ----------------- | -------------------------------------------------------------- | :---------------------------- |
 | request           | [`ProjectsListRequest`](../src/types/projects-list-request.ts) | Projects list request config. |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) | Axios request config.         |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)              | Request config.               |
 
 | Returns            | Type                                 |
 | ------------------ | :----------------------------------- |
@@ -114,10 +113,10 @@ List all [files](../src/types/file.ts) in the project.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/files#list-files-in-project)
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| request           | [`FilesListRequest`](../src/types/files-list-request.ts)       |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                                     |
+| ----------------- | -------------------------------------------------------- |
+| request           | [`FilesListRequest`](../src/types/files-list-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)        |
 
 | Returns           | Type                           |
 | ----------------- | :----------------------------- |
@@ -137,10 +136,10 @@ First [file](../src/types/file.ts) in the project.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/files#list-files-in-project)
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| request           | [`FilesListRequest`](../src/types/files-list-request.ts)       |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                                     |
+| ----------------- | -------------------------------------------------------- |
+| request           | [`FilesListRequest`](../src/types/files-list-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)        |
 
 | Returns         | Type                           |
 | --------------- | :----------------------------- |
@@ -161,7 +160,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/files#retrieve-a-list-of-
 | Arguments         | Type                                                            |
 | ----------------- | --------------------------------------------------------------- |
 | request           | [`FileListKeysRequest`](../src/types/file-list-keys-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)  |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)               |
 
 | Returns          | Type                         |
 | ---------------- | :--------------------------- |
@@ -186,7 +185,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/files#retrieve-a-list-of-
 | Arguments         | Type                                                            |
 | ----------------- | --------------------------------------------------------------- |
 | request           | [`FileListKeysRequest`](../src/types/file-list-keys-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)  |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)               |
 
 | Returns                  | Type                                              |
 | ------------------------ | :------------------------------------------------ |
@@ -218,7 +217,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/files#list-file-content)
 | Arguments         | Type                                                                 |
 | ----------------- | -------------------------------------------------------------------- |
 | request           | [`FileGetContentRequest`](../src/types/file-get-contents-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)       |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                    |
 
 | Returns         | Type                                                            |
 | --------------- | :-------------------------------------------------------------- |
@@ -242,10 +241,10 @@ Update [key](../src/types/key.ts).
 
 See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#update-source-key)
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| request           | [`KeyUpdateRequest`](../src/types/key-update-request.ts)       |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                                     |
+| ----------------- | -------------------------------------------------------- |
+| request           | [`KeyUpdateRequest`](../src/types/key-update-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)        |
 
 | Returns         |
 | --------------- |
@@ -268,10 +267,10 @@ Delete [key](../src/types/key.ts).
 
 See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#delete-source-key)
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| request           | [`KeyDeleteRequest`](../src/types/key-delete-request.ts)       |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                                     |
+| ----------------- | -------------------------------------------------------- |
+| request           | [`KeyDeleteRequest`](../src/types/key-delete-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)        |
 
 | Returns         |
 | --------------- |
@@ -292,10 +291,10 @@ Import JSON object as source keys.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/import#import-content-to-a-project)
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| request           | [`ImportJsonRequest`](../src/types/import-json-request.ts)     |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                                       |
+| ----------------- | ---------------------------------------------------------- |
+| request           | [`ImportJsonRequest`](../src/types/import-json-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)          |
 
 | Returns         | Type                           |
 | --------------- | :----------------------------- |
@@ -332,10 +331,10 @@ const file = await api.import.json({
 
 Export translated keys as JSON object.
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| request           | [`ExportJsonRequest`](../src/types/export-json-request.ts)     |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                                       |
+| ----------------- | ---------------------------------------------------------- |
+| request           | [`ExportJsonRequest`](../src/types/export-json-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)          |
 
 | Returns             | Type                                    |
 | ------------------- | :-------------------------------------- |
@@ -359,9 +358,9 @@ List all [formats](../src/types/format.ts) and related options.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/import#list-available-file-types)
 
-| Arguments         | Type                                                           |
-| ----------------- | -------------------------------------------------------------- |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| Arguments         | Type                                              |
+| ----------------- | ------------------------------------------------- |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts) |
 
 | Returns             | Type                               |
 | ------------------- | :--------------------------------- |
@@ -382,7 +381,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/screenshot-management#lis
 | Arguments         | Type                                                                 |
 | ----------------- | -------------------------------------------------------------------- |
 | request           | [`ScreenshotsListRequest`](../src/types/screenshots-list-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)       |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                    |
 
 | Returns                 | Type                                       |
 | ----------------------- | :----------------------------------------- |
@@ -403,7 +402,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/screenshot-management#lis
 | Arguments         | Type                                                                          |
 | ----------------- | ----------------------------------------------------------------------------- |
 | request           | [`ScreenshotsListTagsRequest`](../src/types/screenshots-list-tags-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)                |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                             |
 
 | Returns                    | Type                                              |
 | -------------------------- | :------------------------------------------------ |
@@ -424,7 +423,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/screenshot-management#cre
 | Arguments         | Type                                                                   |
 | ----------------- | ---------------------------------------------------------------------- |
 | request           | [`ScreenshotCreateRequest`](../src/types/screenshot-create-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)         |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                      |
 
 | Returns           | Type           |
 | ----------------- | :------------- |
@@ -446,7 +445,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/screenshot-management#upd
 | Arguments         | Type                                                                                       |
 | ----------------- | ------------------------------------------------------------------------------------------ |
 | request           | [`ScreenshotUpdateImageDataRequest`](../src/types/screenshot-update-image-data-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)                             |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                                          |
 
 | Returns         |
 | --------------- |
@@ -469,7 +468,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/screenshot-management#upd
 | Arguments         | Type                                                                   |
 | ----------------- | ---------------------------------------------------------------------- |
 | request           | [`ScreenshotUpdateRequest`](../src/types/screenshot-update-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)         |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                      |
 
 | Returns         |
 | --------------- |
@@ -493,7 +492,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/screenshot-management#del
 | Arguments         | Type                                                                   |
 | ----------------- | ---------------------------------------------------------------------- |
 | request           | [`ScreenshotDeleteRequest`](../src/types/screenshot-delete-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)         |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                      |
 
 | Returns         |
 | --------------- |
@@ -517,7 +516,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/glossary#list-all-glossar
 | Arguments         | Type                                                           |
 | ----------------- | -------------------------------------------------------------- |
 | request           | [`GlossaryListRequest`](../src/types/glossary-list-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)              |
 
 | Returns                     | Type                                                |
 | --------------------------- | :-------------------------------------------------- |
@@ -538,7 +537,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/glossary#get-glossary-ter
 | Arguments         | Type                                                           |
 | ----------------- | -------------------------------------------------------------- |
 | request           | [`GlossaryFindRequest`](../src/types/glossary-find-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)              |
 
 | Returns                   | Type                                                |
 | ------------------------- | :-------------------------------------------------- |
@@ -560,7 +559,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/glossary#create-new-gloss
 | Arguments         | Type                                                               |
 | ----------------- | ------------------------------------------------------------------ |
 | request           | [`GlossaryCreateRequest`](../src/types/glossary-create-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)     |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                  |
 
 | Returns           | Type               |
 | ----------------- | :----------------- |
@@ -587,7 +586,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/glossary#update-glossary-
 | Arguments         | Type                                                               |
 | ----------------- | ------------------------------------------------------------------ |
 | request           | [`GlossaryUpdateRequest`](../src/types/glossary-update-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)     |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                  |
 
 | Returns         |
 | --------------- |
@@ -615,7 +614,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/glossary#delete-glossary-
 | Arguments         | Type                                                               |
 | ----------------- | ------------------------------------------------------------------ |
 | request           | [`GlossaryDeleteRequest`](../src/types/glossary-delete-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)     |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                  |
 
 | Returns         |
 | --------------- |
@@ -639,7 +638,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/webhooks-api#list-webhook
 | Arguments         | Type                                                           |
 | ----------------- | -------------------------------------------------------------- |
 | request           | [`WebhooksListRequest`](../src/types/webhooks-list-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)              |
 
 | Returns              | Type                                 |
 | -------------------- | :----------------------------------- |
@@ -660,7 +659,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/webhooks-api#update-webho
 | Arguments         | Type                                                               |
 | ----------------- | ------------------------------------------------------------------ |
 | request           | [`WebhooksUpdateRequest`](../src/types/webhooks-update-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)     |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                  |
 
 | Returns         |
 | --------------- |
@@ -692,7 +691,7 @@ See: [Localazy API Docs](https://localazy.com/docs/api/webhooks-api#webhook-secr
 | Arguments         | Type                                                                      |
 | ----------------- | ------------------------------------------------------------------------- |
 | request           | [`WebhooksGetSecretRequest`](../src/types/webhooks-get-secret-request.ts) |
-| config `optional` | [`AxiosRequestConfig`](https://axios-http.com/docs/req_config)            |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                         |
 
 | Returns                   | Type                                                |
 | ------------------------- | :-------------------------------------------------- |

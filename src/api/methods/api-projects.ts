@@ -1,4 +1,4 @@
-import { AxiosRequestConfig } from 'axios';
+import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { Project } from '@/types/project';
 import { ProjectsListRequest } from '@/types/projects-list-request';
@@ -8,24 +8,24 @@ export class ApiProjects extends ApiBase {
    * List all {@link Project  projects}.
    *
    * @param request Projects list request config.
-   * @param config Axios request config.
+   * @param config Request config.
    *
    * @see {@link https://localazy.com/docs/api/projects#list-projects  Localazy API Docs}
    */
-  public async list(request?: ProjectsListRequest, config?: AxiosRequestConfig): Promise<Project[]> {
-    return this.api.client.get('/projects', { ...config, params: request });
+  public async list(request?: ProjectsListRequest, config?: RequestConfig): Promise<Project[]> {
+    return (await this.api.client.get('/projects', { ...config, params: request })) as Project[];
   }
 
   /**
    * First {@link Project  project}.
    *
    * @param request Projects list request config.
-   * @param config Axios request config.
+   * @param config Request config.
    * @throws Error At least one project must exist, otherwise an error is thrown.
    *
    * @see {@link https://localazy.com/docs/api/projects#list-projects  Localazy API Docs}
    */
-  public async first(request?: ProjectsListRequest, config?: AxiosRequestConfig): Promise<Project> {
+  public async first(request?: ProjectsListRequest, config?: RequestConfig): Promise<Project> {
     const projects: Project[] = await this.list(request, config);
 
     if (projects.length === 0) {

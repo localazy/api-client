@@ -9,23 +9,11 @@
   </a>
 </p>
 
-<p align="center">
-
+<div align="center">
 <a href="https://github.com/localazy/api-client"><img src="https://img.shields.io/badge/@localazy-ts--api-066fef?style=for-the-badge" height="22" alt="@localazy/api-client"></a>
-
 <a href="https://npmjs.com/package/@localazy/api-client"><img src="https://img.shields.io/github/package-json/v/localazy/ts-api/main?style=for-the-badge&label=version&color=066fef" height="22" alt="npm"></a>
-
-<a href="https://github.com/localazy/api-client/blob/main/LICENSE"><img src="https://img.shields.io/github/license/localazy/ts-api?style=for-the-badge&color=066fef" height="22" alt="license">
-
-</a>
-
-[//]: # '<a href="#">'
-[//]: # '  <img src="https://img.shields.io/badge/schema-OpenAPI-066fef?style=for-the-badge&color=066fef" height="22" alt="schema"></a>'
-[//]: # '  <br>'
-[//]: # '  <a href="#"><img src="https://img.shields.io/badge/build-passing-success?style=for-the-badge" height="22" alt="build"></a>'
-[//]: # '  <a href="#"><img src="https://img.shields.io/badge/coverage-100%25-success?style=for-the-badge" height="22" alt="coverage"></a>'
-
-</p>
+<a href="https://github.com/localazy/api-client/blob/main/LICENSE"><img src="https://img.shields.io/github/license/localazy/ts-api?style=for-the-badge&color=066fef" height="22" alt="license"></a>
+</div>
 
 # 📦 Localazy API Client
 

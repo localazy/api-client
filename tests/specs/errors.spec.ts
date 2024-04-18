@@ -9,21 +9,9 @@ describe('Errors', (): void => {
     const api: ApiClient = getApiClient();
     const project: Project = await api.projects.first();
 
-    let name: string | undefined;
-    let message: string | undefined;
-    let code: string | undefined;
-
-    try {
+    await expect(async (): Promise<void> => {
       await api.keys.update({ project, key: 'unknown-key-id', comment: 'Key comment' });
-    } catch (err: any) {
-      name = err.name;
-      message = err.message;
-      code = err.code;
-    }
-
-    expect(name).toBe('LocalazyError');
-    expect(message).toBe('invalid_id');
-    expect(code).toBe(400);
+    }).rejects.toThrowError('Request failed with status code 400: invalid_id');
   });
 
   test('Update key with random id', async (): Promise<void> => {
@@ -31,21 +19,9 @@ describe('Errors', (): void => {
     const api: ApiClient = getApiClient();
     const project: Project = await api.projects.first();
 
-    let name: string | undefined;
-    let message: string | undefined;
-    let code: string | undefined;
-
-    try {
+    await expect(async (): Promise<void> => {
       await api.keys.update({ project, key: '_a1111111111111111111', comment: 'Key comment' });
-    } catch (err: any) {
-      name = err.name;
-      message = err.message;
-      code = err.code;
-    }
-
-    expect(name).toBe('LocalazyError');
-    expect(message).toBe('unauthorized');
-    expect(code).toBe(401);
+    }).rejects.toThrowError('Request failed with status code 401: unauthorized');
   });
 
   test('Get first file in empty project', async (): Promise<void> => {
@@ -57,9 +33,7 @@ describe('Errors', (): void => {
 
     try {
       await api.files.first({ project });
-      debugger;
     } catch (err: any) {
-      debugger;
       message = err.message;
     }
 

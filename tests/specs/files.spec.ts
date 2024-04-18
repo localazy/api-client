@@ -1,6 +1,6 @@
-import { beforeEach, describe, expect, test } from 'vitest';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 import { Blob } from 'node:buffer';
-import { getApiClient } from '@tests/support';
+import { getApiClient, getApiUrl, getToken } from '@tests/support';
 import { fullProject } from '@tests/fixtures';
 import {
   ApiClient,
@@ -25,25 +25,55 @@ describe('Files', (): void => {
   });
 
   test('api.files.list', async (): Promise<void> => {
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const files: File[] = await api.files.list({ project });
 
     expect(files[0].name).toBe('en.json');
     expect(files[0].type).toBe('json');
+    expect(spy).toHaveBeenCalledWith(`${getApiUrl()}/projects/_a0000000000000000001/files`, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    });
   });
 
   test('api.files.first', async (): Promise<void> => {
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const file: File = await api.files.first({ project });
 
     expect(file.name).toBe('en.json');
     expect(file.type).toBe('json');
+    expect(spy).toHaveBeenCalledWith(`${getApiUrl()}/projects/_a0000000000000000001/files`, {
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'GET',
+    });
   });
 
   test('api.files.listKeys', async (): Promise<void> => {
     const file: File = await api.files.first({ project });
     const request: FileListKeysRequest = { project, file, lang: Locales.ENGLISH };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const keys: Key[] = await api.files.listKeys(request);
 
     expect(keys[0].value).toBe('My Application');
+    expect(spy).toHaveBeenCalledWith(
+      `${getApiUrl()}/projects/_a0000000000000000001/files/_e000000000001/keys/en?next=`,
+      {
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'GET',
+      },
+    );
   });
 
   test('api.files.listKeysPage', async (): Promise<void> => {
@@ -52,7 +82,6 @@ describe('Files', (): void => {
       project,
       file,
       lang: Locales.ENGLISH,
-      limit: 1,
     };
     const keys: Key[] = [];
 
@@ -71,6 +100,7 @@ describe('Files', (): void => {
   });
 
   test('api.files.getContents', async (): Promise<void> => {
+    // const files: File[] = await api.files.list({ project });
     const file: File = await api.files.first({ project });
     const request: FileGetContentsRequest = { project, file, lang: Locales.ENGLISH };
     const blob: Blob = await api.files.getContents(request);

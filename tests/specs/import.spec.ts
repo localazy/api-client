@@ -1,5 +1,5 @@
-import { beforeEach, describe, expect, test } from 'vitest';
-import { getApiClient, mockAdapter } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import { getApiClient, getToken } from '@tests/support';
 import { fullProject } from '@tests/fixtures';
 import { ApiClient, I18nJson, ImportJsonRequest, Project } from '@/main';
 
@@ -17,9 +17,17 @@ describe('Import', (): void => {
   test('api.import.json', async (): Promise<void> => {
     const json: I18nJson = { en: { headers: { person: 'Active person' } } };
     const request: ImportJsonRequest = { project, json, fileOptions: { name: 'en.json' } };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.import.json(request);
 
-    expect(mockAdapter.history.post.length).toBe(1);
-    expect(mockAdapter.history.post[0].data).toMatchSnapshot();
+    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/import', {
+      body: '{"files":[{"name":"en.json","content":{"type":"json","en":{"headers":{"person":"Active person"}}}}]}',
+      headers: {
+        Accept: 'application/json',
+        Authorization: `Bearer ${getToken()}`,
+        'Content-Type': 'application/json',
+      },
+      method: 'POST',
+    });
   });
 });

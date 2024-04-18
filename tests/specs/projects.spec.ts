@@ -18,6 +18,12 @@ describe('Projects', (): void => {
     expect(projects[0].name).toBe('Test project');
   });
 
+  test('api.projects.list | organization and languages', async (): Promise<void> => {
+    const projects: Project[] = await api.projects.list({ languages: true, organization: true });
+
+    expect(projects[0].name).toBe('Test project');
+  });
+
   test('api.projects.first', async (): Promise<void> => {
     const project: Project = await api.projects.first();
 
