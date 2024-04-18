@@ -1,4 +1,5 @@
 ## 2.1.1 (2024-04-18)
+
 ### 🔀 Pull Requests
 
 - [Replace axios with fetch #11](https://github.com/localazy/api-client/pull/11)
