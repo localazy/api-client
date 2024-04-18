@@ -1,3 +1,21 @@
+## 2.1.1 (2024-04-18)
+### 🔀 Pull Requests
+
+- [Replace axios with fetch #11](https://github.com/localazy/api-client/pull/11)
+
+### ✨ Features
+
+- Replace axios with fetch ([64f7573](https://github.com/localazy/api-client/commit/64f7573)) ([#11](https://github.com/localazy/api-client/pull/11))
+
+### 🐛 Bug Fixes
+
+- Add missing content type header ([64f7573](https://github.com/localazy/api-client/commit/64f7573)) ([#11](https://github.com/localazy/api-client/pull/11))
+- Fix missing query params ([64f7573](https://github.com/localazy/api-client/commit/64f7573)) ([#11](https://github.com/localazy/api-client/pull/11))
+
+### 📚 Documentation
+
+- Update README.md ([64f7573](https://github.com/localazy/api-client/commit/64f7573)) ([#11](https://github.com/localazy/api-client/pull/11))
+
 # 2.1.0 (2024-04-15)
 
 ### ✨ Features
