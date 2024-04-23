@@ -1,3 +1,12 @@
+## 2.1.5 (2024-04-23)
+### 🔀 Pull Requests
+
+- [Fix global already defined #20](https://github.com/localazy/api-client/pull/20)
+
+### 🐛 Bug Fixes
+
+- Fix global already defined ([e88fb31](https://github.com/localazy/api-client/commit/e88fb31)) ([#20](https://github.com/localazy/api-client/pull/20))
+
 ## 2.1.4 (2024-04-23)
 ### 🔀 Pull Requests
 
