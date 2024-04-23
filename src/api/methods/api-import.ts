@@ -19,7 +19,10 @@ export class ApiImport extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/import#import-content-to-a-project  Localazy API Docs}
    */
-  public async json(request: ImportJsonRequest, config?: RequestConfig): Promise<File & { importBatch: string }> {
+  public async json(
+    request: ImportJsonRequest,
+    config?: RequestConfig,
+  ): Promise<ReturnType<ApiImport['getImportedFile']>> {
     const { project, json }: ImportJsonRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const chunks: I18nJson[] = JsonUtils.slice(json);
