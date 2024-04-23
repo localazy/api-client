@@ -19,7 +19,7 @@ export class ApiImport extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/import#import-content-to-a-project  Localazy API Docs}
    */
-  public async json(request: ImportJsonRequest, config?: RequestConfig): Promise<File> {
+  public async json(request: ImportJsonRequest, config?: RequestConfig): Promise<File & { importBatch: string }> {
     const { project, json }: ImportJsonRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const chunks: I18nJson[] = JsonUtils.slice(json);
@@ -36,7 +36,11 @@ export class ApiImport extends ApiBase {
     return this.getImportedFile(project, data, result);
   }
 
-  protected async getImportedFile(project: string | Project, data: ImportData, importBatch: string): Promise<File> {
+  protected async getImportedFile(
+    project: string | Project,
+    data: ImportData,
+    importBatch: string,
+  ): Promise<File & { importBatch: string }> {
     const files: File[] = await this.api.files.list({ project });
     const file: File | undefined = files.find((f: File): boolean =>
       data.files.some(
