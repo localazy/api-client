@@ -1,3 +1,20 @@
+## 2.1.4 (2024-04-23)
+### 🔀 Pull Requests
+
+- [Fix api import return type #19](https://github.com/localazy/api-client/pull/19)
+- [FIX - API Import Return Type #17](https://github.com/localazy/api-client/pull/17)
+
+### 🐛 Bug Fixes
+
+- `api.import.json` return type ([8da3e57](https://github.com/localazy/api-client/commit/8da3e57)) ([#19](https://github.com/localazy/api-client/pull/19))
+- `api.import.json` return type ([10ec450](https://github.com/localazy/api-client/commit/10ec450)) ([#17](https://github.com/localazy/api-client/pull/17))
+
+### 🧰 Other Commits
+
+- prettier ignore `CHANGELOG.md` ([8da3e57](https://github.com/localazy/api-client/commit/8da3e57)) ([#19](https://github.com/localazy/api-client/pull/19))
+- use `ReturnType` ([8da3e57](https://github.com/localazy/api-client/commit/8da3e57)) ([#19](https://github.com/localazy/api-client/pull/19))
+- use `ReturnType` ([10ec450](https://github.com/localazy/api-client/commit/10ec450)) ([#17](https://github.com/localazy/api-client/pull/17))
+
 ## 2.1.3 (2024-04-18)
 
 ## 2.1.2 (2024-04-18)
