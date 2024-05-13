@@ -1,5 +1,6 @@
 import { ApiBase } from '@/api/methods/api-base';
 import { KeyDeleteRequest } from '@/types/key-delete-request';
+import { KeyDeprecateRequest } from '@/types/key-deprecate-request';
 import { KeyUpdateRequest } from '@/types/key-update-request';
 import { RequestConfig } from '@/types/request-config';
 
@@ -34,5 +35,30 @@ export class ApiKeys extends ApiBase {
     const keyId: string = ApiBase.getId(key, 'key');
 
     await this.api.client.delete(`/projects/${projectId}/keys/${keyId}`, config);
+  }
+
+  /**
+   * Deprecate keys.
+   *
+   * @param request Key deprecate request config.
+   * @param config Request config.
+   */
+  public async deprecate(request: KeyDeprecateRequest, config?: RequestConfig): Promise<void> {
+    const { project, phrases }: KeyDeprecateRequest = request;
+
+    const localPhrases: string[] = phrases.map((phrase) => {
+      if (typeof phrase === 'object' && 'id' in phrase) {
+        return phrase.id;
+      }
+
+      if (typeof phrase === 'string') {
+        return phrase;
+      }
+
+      return phrase;
+    });
+    const projectId: string = ApiBase.getId(project, 'project');
+
+    await this.api.client.post(`/projects/${projectId}/keys/deprecate`, { phrases: localPhrases }, config);
   }
 }
