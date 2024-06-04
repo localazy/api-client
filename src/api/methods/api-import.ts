@@ -9,6 +9,8 @@ import { ImportJsonRequest } from '@/types/import-json-request';
 import { Project } from '@/types/project';
 import { delay } from '@/utils/delay';
 import { JsonUtils } from '@/utils/json-utils';
+import { ImportProgressRequest } from '@/types/import-progress-request';
+import { UploadSessionStatus } from '@/types/upload-session-status';
 
 export class ApiImport extends ApiBase {
   /**
@@ -37,6 +39,27 @@ export class ApiImport extends ApiBase {
     await delay();
 
     return this.getImportedFile(project, data, result);
+  }
+
+  /**
+   * Get progress of the import session.
+   *
+   * @param request Import session progress request.
+   * @param config Request config.
+   *
+   * Not available in the Localazy API Docs yet.
+   */
+  public async getProgress(
+    request: ImportProgressRequest,
+    config?: RequestConfig,
+  ): Promise<UploadSessionStatus> {
+    const { project, importBatch }: ImportProgressRequest = request;
+    const projectId: string = ApiBase.getId(project, 'project');
+
+    return (await this.api.client.get(
+      `/projects/${projectId}/import/${importBatch}`,
+      config,
+    )) as UploadSessionStatus;
   }
 
   protected async getImportedFile(
