@@ -46,7 +46,7 @@ export type ScreenshotUpdateRequest = {
    * Add or remove metadata. Adding has priority over removing. Cannot be used together with metadata.
    */
   addMetaData?: ScreenshotMetadata;
-  removeMetaData?: ScreenshotMetadata;
+  removeMetaData?: string[];
 
   /**
    * Replace metadata with the current value. Cannot be used together with addMetadata and/or removeMetadata.
