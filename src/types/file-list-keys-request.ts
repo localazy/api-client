@@ -37,4 +37,9 @@ export type FileListKeysRequest = {
    * Receive additional info such as translation note, whether it's hidden etc.
    */
   extra_info?: boolean;
+
+  /**
+   * Receive also metadata for the key.
+   */
+  metadata?: boolean;
 };
