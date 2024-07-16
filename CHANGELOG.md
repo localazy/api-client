@@ -1,3 +1,22 @@
+## 2.1.6 (2024-07-16)
+### 🔀 Pull Requests
+
+- [LOC-1114 - Figma Fixes and Improvements #22](https://github.com/localazy/api-client/pull/22)
+
+### ✨ Features
+
+- **Import:** add upload status endpoint ([7335902](https://github.com/localazy/api-client/commit/7335902)) ([#22](https://github.com/localazy/api-client/pull/22))
+- **Key:** add deprecate endpoint ([7335902](https://github.com/localazy/api-client/commit/7335902)) ([#22](https://github.com/localazy/api-client/pull/22))
+
+### 🐛 Bug Fixes
+
+- **screenshots:** fix `addMetadata` and `removeMetadata` params casing ([7335902](https://github.com/localazy/api-client/commit/7335902)) ([#22](https://github.com/localazy/api-client/pull/22))
+- (screenshots): fix `removeMetadata` data type ([7335902](https://github.com/localazy/api-client/commit/7335902)) ([#22](https://github.com/localazy/api-client/pull/22))
+
+### 🧰 Other Commits
+
+- fix ([7335902](https://github.com/localazy/api-client/commit/7335902)) ([#22](https://github.com/localazy/api-client/pull/22))
+
 ## 2.1.5 (2024-04-23)
 ### 🔀 Pull Requests
 
