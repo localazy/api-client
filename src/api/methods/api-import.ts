@@ -49,17 +49,11 @@ export class ApiImport extends ApiBase {
    *
    * Not available in the Localazy API Docs yet.
    */
-  public async getProgress(
-    request: ImportProgressRequest,
-    config?: RequestConfig,
-  ): Promise<UploadSessionStatus> {
+  public async getProgress(request: ImportProgressRequest, config?: RequestConfig): Promise<UploadSessionStatus> {
     const { project, importBatch }: ImportProgressRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
 
-    return (await this.api.client.get(
-      `/projects/${projectId}/import/${importBatch}`,
-      config,
-    )) as UploadSessionStatus;
+    return (await this.api.client.get(`/projects/${projectId}/import/${importBatch}`, config)) as UploadSessionStatus;
   }
 
   protected async getImportedFile(

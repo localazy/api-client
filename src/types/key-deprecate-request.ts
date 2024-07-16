@@ -1,5 +1,5 @@
-import { Project } from "@/types/project";
-import { Key } from "@/types/key";
+import { Project } from '@/types/project';
+import { Key } from '@/types/key';
 
 export type KeyDeprecateRequest = {
   /**
@@ -10,5 +10,5 @@ export type KeyDeprecateRequest = {
   /**
    * List of keys identifiers to deprecate.
    */
-  phrases: Key[] | Pick<Key, "id">[] | string[];
-}
+  phrases: Key[] | Pick<Key, 'id'>[] | string[];
+};

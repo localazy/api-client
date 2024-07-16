@@ -1,4 +1,4 @@
-import { UploadStatus } from "@/enums/upload-status"
+import { UploadStatus } from '@/enums/upload-status';
 
 export type UploadSessionStatus = {
   /**
@@ -20,4 +20,4 @@ export type UploadSessionStatus = {
    * Number of keys deprecated in the upload session.
    */
   deprecated?: number;
-}
+};
