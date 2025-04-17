@@ -51,7 +51,8 @@ export const serverResponses = {
 };
 
 export const mockResponses = (): void => {
-  fetchMock.reset();
+  fetchMock.hardReset();
+  fetchMock.mockGlobal();
 
   // formats
   fetchMock.get(`${baseUrl}/import/formats`, serverResponses.formats);

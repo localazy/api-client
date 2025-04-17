@@ -138,3 +138,6 @@ lib
 
 # TypeDoc
 typedoc
+
+# Husky hooks
+.husky/_/
