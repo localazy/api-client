@@ -7,7 +7,7 @@ on:
 
 jobs:
   qa:
-    name: Lint, Typecheck, Test and Build source files
+    name: Code Quality
     runs-on: [self-hosted, Linux]
     steps:
       - name: Checkout repository
