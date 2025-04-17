@@ -36,11 +36,11 @@ export class ApiFiles extends ApiBase {
   public async first(request: FilesListRequest, config?: RequestConfig): Promise<File> {
     const files: File[] = await this.list(request, config);
 
-    if (files.length === 0) {
-      throw new Error('File not found.');
+    if (typeof files[0] !== 'undefined') {
+      return files[0];
     }
 
-    return files[0];
+    throw new Error('File not found.');
   }
 
   /**

@@ -44,7 +44,7 @@ export class JsonUtils {
         prev.push(...JsonUtils.sliceByValue(value, [...keys, key]));
       } else if (keys.length > 1) {
         prev.push(setWith({}, [...keys, key].join('.'), value, Object));
-      } else {
+      } else if (typeof keys[0] !== 'undefined') {
         prev.push({ [keys[0]]: { [key]: value } });
       }
       return prev;

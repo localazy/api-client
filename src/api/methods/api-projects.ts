@@ -28,10 +28,10 @@ export class ApiProjects extends ApiBase {
   public async first(request?: ProjectsListRequest, config?: RequestConfig): Promise<Project> {
     const projects: Project[] = await this.list(request, config);
 
-    if (projects.length === 0) {
-      throw new Error('Project not found.');
+    if (typeof projects[0] !== 'undefined') {
+      return projects[0];
     }
 
-    return projects[0];
+    throw new Error('Project not found.');
   }
 }
