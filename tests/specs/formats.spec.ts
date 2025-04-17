@@ -1,12 +1,12 @@
-import { beforeEach, describe, expect, test } from 'vitest';
-import { getApiClient } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import { ApiClient, Format } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient } from '@tests/support';
+import { beforeEach, describe, expect, test } from 'vitest';
 
 describe('Formats', (): void => {
   let api: ApiClient;
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach((): void => {
     fullProject.mockResponses();
 
     api = getApiClient();

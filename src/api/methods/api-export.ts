@@ -1,10 +1,10 @@
-import { Locales } from '@localazy/languages';
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { ExportJsonRequest } from '@/types/export-json-request';
 import { I18nJson } from '@/types/i18n-json';
 import { Json } from '@/types/json';
 import { Key } from '@/types/key';
+import { RequestConfig } from '@/types/request-config';
+import { Locales } from '@localazy/languages';
 
 export class ApiExport extends ApiBase {
   /**
@@ -24,6 +24,7 @@ export class ApiExport extends ApiBase {
   }
 
   protected static mapLanguages(languages: `${Locales}`[], result: Key[][]) {
+    // @ts-expect-error TODO check possible undefined
     return languages.map((lang: `${Locales}`, index: number) => [lang, ApiExport.mapResult(result[index])]);
   }
 
@@ -42,7 +43,9 @@ export class ApiExport extends ApiBase {
         }
 
         key = keys.shift();
-        path = `${path}.${key}`;
+        if (key) {
+          path = `${path}.${key}`;
+        }
       }
 
       return acc;

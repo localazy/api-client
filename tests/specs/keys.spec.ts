@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
-import { getApiClient, getToken } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import { ApiClient, File, Key, KeyDeleteRequest, KeyUpdateRequest, Locales, Project } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient, getToken } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 
 describe('Keys', (): void => {
   let api: ApiClient;

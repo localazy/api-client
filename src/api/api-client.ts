@@ -1,4 +1,3 @@
-import { FetchHttpAdapter } from '@/http/fetch-http-adapter';
 import { ApiExport } from '@/api/methods/api-export';
 import { ApiFiles } from '@/api/methods/api-files';
 import { ApiFormats } from '@/api/methods/api-formats';
@@ -8,6 +7,7 @@ import { ApiKeys } from '@/api/methods/api-keys';
 import { ApiProjects } from '@/api/methods/api-projects';
 import { ApiScreenshots } from '@/api/methods/api-screenshots';
 import { ApiWebhooks } from '@/api/methods/api-webhooks';
+import { FetchHttpAdapter } from '@/http/fetch-http-adapter';
 import { IHttpAdapter } from '@/http/i-http-adapter';
 import { ApiClientOptions } from '@/types/api-client-options';
 

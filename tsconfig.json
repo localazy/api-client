@@ -1,21 +1,8 @@
 {
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@localazy/tsconfig/tsconfig.library.json",
   "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "esModuleInterop": true,
-    "forceConsistentCasingInFileNames": true,
-    "sourceMap": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "declaration": true,
-    "baseUrl": "src",
-    "paths": {
-      "@/*": ["./*"],
-      "@tests/*": ["./../tests/*"]
-    },
-    "types": ["@types/lodash-es"]
-  },
-  "exclude": ["node_modules", "coverage", "typedoc", "dist"]
+    "allowJs": true,
+    "types": ["@types/node", "@types/lodash-es"]
+  }
 }

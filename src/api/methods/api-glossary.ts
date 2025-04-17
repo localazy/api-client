@@ -1,4 +1,3 @@
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { GlossaryCreateRequest } from '@/types/glossary-create-request';
 import { GlossaryDeleteRequest } from '@/types/glossary-delete-request';
@@ -6,6 +5,7 @@ import { GlossaryFindRequest } from '@/types/glossary-find-request';
 import { GlossaryListRequest } from '@/types/glossary-list-request';
 import { GlossaryRecord } from '@/types/glossary-record';
 import { GlossaryUpdateRequest } from '@/types/glossary-update-request';
+import { RequestConfig } from '@/types/request-config';
 
 export class ApiGlossary extends ApiBase {
   /**

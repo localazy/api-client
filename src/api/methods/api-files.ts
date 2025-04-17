@@ -1,5 +1,3 @@
-import { Blob } from 'node:buffer';
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { File } from '@/types/file';
 import { FileGetContentsRequest } from '@/types/file-get-contents-request';
@@ -7,6 +5,8 @@ import { FileListKeysRequest } from '@/types/file-list-keys-request';
 import { FilesListRequest } from '@/types/files-list-request';
 import { Key } from '@/types/key';
 import { KeysPaginated } from '@/types/keys-paginated';
+import { RequestConfig } from '@/types/request-config';
+import { Blob } from 'node:buffer';
 
 export class ApiFiles extends ApiBase {
   /**
@@ -36,11 +36,11 @@ export class ApiFiles extends ApiBase {
   public async first(request: FilesListRequest, config?: RequestConfig): Promise<File> {
     const files: File[] = await this.list(request, config);
 
-    if (files.length === 0) {
-      throw new Error('File not found.');
+    if (typeof files[0] !== 'undefined') {
+      return files[0];
     }
 
-    return files[0];
+    throw new Error('File not found.');
   }
 
   /**
@@ -60,7 +60,6 @@ export class ApiFiles extends ApiBase {
     };
 
     do {
-      // eslint-disable-next-line no-await-in-loop
       pageResult = await this.listKeysPage({ ...request, next: pageResult.next }, config);
       keys.push(...pageResult.keys);
     } while (pageResult.next);

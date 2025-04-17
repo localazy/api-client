@@ -1,6 +1,6 @@
-import { fetchMock } from '@tests/support';
-import projects from '@tests/fixtures/empty-project/projects.json';
 import files from '@tests/fixtures/empty-project/files.json';
+import projects from '@tests/fixtures/empty-project/projects.json';
+import { fetchMock } from '@tests/support';
 
 const baseUrl: string = 'https://api.localazy.com';
 
@@ -10,7 +10,8 @@ export const serverResponses = {
 };
 
 export const mockResponses = (): void => {
-  fetchMock.reset();
+  fetchMock.hardReset();
+  fetchMock.mockGlobal();
 
   // projects
   fetchMock.get(`${baseUrl}/projects`, serverResponses.projects);

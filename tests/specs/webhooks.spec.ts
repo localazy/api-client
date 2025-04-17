@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
-import { getApiClient, getToken } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient, getToken } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 
 describe('Webhooks', (): void => {
   let api: ApiClient;
@@ -37,7 +37,6 @@ describe('Webhooks', (): void => {
     await api.webhooks.update(request);
 
     expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/webhooks', {
-      // eslint-disable-next-line max-len
       body: '{"items":[{"enabled":true,"customId":"1","description":"This is a test webhook","url":"https://example.com/webhook","events":["comment_added","import_finished","import_finished_empty","project_published","tag_promoted"]}]}',
       headers: {
         Accept: 'application/json',

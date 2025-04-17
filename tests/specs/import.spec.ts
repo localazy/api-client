@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
-import { getApiClient, getToken } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import { ApiClient, I18nJson, ImportJsonRequest, Project } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient, getToken } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 
 describe('Import', (): void => {
   let api: ApiClient;
@@ -21,7 +21,6 @@ describe('Import', (): void => {
     await api.import.json(request);
 
     expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/import', {
-      // eslint-disable-next-line max-len
       body: '{"files":[{"name":"en.json","content":{"type":"json","en":{"99":{"luft":"baloons"},"headers":{"person":"Active person"}}}}]}',
       headers: {
         Accept: 'application/json',
