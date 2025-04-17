@@ -80,7 +80,7 @@ export class FetchHttpAdapter implements IHttpAdapter<RequestConfig> {
     if (response.status >= 400) {
       // @ts-expect-error property is not defined on string
       const text: string = isJson && result.error ? result.error : response.statusText;
-      throw new Error(`Request failed with status code ${response.status}: ${text}`);
+      throw new Error(`Request failed with status code ${response.status.toString()}: ${text}`);
     }
 
     return result;

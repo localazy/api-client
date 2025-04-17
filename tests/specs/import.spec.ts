@@ -21,7 +21,6 @@ describe('Import', (): void => {
     await api.import.json(request);
 
     expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/import', {
-      // eslint-disable-next-line max-len
       body: '{"files":[{"name":"en.json","content":{"type":"json","en":{"99":{"luft":"baloons"},"headers":{"person":"Active person"}}}}]}',
       headers: {
         Accept: 'application/json',

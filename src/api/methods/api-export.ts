@@ -42,7 +42,9 @@ export class ApiExport extends ApiBase {
         }
 
         key = keys.shift();
-        path = `${path}.${key}`;
+        if (key) {
+          path = `${path}.${key}`;
+        }
       }
 
       return acc;

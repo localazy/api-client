@@ -6,7 +6,7 @@ import { beforeEach, describe, expect, test } from 'vitest';
 describe('Formats', (): void => {
   let api: ApiClient;
 
-  beforeEach(async (): Promise<void> => {
+  beforeEach((): void => {
     fullProject.mockResponses();
 
     api = getApiClient();

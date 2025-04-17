@@ -60,7 +60,6 @@ export class ApiFiles extends ApiBase {
     };
 
     do {
-      // eslint-disable-next-line no-await-in-loop
       pageResult = await this.listKeysPage({ ...request, next: pageResult.next }, config);
       keys.push(...pageResult.keys);
     } while (pageResult.next);

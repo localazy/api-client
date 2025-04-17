@@ -91,7 +91,6 @@ describe('Files', (): void => {
     };
 
     do {
-      // eslint-disable-next-line no-await-in-loop
       pageResult = await api.files.listKeysPage({ ...request, next: pageResult.next });
       keys.push(...pageResult.keys);
     } while (pageResult.next);

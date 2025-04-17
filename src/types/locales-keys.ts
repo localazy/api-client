@@ -1,5 +1,3 @@
 import { Locales } from '@localazy/languages';
 
-export type LocalesKeys = {
-  [key in Locales]: any;
-};
+export type LocalesKeys = Record<Locales, any>;
