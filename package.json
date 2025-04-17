@@ -63,10 +63,7 @@
     "test:coverage": "vitest run --coverage",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
     "test:ui": "vitest --ui",
-    "typecheck": "tsc --noEmit",
-    "typedoc": "npm run docs:html && npm run docs:md",
-    "typedoc:html": "rimraf typedoc/html/* && typedoc --plugin typedoc-plugin-missing-exports --tsconfig tsconfig.typedoc.json --out typedoc/html src/main.ts",
-    "typedoc:md": "rimraf typedoc/md/* && typedoc --plugin typedoc-plugin-markdown --plugin typedoc-plugin-missing-exports --tsconfig tsconfig.typedoc.json --out typedoc/md src/main.ts"
+    "typecheck": "tsc --noEmit"
   },
   "prettier": "@localazy/prettier-config",
   "dependencies": {
