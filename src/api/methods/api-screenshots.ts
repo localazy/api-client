@@ -1,5 +1,5 @@
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
+import { RequestConfig } from '@/types/request-config';
 import { Screenshot } from '@/types/screenshot';
 import { ScreenshotCreateRequest } from '@/types/screenshot-create-request';
 import { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request';

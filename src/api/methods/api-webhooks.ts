@@ -1,5 +1,5 @@
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
+import { RequestConfig } from '@/types/request-config';
 import { Webhook } from '@/types/webhook';
 import { WebhooksGetSecretRequest } from '@/types/webhooks-get-secret-request';
 import { WebhooksListRequest } from '@/types/webhooks-list-request';

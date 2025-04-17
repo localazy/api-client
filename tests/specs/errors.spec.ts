@@ -1,7 +1,7 @@
-import { describe, expect, test } from 'vitest';
+import { ApiClient, Project } from '@/main';
+import { emptyProject, fullProject } from '@tests/fixtures';
 import { getApiClient } from '@tests/support';
-import { fullProject, emptyProject } from '@tests/fixtures';
-import { Project, ApiClient } from '@/main';
+import { describe, expect, test } from 'vitest';
 
 describe('Errors', (): void => {
   test('Update key with invalid id', async (): Promise<void> => {

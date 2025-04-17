@@ -1,5 +1,5 @@
-import { getConfig, readImageFile } from './common.mjs';
 import { ApiClient } from '../lib/main.js';
+import { getConfig, readImageFile } from './common.mjs';
 
 const { authToken, apiUrl } = getConfig();
 

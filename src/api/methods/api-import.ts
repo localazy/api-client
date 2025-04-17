@@ -1,4 +1,3 @@
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { File } from '@/types/file';
 import { I18nJson } from '@/types/i18n-json';
@@ -6,11 +5,12 @@ import { ImportData } from '@/types/import-data';
 import { importDataFactory } from '@/types/import-data-factory';
 import { ImportDataFile } from '@/types/import-data-file';
 import { ImportJsonRequest } from '@/types/import-json-request';
+import { ImportProgressRequest } from '@/types/import-progress-request';
 import { Project } from '@/types/project';
+import { RequestConfig } from '@/types/request-config';
+import { UploadSessionStatus } from '@/types/upload-session-status';
 import { delay } from '@/utils/delay';
 import { JsonUtils } from '@/utils/json-utils';
-import { ImportProgressRequest } from '@/types/import-progress-request';
-import { UploadSessionStatus } from '@/types/upload-session-status';
 
 export class ApiImport extends ApiBase {
   /**

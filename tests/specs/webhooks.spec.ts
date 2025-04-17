@@ -1,7 +1,7 @@
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
-import { getApiClient, getToken } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient, getToken } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 
 describe('Webhooks', (): void => {
   let api: ApiClient;

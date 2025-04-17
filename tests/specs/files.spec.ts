@@ -1,7 +1,3 @@
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
-import { Blob } from 'node:buffer';
-import { getApiClient, getApiUrl, getToken } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import {
   ApiClient,
   File,
@@ -12,6 +8,10 @@ import {
   Locales,
   Project,
 } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient, getApiUrl, getToken } from '@tests/support';
+import { Blob } from 'node:buffer';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 
 describe('Files', (): void => {
   let api: ApiClient;

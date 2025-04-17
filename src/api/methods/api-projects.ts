@@ -1,7 +1,7 @@
-import { RequestConfig } from '@/types/request-config';
 import { ApiBase } from '@/api/methods/api-base';
 import { Project } from '@/types/project';
 import { ProjectsListRequest } from '@/types/projects-list-request';
+import { RequestConfig } from '@/types/request-config';
 
 export class ApiProjects extends ApiBase {
   /**

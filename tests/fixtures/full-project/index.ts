@@ -1,4 +1,3 @@
-import { fetchMock } from '@tests/support';
 import fileDownload from '@tests/fixtures/full-project/fileDownload.json';
 import fileKeys from '@tests/fixtures/full-project/fileKeys.json';
 import files from '@tests/fixtures/full-project/files.json';
@@ -10,6 +9,7 @@ import screenshots from '@tests/fixtures/full-project/screenshots.json';
 import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json';
 import webhooks from '@tests/fixtures/full-project/webhooks.json';
 import webhooksSecret from '@tests/fixtures/full-project/webhooksSecret.json';
+import { fetchMock } from '@tests/support';
 
 const baseUrl: string = 'https://api.localazy.com';
 

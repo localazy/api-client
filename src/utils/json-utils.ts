@@ -1,6 +1,6 @@
-import { chunk, isPlainObject, merge, setWith } from 'lodash-es';
 import { I18nJson } from '@/types/i18n-json';
 import { Json } from '@/types/json';
+import { chunk, isPlainObject, merge, setWith } from 'lodash-es';
 
 export class JsonUtils {
   /**

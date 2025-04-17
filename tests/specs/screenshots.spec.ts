@@ -1,6 +1,3 @@
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
-import { getApiClient, readImageFile, getToken } from '@tests/support';
-import { fullProject } from '@tests/fixtures';
 import {
   ApiClient,
   Project,
@@ -11,6 +8,9 @@ import {
   ScreenshotUpdateImageDataRequest,
   ScreenshotUpdateRequest,
 } from '@/main';
+import { fullProject } from '@tests/fixtures';
+import { getApiClient, getToken, readImageFile } from '@tests/support';
+import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
 
 describe('Screenshots', (): void => {
   let api: ApiClient;
