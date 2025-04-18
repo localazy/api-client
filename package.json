@@ -65,7 +65,6 @@
     "test:ui": "vitest --ui",
     "typecheck": "tsc --noEmit"
   },
-  "prettier": "@localazy/prettier-config",
   "dependencies": {
     "@localazy/languages": "^0.1.6",
     "lodash-es": "^4.17.21"
