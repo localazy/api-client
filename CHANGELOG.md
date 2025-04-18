@@ -1,3 +1,21 @@
+## 2.1.7 (2025-04-18)
+### 🔀 Pull Requests
+
+- [Update prettier config #26](https://github.com/localazy/api-client/pull/26)
+- [Update deps #24](https://github.com/localazy/api-client/pull/24)
+
+### 🧰 Other Commits
+
+- Update prettier config ([910a086](https://github.com/localazy/api-client/commit/910a086)) ([#26](https://github.com/localazy/api-client/pull/26))
+- Fix audit ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Fix lint ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Fix prettier ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Fix typecheck ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Update CI ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Update deps ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Update fetch-mock ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+- Update tsconfig ([b600b4d](https://github.com/localazy/api-client/commit/b600b4d)) ([#24](https://github.com/localazy/api-client/pull/24))
+
 ## 2.1.6 (2024-07-16)
 ### 🔀 Pull Requests
 
