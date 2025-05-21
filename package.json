@@ -1,6 +1,6 @@
 {
   "name": "@localazy/api-client",
-  "version": "2.1.7",
+  "version": "2.1.8",
   "description": "Node.js module that allows you to easily interact with the Localazy API.",
   "keywords": [
     "Localazy",
