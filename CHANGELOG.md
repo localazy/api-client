@@ -1,3 +1,13 @@
+## 2.1.8 (2025-05-21)
+### 🔀 Pull Requests
+
+- [Update deps #27](https://github.com/localazy/api-client/pull/27)
+
+### 🧰 Other Commits
+
+- Update deps ([6991acf](https://github.com/localazy/api-client/commit/6991acf)) ([#27](https://github.com/localazy/api-client/pull/27))
+- Use pre-push husky hook instead of pre-commit ([6991acf](https://github.com/localazy/api-client/commit/6991acf)) ([#27](https://github.com/localazy/api-client/pull/27))
+
 ## 2.1.7 (2025-04-18)
 ### 🔀 Pull Requests
 
