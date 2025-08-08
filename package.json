@@ -1,6 +1,6 @@
 {
   "name": "@localazy/api-client",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "Official Node.js client for the Localazy API, providing a simple and type-safe way to integrate localization features into your JavaScript and TypeScript projects.",
   "keywords": [
     "Localazy",
@@ -94,5 +94,6 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vitest": "^3.2.4"
-  }
+  },
+  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

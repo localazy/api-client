@@ -1,3 +1,18 @@
+## 2.1.9 (2025-08-08)
+
+### 🐛 Bug Fixes
+
+- **api-export:** Fix handling of nested object keys in API export ([927cc54](https://github.com/localazy/api-client/commit/927cc54))
+
+### 📚 Documentation
+
+- **api-client:** Add Conventional Commit badges to README ([27cde8d](https://github.com/localazy/api-client/commit/27cde8d))
+
+### 🧰 Other Commits
+
+- **dependencies:** Update dependencies ([bf908c3](https://github.com/localazy/api-client/commit/bf908c3))
+- update test command to run in package.json ([554983d](https://github.com/localazy/api-client/commit/554983d))
+
 ## 2.1.8 (2025-05-21)
 ### 🔀 Pull Requests
 
