@@ -59,10 +59,11 @@
     "prepare": "husky",
     "prettier": "prettier --check --cache --cache-location .cache/prettier .",
     "prettier:fix": "prettier --write .",
-    "test": "vitest",
+    "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
     "test:ui": "vitest --ui",
+    "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
