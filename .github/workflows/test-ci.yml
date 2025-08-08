@@ -1,0 +1,34 @@
+name: Release CI
+
+on:
+  push:
+    branches:
+      - fix_nested_export
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  ci:
+    name: CI Init
+    runs-on: [self-hosted, Linux]
+    outputs:
+      action: ${{ steps.init.outputs.action }}
+    steps:
+      - id: init
+        uses: localazy/release/init@v2
+
+  prepare:
+    name: Prepare Release PR
+    needs: ci
+    if: needs.ci.outputs.action == 'prepare'
+    runs-on: [self-hosted, Linux]
+    steps:
+      - uses: localazy/release/prepare@v2
+        with:
+          node-version-file: .nvmrc
+          app-id: ${{ secrets.AUTH_APP_ID }}
+          app-key: ${{ secrets.AUTH_APP_KEY }}
+          badges: true
+          badges-size: dist/browser/localazy-api-client.umd.min.js
