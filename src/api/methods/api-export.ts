@@ -30,21 +30,32 @@ export class ApiExport extends ApiBase {
 
   protected static mapResult(keysList: Key[]): Json {
     return keysList.reduce((acc: Json, cur: Key): Json => {
-      const keys: string[] = [...cur.key];
+      const parts: string[] = cur.key;
 
-      let key: string | undefined = keys.shift();
-      let path: string = key || '';
-
-      while (key) {
-        if (keys.length === 0) {
-          acc[path] = cur.value;
-        } else if (!acc[path]) {
-          acc[path] = {};
+      // Flat: single-item array key stays as-is, even if it contains dots
+      if (parts.length <= 1) {
+        const only = parts[0];
+        if (only !== undefined) {
+          acc[only] = cur.value;
         }
+        return acc;
+      }
 
-        key = keys.shift();
-        if (key) {
-          path = `${path}.${key}`;
+      // Nested: array key → build nested objects by segments
+      let node: any = acc;
+      for (let i = 0; i < parts.length; i++) {
+        const seg = parts[i];
+        const isLast = i === parts.length - 1;
+
+        if (seg !== undefined) {
+          if (isLast) {
+            node[seg] = cur.value;
+          } else {
+            if (node[seg] === undefined) {
+              node[seg] = {};
+            }
+            node = node[seg];
+          }
         }
       }
 
