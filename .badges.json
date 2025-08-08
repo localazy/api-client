@@ -4,19 +4,19 @@
     {
       "fileName": "version.svg",
       "label": "npm",
-      "status": "2.1.8",
+      "status": "2.1.9",
       "icon": "npm"
     },
     {
       "fileName": "coverage.svg",
       "label": "coverage",
-      "status": "89",
+      "status": "95.64",
       "icon": "vitest"
     },
     {
       "fileName": "size.svg",
       "label": "minzipped size",
-      "status": "3545",
+      "status": "20037",
       "icon": "speed",
       "color": "43b816"
     },
