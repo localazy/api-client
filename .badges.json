@@ -1,0 +1,34 @@
+{
+  "dir": ".github/badges",
+  "files": [
+    {
+      "fileName": "version.svg",
+      "label": "npm",
+      "status": "2.1.8",
+      "icon": "npm"
+    },
+    {
+      "fileName": "coverage.svg",
+      "label": "coverage",
+      "status": "89",
+      "icon": "vitest"
+    },
+    {
+      "fileName": "size.svg",
+      "label": "minzipped size",
+      "status": "3545",
+      "icon": "speed",
+      "color": "43b816"
+    },
+    {
+      "fileName": "maintainer.svg",
+      "label": "maintainer",
+      "status": "Localazy"
+    },
+    {
+      "fileName": "license.svg",
+      "label": "license",
+      "status": "MIT"
+    }
+  ]
+}
