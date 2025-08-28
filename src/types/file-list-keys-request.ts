@@ -1,6 +1,6 @@
-import { File } from '@/types/file';
-import { Project } from '@/types/project';
-import { Locales } from '@localazy/languages';
+import type { File } from '@/types/file';
+import type { Project } from '@/types/project';
+import type { Locales } from '@localazy/languages';
 
 export type FileListKeysRequest = {
   /**

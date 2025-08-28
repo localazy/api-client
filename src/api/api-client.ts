@@ -8,8 +8,8 @@ import { ApiProjects } from '@/api/methods/api-projects';
 import { ApiScreenshots } from '@/api/methods/api-screenshots';
 import { ApiWebhooks } from '@/api/methods/api-webhooks';
 import { FetchHttpAdapter } from '@/http/fetch-http-adapter';
-import { IHttpAdapter } from '@/http/i-http-adapter';
-import { ApiClientOptions } from '@/types/api-client-options';
+import type { IHttpAdapter } from '@/http/i-http-adapter';
+import type { ApiClientOptions } from '@/types/api-client-options';
 
 export class ApiClient {
   public client: IHttpAdapter;

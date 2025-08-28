@@ -1,10 +1,10 @@
 import { ApiBase } from '@/api/methods/api-base';
-import { ExportJsonRequest } from '@/types/export-json-request';
-import { I18nJson } from '@/types/i18n-json';
-import { Json } from '@/types/json';
-import { Key } from '@/types/key';
-import { RequestConfig } from '@/types/request-config';
-import { Locales } from '@localazy/languages';
+import type { ExportJsonRequest } from '@/types/export-json-request';
+import type { I18nJson } from '@/types/i18n-json';
+import type { Json } from '@/types/json';
+import type { Key } from '@/types/key';
+import type { RequestConfig } from '@/types/request-config';
+import type { Locales } from '@localazy/languages';
 
 export class ApiExport extends ApiBase {
   /**

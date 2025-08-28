@@ -1,4 +1,4 @@
-import {
+import type {
   ApiClient,
   GlossaryCreateRequest,
   GlossaryDeleteRequest,
@@ -8,7 +8,8 @@ import {
 } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken } from '@tests/support';
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import type { MockInstance} from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Glossary', (): void => {
   let api: ApiClient;

@@ -1,4 +1,5 @@
-import { ApiClient, ExportJsonRequest, File, I18nJson, Locales, Project } from '@/main';
+import type { ApiClient, ExportJsonRequest, File, I18nJson, Project } from '@/main';
+import { Locales } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient } from '@tests/support';
 import { beforeEach, describe, expect, test } from 'vitest';

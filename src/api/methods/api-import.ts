@@ -1,14 +1,14 @@
 import { ApiBase } from '@/api/methods/api-base';
-import { File } from '@/types/file';
-import { I18nJson } from '@/types/i18n-json';
-import { ImportData } from '@/types/import-data';
+import type { File } from '@/types/file';
+import type { I18nJson } from '@/types/i18n-json';
+import type { ImportData } from '@/types/import-data';
 import { importDataFactory } from '@/types/import-data-factory';
-import { ImportDataFile } from '@/types/import-data-file';
-import { ImportJsonRequest } from '@/types/import-json-request';
-import { ImportProgressRequest } from '@/types/import-progress-request';
-import { Project } from '@/types/project';
-import { RequestConfig } from '@/types/request-config';
-import { UploadSessionStatus } from '@/types/upload-session-status';
+import type { ImportDataFile } from '@/types/import-data-file';
+import type { ImportJsonRequest } from '@/types/import-json-request';
+import type { ImportProgressRequest } from '@/types/import-progress-request';
+import type { Project } from '@/types/project';
+import type { RequestConfig } from '@/types/request-config';
+import type { UploadSessionStatus } from '@/types/upload-session-status';
 import { delay } from '@/utils/delay';
 import { JsonUtils } from '@/utils/json-utils';
 

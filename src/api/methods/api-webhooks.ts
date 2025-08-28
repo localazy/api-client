@@ -1,10 +1,10 @@
 import { ApiBase } from '@/api/methods/api-base';
-import { RequestConfig } from '@/types/request-config';
-import { Webhook } from '@/types/webhook';
-import { WebhooksGetSecretRequest } from '@/types/webhooks-get-secret-request';
-import { WebhooksListRequest } from '@/types/webhooks-list-request';
-import { WebhooksSecret } from '@/types/webhooks-secret';
-import { WebhooksUpdateRequest } from '@/types/webhooks-update-request';
+import type { RequestConfig } from '@/types/request-config';
+import type { Webhook } from '@/types/webhook';
+import type { WebhooksGetSecretRequest } from '@/types/webhooks-get-secret-request';
+import type { WebhooksListRequest } from '@/types/webhooks-list-request';
+import type { WebhooksSecret } from '@/types/webhooks-secret';
+import type { WebhooksUpdateRequest } from '@/types/webhooks-update-request';
 
 export class ApiWebhooks extends ApiBase {
   /**

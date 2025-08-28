@@ -1,6 +1,6 @@
-import { ScreenshotMetadata } from '@/types/screenshot-metadata';
-import { ScreenshotPhrase } from '@/types/screenshot-phrase';
-import { ScreenshotTag } from '@/types/screenshot-tag';
+import type { ScreenshotMetadata } from '@/types/screenshot-metadata';
+import type { ScreenshotPhrase } from '@/types/screenshot-phrase';
+import type { ScreenshotTag } from '@/types/screenshot-tag';
 
 export type Screenshot = {
   id: string;

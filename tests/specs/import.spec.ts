@@ -1,7 +1,8 @@
-import { ApiClient, I18nJson, ImportJsonRequest, Project } from '@/main';
+import type { ApiClient, I18nJson, ImportJsonRequest, Project } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken } from '@tests/support';
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import type { MockInstance} from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Import', (): void => {
   let api: ApiClient;

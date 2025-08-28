@@ -1,4 +1,4 @@
-import { ApiClient } from '@/api/api-client';
+import type { ApiClient } from '@/api/api-client';
 
 export abstract class ApiBase {
   protected api: ApiClient;

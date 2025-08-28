@@ -1,12 +1,12 @@
 import { ApiBase } from '@/api/methods/api-base';
-import { File } from '@/types/file';
-import { FileGetContentsRequest } from '@/types/file-get-contents-request';
-import { FileListKeysRequest } from '@/types/file-list-keys-request';
-import { FilesListRequest } from '@/types/files-list-request';
-import { Key } from '@/types/key';
-import { KeysPaginated } from '@/types/keys-paginated';
-import { RequestConfig } from '@/types/request-config';
-import { Blob } from 'node:buffer';
+import type { File } from '@/types/file';
+import type { FileGetContentsRequest } from '@/types/file-get-contents-request';
+import type { FileListKeysRequest } from '@/types/file-list-keys-request';
+import type { FilesListRequest } from '@/types/files-list-request';
+import type { Key } from '@/types/key';
+import type { KeysPaginated } from '@/types/keys-paginated';
+import type { RequestConfig } from '@/types/request-config';
+import type { Blob } from 'node:buffer';
 
 export class ApiFiles extends ApiBase {
   /**

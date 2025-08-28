@@ -1,5 +1,5 @@
-import { Project } from '@/types/project';
-import { Screenshot } from '@/types/screenshot';
+import type { Project } from '@/types/project';
+import type { Screenshot } from '@/types/screenshot';
 
 export type ScreenshotDeleteRequest = {
   /**

@@ -1,4 +1,4 @@
-import { ApiClient, Format } from '@/main';
+import type { ApiClient, Format } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient } from '@tests/support';
 import { beforeEach, describe, expect, test } from 'vitest';

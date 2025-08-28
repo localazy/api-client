@@ -1,8 +1,8 @@
-import { ProjectTone } from '@/enums/project-tone';
-import { ProjectType } from '@/enums/project-type';
-import { UserRole } from '@/enums/user-role';
-import { Language } from '@/types/language';
-import { Organization } from '@/types/organization';
+import type { ProjectTone } from '@/enums/project-tone';
+import type { ProjectType } from '@/enums/project-type';
+import type { UserRole } from '@/enums/user-role';
+import type { Language } from '@/types/language';
+import type { Organization } from '@/types/organization';
 
 export type Project = {
   /**

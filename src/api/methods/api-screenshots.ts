@@ -1,13 +1,13 @@
 import { ApiBase } from '@/api/methods/api-base';
-import { RequestConfig } from '@/types/request-config';
-import { Screenshot } from '@/types/screenshot';
-import { ScreenshotCreateRequest } from '@/types/screenshot-create-request';
-import { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request';
-import { ScreenshotTag } from '@/types/screenshot-tag';
-import { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request';
-import { ScreenshotUpdateRequest } from '@/types/screenshot-update-request';
-import { ScreenshotsListRequest } from '@/types/screenshots-list-request';
-import { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request';
+import type { RequestConfig } from '@/types/request-config';
+import type { Screenshot } from '@/types/screenshot';
+import type { ScreenshotCreateRequest } from '@/types/screenshot-create-request';
+import type { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request';
+import type { ScreenshotTag } from '@/types/screenshot-tag';
+import type { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request';
+import type { ScreenshotUpdateRequest } from '@/types/screenshot-update-request';
+import type { ScreenshotsListRequest } from '@/types/screenshots-list-request';
+import type { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request';
 
 export class ApiScreenshots extends ApiBase {
   /**

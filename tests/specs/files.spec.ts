@@ -1,17 +1,19 @@
-import {
+import type {
   ApiClient,
   File,
   FileGetContentsRequest,
   FileListKeysRequest,
   Key,
   KeysPaginated,
-  Locales,
-  Project,
+  Project} from '@/main';
+import {
+  Locales
 } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getApiUrl, getToken } from '@tests/support';
-import { Blob } from 'node:buffer';
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import type { Blob } from 'node:buffer';
+import type { MockInstance} from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Files', (): void => {
   let api: ApiClient;

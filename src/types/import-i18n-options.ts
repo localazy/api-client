@@ -1,4 +1,4 @@
-import { I18nDeprecate } from '@/enums/i18n-deprecate';
+import type { I18nDeprecate } from '@/enums/i18n-deprecate';
 
 export type ImportI18nOptions = {
   /**

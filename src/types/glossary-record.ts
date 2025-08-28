@@ -1,4 +1,4 @@
-import { GlossaryRecordTerm } from '@/types/glossary-record-term';
+import type { GlossaryRecordTerm } from '@/types/glossary-record-term';
 
 export type GlossaryRecord = {
   /**
