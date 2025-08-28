@@ -1,5 +1,5 @@
-import { I18nJson } from '@/types/i18n-json';
-import { Json } from '@/types/json';
+import type { I18nJson } from '@/types/i18n-json.js';
+import type { Json } from '@/types/json.js';
 import { chunk, isPlainObject, merge, setWith } from 'lodash-es';
 
 export class JsonUtils {

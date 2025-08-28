@@ -1,12 +1,12 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { File } from '@/types/file';
-import { FileGetContentsRequest } from '@/types/file-get-contents-request';
-import { FileListKeysRequest } from '@/types/file-list-keys-request';
-import { FilesListRequest } from '@/types/files-list-request';
-import { Key } from '@/types/key';
-import { KeysPaginated } from '@/types/keys-paginated';
-import { RequestConfig } from '@/types/request-config';
-import { Blob } from 'node:buffer';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { FileGetContentsRequest } from '@/types/file-get-contents-request.js';
+import type { FileListKeysRequest } from '@/types/file-list-keys-request.js';
+import type { File } from '@/types/file.js';
+import type { FilesListRequest } from '@/types/files-list-request.js';
+import type { Key } from '@/types/key.js';
+import type { KeysPaginated } from '@/types/keys-paginated.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { Blob } from 'node:buffer';
 
 export class ApiFiles extends ApiBase {
   /**
@@ -76,7 +76,10 @@ export class ApiFiles extends ApiBase {
    * @see {@link https://localazy.com/docs/api/files#retrieve-a-list-of-keys-and-translations-from-file
    * | Localazy API Docs}
    */
-  public async listKeysPage(request: FileListKeysRequest, config?: RequestConfig): Promise<KeysPaginated> {
+  public async listKeysPage(
+    request: FileListKeysRequest,
+    config?: RequestConfig,
+  ): Promise<KeysPaginated> {
     const { project, file, lang, ...params }: FileListKeysRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const fileId: string = ApiBase.getId(file, 'file');

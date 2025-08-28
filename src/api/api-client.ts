@@ -1,15 +1,15 @@
-import { ApiExport } from '@/api/methods/api-export';
-import { ApiFiles } from '@/api/methods/api-files';
-import { ApiFormats } from '@/api/methods/api-formats';
-import { ApiGlossary } from '@/api/methods/api-glossary';
-import { ApiImport } from '@/api/methods/api-import';
-import { ApiKeys } from '@/api/methods/api-keys';
-import { ApiProjects } from '@/api/methods/api-projects';
-import { ApiScreenshots } from '@/api/methods/api-screenshots';
-import { ApiWebhooks } from '@/api/methods/api-webhooks';
-import { FetchHttpAdapter } from '@/http/fetch-http-adapter';
-import { IHttpAdapter } from '@/http/i-http-adapter';
-import { ApiClientOptions } from '@/types/api-client-options';
+import { ApiExport } from '@/api/methods/api-export.js';
+import { ApiFiles } from '@/api/methods/api-files.js';
+import { ApiFormats } from '@/api/methods/api-formats.js';
+import { ApiGlossary } from '@/api/methods/api-glossary.js';
+import { ApiImport } from '@/api/methods/api-import.js';
+import { ApiKeys } from '@/api/methods/api-keys.js';
+import { ApiProjects } from '@/api/methods/api-projects.js';
+import { ApiScreenshots } from '@/api/methods/api-screenshots.js';
+import { ApiWebhooks } from '@/api/methods/api-webhooks.js';
+import { FetchHttpAdapter } from '@/http/fetch-http-adapter.js';
+import type { IHttpAdapter } from '@/http/i-http-adapter.js';
+import type { ApiClientOptions } from '@/types/api-client-options.js';
 
 export class ApiClient {
   public client: IHttpAdapter;

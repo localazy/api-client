@@ -1,10 +1,10 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { RequestConfig } from '@/types/request-config';
-import { Webhook } from '@/types/webhook';
-import { WebhooksGetSecretRequest } from '@/types/webhooks-get-secret-request';
-import { WebhooksListRequest } from '@/types/webhooks-list-request';
-import { WebhooksSecret } from '@/types/webhooks-secret';
-import { WebhooksUpdateRequest } from '@/types/webhooks-update-request';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { Webhook } from '@/types/webhook.js';
+import type { WebhooksGetSecretRequest } from '@/types/webhooks-get-secret-request.js';
+import type { WebhooksListRequest } from '@/types/webhooks-list-request.js';
+import type { WebhooksSecret } from '@/types/webhooks-secret.js';
+import type { WebhooksUpdateRequest } from '@/types/webhooks-update-request.js';
 
 export class ApiWebhooks extends ApiBase {
   /**
@@ -18,7 +18,10 @@ export class ApiWebhooks extends ApiBase {
   public async list(request: WebhooksListRequest, config?: RequestConfig): Promise<Webhook[]> {
     const { project }: WebhooksListRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
-    const response: { items: Webhook[] } = (await this.api.client.get(`/projects/${projectId}/webhooks`, config)) as {
+    const response: { items: Webhook[] } = (await this.api.client.get(
+      `/projects/${projectId}/webhooks`,
+      config,
+    )) as {
       items: Webhook[];
     };
 
@@ -50,7 +53,10 @@ export class ApiWebhooks extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/webhooks-api#webhook-secrets  Localazy API Docs}
    */
-  public async getSecret(request: WebhooksGetSecretRequest, config?: RequestConfig): Promise<WebhooksSecret> {
+  public async getSecret(
+    request: WebhooksGetSecretRequest,
+    config?: RequestConfig,
+  ): Promise<WebhooksSecret> {
     const { project }: WebhooksGetSecretRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const response: { secret: string } = (await this.api.client.get(

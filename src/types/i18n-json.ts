@@ -1,5 +1,5 @@
-import { Json } from '@/types/json';
-import { LocalesKeys } from '@/types/locales-keys';
+import type { Json } from '@/types/json.js';
+import type { LocalesKeys } from '@/types/locales-keys.js';
 
 /**
  * @example

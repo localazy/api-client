@@ -1,6 +1,6 @@
-import { IHttpAdapter } from '@/http/i-http-adapter';
-import { ApiClientOptions } from '@/types/api-client-options';
-import { RequestConfig } from '@/types/request-config';
+import type { IHttpAdapter } from '@/http/i-http-adapter.js';
+import type { ApiClientOptions } from '@/types/api-client-options.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class FetchHttpAdapter implements IHttpAdapter<RequestConfig> {
   protected apiUrl: string;

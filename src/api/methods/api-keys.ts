@@ -1,8 +1,8 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { KeyDeleteRequest } from '@/types/key-delete-request';
-import { KeyDeprecateRequest } from '@/types/key-deprecate-request';
-import { KeyUpdateRequest } from '@/types/key-update-request';
-import { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { KeyDeleteRequest } from '@/types/key-delete-request.js';
+import type { KeyDeprecateRequest } from '@/types/key-deprecate-request.js';
+import type { KeyUpdateRequest } from '@/types/key-update-request.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class ApiKeys extends ApiBase {
   /**
@@ -59,6 +59,10 @@ export class ApiKeys extends ApiBase {
     });
     const projectId: string = ApiBase.getId(project, 'project');
 
-    await this.api.client.post(`/projects/${projectId}/keys/deprecate`, { phrases: localPhrases }, config);
+    await this.api.client.post(
+      `/projects/${projectId}/keys/deprecate`,
+      { phrases: localPhrases },
+      config,
+    );
   }
 }

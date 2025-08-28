@@ -1,5 +1,5 @@
-import { Key } from '@/types/key';
-import { Project } from '@/types/project';
+import type { Key } from '@/types/key.js';
+import type { Project } from '@/types/project.js';
 
 export type KeyDeprecateRequest = {
   /**

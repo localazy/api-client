@@ -1,6 +1,6 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { Format } from '@/types/format';
-import { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { Format } from '@/types/format.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class ApiFormats extends ApiBase {
   /**

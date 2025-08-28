@@ -1,13 +1,13 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { RequestConfig } from '@/types/request-config';
-import { Screenshot } from '@/types/screenshot';
-import { ScreenshotCreateRequest } from '@/types/screenshot-create-request';
-import { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request';
-import { ScreenshotTag } from '@/types/screenshot-tag';
-import { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request';
-import { ScreenshotUpdateRequest } from '@/types/screenshot-update-request';
-import { ScreenshotsListRequest } from '@/types/screenshots-list-request';
-import { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { ScreenshotCreateRequest } from '@/types/screenshot-create-request.js';
+import type { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request.js';
+import type { ScreenshotTag } from '@/types/screenshot-tag.js';
+import type { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request.js';
+import type { ScreenshotUpdateRequest } from '@/types/screenshot-update-request.js';
+import type { Screenshot } from '@/types/screenshot.js';
+import type { ScreenshotsListRequest } from '@/types/screenshots-list-request.js';
+import type { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request.js';
 
 export class ApiScreenshots extends ApiBase {
   /**
@@ -18,11 +18,17 @@ export class ApiScreenshots extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/screenshot-management#list-screenshots  Localazy API Docs}
    */
-  public async list(request: ScreenshotsListRequest, config?: RequestConfig): Promise<Screenshot[]> {
+  public async list(
+    request: ScreenshotsListRequest,
+    config?: RequestConfig,
+  ): Promise<Screenshot[]> {
     const { project }: ScreenshotsListRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
 
-    return (await this.api.client.get(`/projects/${projectId}/screenshots`, config)) as Screenshot[];
+    return (await this.api.client.get(
+      `/projects/${projectId}/screenshots`,
+      config,
+    )) as Screenshot[];
   }
 
   /**
@@ -33,11 +39,17 @@ export class ApiScreenshots extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/screenshot-management#list-screenshots-tags  Localazy API Docs}
    */
-  public async listTags(request: ScreenshotsListTagsRequest, config?: RequestConfig): Promise<ScreenshotTag[]> {
+  public async listTags(
+    request: ScreenshotsListTagsRequest,
+    config?: RequestConfig,
+  ): Promise<ScreenshotTag[]> {
     const { project }: ScreenshotsListTagsRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
 
-    return (await this.api.client.get(`/projects/${projectId}/screenshots/tags`, config)) as ScreenshotTag[];
+    return (await this.api.client.get(
+      `/projects/${projectId}/screenshots/tags`,
+      config,
+    )) as ScreenshotTag[];
   }
 
   /**
@@ -69,12 +81,19 @@ export class ApiScreenshots extends ApiBase {
    * @see {@link https://localazy.com/docs/api/screenshot-management#update-the-image-of-an-existing-screenshot
    * | Localazy API Docs}
    */
-  public async updateImageData(request: ScreenshotUpdateImageDataRequest, config?: RequestConfig): Promise<void> {
+  public async updateImageData(
+    request: ScreenshotUpdateImageDataRequest,
+    config?: RequestConfig,
+  ): Promise<void> {
     const { project, screenshot }: ScreenshotUpdateImageDataRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const screenshotId: string = ApiBase.getId(screenshot, 'screenshot');
 
-    await this.api.client.post(`/projects/${projectId}/screenshots/${screenshotId}`, request.encodedData, config);
+    await this.api.client.post(
+      `/projects/${projectId}/screenshots/${screenshotId}`,
+      request.encodedData,
+      config,
+    );
   }
 
   /**

@@ -1,16 +1,16 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { File } from '@/types/file';
-import { I18nJson } from '@/types/i18n-json';
-import { ImportData } from '@/types/import-data';
-import { importDataFactory } from '@/types/import-data-factory';
-import { ImportDataFile } from '@/types/import-data-file';
-import { ImportJsonRequest } from '@/types/import-json-request';
-import { ImportProgressRequest } from '@/types/import-progress-request';
-import { Project } from '@/types/project';
-import { RequestConfig } from '@/types/request-config';
-import { UploadSessionStatus } from '@/types/upload-session-status';
-import { delay } from '@/utils/delay';
-import { JsonUtils } from '@/utils/json-utils';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { File } from '@/types/file.js';
+import type { I18nJson } from '@/types/i18n-json.js';
+import { importDataFactory } from '@/types/import-data-factory.js';
+import type { ImportDataFile } from '@/types/import-data-file.js';
+import type { ImportData } from '@/types/import-data.js';
+import type { ImportJsonRequest } from '@/types/import-json-request.js';
+import type { ImportProgressRequest } from '@/types/import-progress-request.js';
+import type { Project } from '@/types/project.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { UploadSessionStatus } from '@/types/upload-session-status.js';
+import { delay } from '@/utils/delay.js';
+import { JsonUtils } from '@/utils/json-utils.js';
 
 export class ApiImport extends ApiBase {
   /**
@@ -49,11 +49,17 @@ export class ApiImport extends ApiBase {
    *
    * Not available in the Localazy API Docs yet.
    */
-  public async getProgress(request: ImportProgressRequest, config?: RequestConfig): Promise<UploadSessionStatus> {
+  public async getProgress(
+    request: ImportProgressRequest,
+    config?: RequestConfig,
+  ): Promise<UploadSessionStatus> {
     const { project, importBatch }: ImportProgressRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
 
-    return (await this.api.client.get(`/projects/${projectId}/import/${importBatch}`, config)) as UploadSessionStatus;
+    return (await this.api.client.get(
+      `/projects/${projectId}/import/${importBatch}`,
+      config,
+    )) as UploadSessionStatus;
   }
 
   protected async getImportedFile(

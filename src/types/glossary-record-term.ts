@@ -1,4 +1,4 @@
-import { Locales } from '@localazy/languages';
+import type { Locales } from '@localazy/languages';
 
 export type GlossaryRecordTerm = {
   /**

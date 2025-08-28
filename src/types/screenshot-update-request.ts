@@ -1,8 +1,8 @@
-import { Project } from '@/types/project';
-import { Screenshot } from '@/types/screenshot';
-import { ScreenshotMetadata } from '@/types/screenshot-metadata';
-import { ScreenshotPhrase } from '@/types/screenshot-phrase';
-import { ScreenshotTag } from '@/types/screenshot-tag';
+import type { Project } from '@/types/project.js';
+import type { ScreenshotMetadata } from '@/types/screenshot-metadata.js';
+import type { ScreenshotPhrase } from '@/types/screenshot-phrase.js';
+import type { ScreenshotTag } from '@/types/screenshot-tag.js';
+import type { Screenshot } from '@/types/screenshot.js';
 
 export type ScreenshotUpdateRequest = {
   /**

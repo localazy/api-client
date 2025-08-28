@@ -1,8 +1,8 @@
-import { I18nJson } from '@/types/i18n-json';
-import { ImportContentOptions } from '@/types/import-content-options';
-import { ImportFileOptions } from '@/types/import-file-options';
-import { ImportI18nOptions } from '@/types/import-i18n-options';
-import { Project } from '@/types/project';
+import type { I18nJson } from '@/types/i18n-json.js';
+import type { ImportContentOptions } from '@/types/import-content-options.js';
+import type { ImportFileOptions } from '@/types/import-file-options.js';
+import type { ImportI18nOptions } from '@/types/import-i18n-options.js';
+import type { Project } from '@/types/project.js';
 
 export type ImportJsonRequest = {
   /**

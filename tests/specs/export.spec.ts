@@ -1,6 +1,7 @@
-import { ApiClient, ExportJsonRequest, File, I18nJson, Locales, Project } from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient } from '@tests/support';
+import type { ApiClient, ExportJsonRequest, File, I18nJson, Project } from '@/main.js';
+import { Locales } from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { getApiClient } from '@tests/support/index.js';
 import { beforeEach, describe, expect, test } from 'vitest';
 
 describe('Export', (): void => {

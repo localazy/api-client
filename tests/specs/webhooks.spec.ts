@@ -1,7 +1,9 @@
-import { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient, getToken } from '@tests/support';
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import type { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { getApiClient, getToken } from '@tests/support/index.js';
+import type { MockInstance } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Webhooks', (): void => {
   let api: ApiClient;
@@ -17,7 +19,7 @@ describe('Webhooks', (): void => {
   test('api.webhooks.list', async (): Promise<void> => {
     const webhooks: Webhook[] = await api.webhooks.list({ project });
 
-    expect(webhooks[0].description).toBe('This is a test webhook');
+    expect(assertNotNull(webhooks[0]).description).toBe('This is a test webhook');
   });
 
   test('api.webhooks.update', async (): Promise<void> => {
@@ -29,22 +31,31 @@ describe('Webhooks', (): void => {
           customId: '1',
           description: 'This is a test webhook',
           url: 'https://example.com/webhook',
-          events: ['comment_added', 'import_finished', 'import_finished_empty', 'project_published', 'tag_promoted'],
+          events: [
+            'comment_added',
+            'import_finished',
+            'import_finished_empty',
+            'project_published',
+            'tag_promoted',
+          ],
         },
       ],
     };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.webhooks.update(request);
 
-    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/webhooks', {
-      body: '{"items":[{"enabled":true,"customId":"1","description":"This is a test webhook","url":"https://example.com/webhook","events":["comment_added","import_finished","import_finished_empty","project_published","tag_promoted"]}]}',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${getToken()}`,
-        'Content-Type': 'application/json',
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/webhooks',
+      {
+        body: '{"items":[{"enabled":true,"customId":"1","description":"This is a test webhook","url":"https://example.com/webhook","events":["comment_added","import_finished","import_finished_empty","project_published","tag_promoted"]}]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
       },
-      method: 'POST',
-    });
+    );
   });
 
   test('api.webhooks.getSecret', async (): Promise<void> => {

@@ -9,7 +9,8 @@ import screenshots from '@tests/fixtures/full-project/screenshots.json';
 import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json';
 import webhooks from '@tests/fixtures/full-project/webhooks.json';
 import webhooksSecret from '@tests/fixtures/full-project/webhooksSecret.json';
-import { fetchMock } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { fetchMock } from '@tests/support/index.js';
 
 const baseUrl: string = 'https://api.localazy.com';
 
@@ -59,16 +60,23 @@ export const mockResponses = (): void => {
 
   // projects
   fetchMock.get(`${baseUrl}/projects`, serverResponses.projects);
-  fetchMock.get(`${baseUrl}/projects?languages=true&organization=true`, serverResponses.projectsOrgsLangs);
+  fetchMock.get(
+    `${baseUrl}/projects?languages=true&organization=true`,
+    serverResponses.projectsOrgsLangs,
+  );
 
   // glossary
   fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.glossary);
+  const firstGlossary = assertNotNull(serverResponses.glossary.glossaries[0]);
   fetchMock.get(
     `${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`,
-    serverResponses.glossary.glossaries[0],
+    firstGlossary,
   );
   fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.resultPost);
-  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`, serverResponses.resultPut);
+  fetchMock.put(
+    `${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`,
+    serverResponses.resultPut,
+  );
   fetchMock.delete(
     `${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`,
     serverResponses.resultDelete,
@@ -82,12 +90,18 @@ export const mockResponses = (): void => {
   );
 
   // keys
-  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en`, serverResponses.fileKeys);
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en`,
+    serverResponses.fileKeys,
+  );
   fetchMock.get(
     `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en?next=`,
     serverResponses.fileKeys,
   );
-  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`, serverResponses.resultPut);
+  fetchMock.put(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`,
+    serverResponses.resultPut,
+  );
   fetchMock.delete(
     `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`,
     serverResponses.resultDelete,
@@ -97,9 +111,18 @@ export const mockResponses = (): void => {
   fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/import`, serverResponses.resultPost);
 
   // screenshots
-  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/screenshots`, serverResponses.screenshots);
-  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/screenshots/tags`, serverResponses.screenshotTags);
-  fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/screenshots`, serverResponses.resultPostScreenshot);
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/screenshots`,
+    serverResponses.screenshots,
+  );
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/screenshots/tags`,
+    serverResponses.screenshotTags,
+  );
+  fetchMock.post(
+    `${baseUrl}/projects/_a0000000000000000001/screenshots`,
+    serverResponses.resultPostScreenshot,
+  );
   fetchMock.post(
     `${baseUrl}/projects/_a0000000000000000001/screenshots/_a0000000000000000001`,
     serverResponses.resultPost,
@@ -115,7 +138,10 @@ export const mockResponses = (): void => {
 
   // webhooks
   fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/webhooks`, serverResponses.webhooks);
-  fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/webhooks/secret`, serverResponses.webhooksSecret);
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/webhooks/secret`,
+    serverResponses.webhooksSecret,
+  );
   fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/webhooks`, serverResponses.resultPost);
 
   // errors

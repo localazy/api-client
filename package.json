@@ -42,9 +42,7 @@
   "module": "./dist/localazy-api-client.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**/*",
-    "docs/**/*",
-    "README.md"
+    "dist"
   ],
   "scripts": {
     "build": "rimraf dist && npm run main-ts:build && vite build",
@@ -52,48 +50,52 @@
     "check": "npm run prettier && npm run lint && npm run typecheck && npm run build && npm run test:coverage",
     "check:fix": "npm run prettier:fix && npm run lint:fix",
     "dev": "vite & npm run main-ts:watch",
-    "lint": "eslint --cache --cache-location .cache/eslint .",
+    "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "main-ts:build": "reexport src/main.ts",
     "main-ts:watch": "reexport --watch src/main.ts",
     "prepare": "husky",
-    "prettier": "prettier --check --cache --cache-location .cache/prettier .",
+    "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
+    "test:matrix": "./scripts/node-test-matrix.sh",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@localazy/prettier-config",
   "dependencies": {
-    "@localazy/languages": "^0.1.6",
+    "@localazy/languages": "^0.1.11",
     "lodash-es": "^4.17.21"
   },
   "devDependencies": {
-    "@localazy/eslint-config": "^1.0.0-beta.2",
-    "@localazy/prettier-config": "^1.0.0-beta.2",
-    "@localazy/tsconfig": "^1.0.0-beta.4",
+    "@localazy/eslint-config": "^1.3.0",
+    "@localazy/prettier-config": "^1.2.0",
+    "@localazy/tsconfig": "^1.1.1",
     "@rollup/plugin-terser": "^0.4.4",
     "@types/isomorphic-fetch": "^0.0.39",
     "@types/lodash-es": "^4.17.9",
-    "@types/node": "^22.17.1",
+    "@types/node": "^22.18.0",
     "@vitest/coverage-v8": "^3.2.4",
     "@vitest/ui": "^3.2.4",
-    "eslint": "^9.32.0",
-    "fetch-mock": "^12.5.3",
+    "eslint": "^9.34.0",
+    "fetch-mock": "^12.5.4",
     "husky": "^9.1.7",
     "isomorphic-fetch": "^3.0.0",
     "prettier": "^3.6.2",
     "reexport": "^1.4.1",
     "rimraf": "^6.0.1",
     "typescript": "^5.9.2",
-    "unplugin-replace": "^0.2.1",
-    "vite": "^6.3.5",
+    "unplugin-replace": "^0.6.1",
+    "vite": "^7.1.3",
     "vite-bundle-visualizer": "^1.2.1",
     "vite-plugin-dts": "^4.5.4",
-    "vite-plugin-node-polyfills": "^0.23.0",
+    "vite-plugin-node-polyfills": "^0.24.0",
     "vitest": "^3.2.4"
   },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  "engines": {
+    "node": ">=20"
+  }
 }

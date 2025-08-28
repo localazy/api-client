@@ -1,10 +1,10 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { ExportJsonRequest } from '@/types/export-json-request';
-import { I18nJson } from '@/types/i18n-json';
-import { Json } from '@/types/json';
-import { Key } from '@/types/key';
-import { RequestConfig } from '@/types/request-config';
-import { Locales } from '@localazy/languages';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { ExportJsonRequest } from '@/types/export-json-request.js';
+import type { I18nJson } from '@/types/i18n-json.js';
+import type { Json } from '@/types/json.js';
+import type { Key } from '@/types/key.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { Locales } from '@localazy/languages';
 
 export class ApiExport extends ApiBase {
   /**
@@ -17,15 +17,21 @@ export class ApiExport extends ApiBase {
     const { project, file, langs }: ExportJsonRequest = request;
 
     const result: Key[][] = await Promise.all(
-      langs.map((lang: `${Locales}`): Promise<Key[]> => this.api.files.listKeys({ project, file, lang }, config)),
+      langs.map(
+        (lang: `${Locales}`): Promise<Key[]> =>
+          this.api.files.listKeys({ project, file, lang }, config),
+      ),
     );
 
     return Object.fromEntries(ApiExport.mapLanguages(langs, result));
   }
 
   protected static mapLanguages(languages: `${Locales}`[], result: Key[][]) {
-    // @ts-expect-error TODO check possible undefined
-    return languages.map((lang: `${Locales}`, index: number) => [lang, ApiExport.mapResult(result[index])]);
+    return languages.map((lang: `${Locales}`, index: number) => [
+      lang,
+      // @ts-expect-error TODO check possible undefined
+      ApiExport.mapResult(result[index]),
+    ]);
   }
 
   protected static mapResult(keysList: Key[]): Json {

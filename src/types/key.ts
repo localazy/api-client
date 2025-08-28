@@ -1,4 +1,4 @@
-import { KeyValue } from '@/types/key-value';
+import type { KeyValue } from '@/types/key-value.js';
 
 export type Key = {
   /**

@@ -1,7 +1,10 @@
-import { ApiClient, File, Key, KeyDeleteRequest, KeyUpdateRequest, Locales, Project } from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient, getToken } from '@tests/support';
-import { beforeEach, describe, expect, MockInstance, test, vi } from 'vitest';
+import type { ApiClient, File, Key, KeyDeleteRequest, KeyUpdateRequest, Project } from '@/main.js';
+import { Locales } from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { getApiClient, getToken } from '@tests/support/index.js';
+import type { MockInstance } from 'vitest';
+import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Keys', (): void => {
   let api: ApiClient;
@@ -17,7 +20,12 @@ describe('Keys', (): void => {
   test('api.keys.update', async (): Promise<void> => {
     const file: File = await api.files.first({ project });
     const keys: Key[] = await api.files.listKeys({ project, file, lang: Locales.ENGLISH });
-    const request: KeyUpdateRequest = { project, key: keys[0], comment: 'Comment for translators.' };
+    const firstKey = assertNotNull(keys[0]);
+    const request: KeyUpdateRequest = {
+      project,
+      key: firstKey,
+      comment: 'Comment for translators.',
+    };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.keys.update(request);
 
@@ -38,7 +46,8 @@ describe('Keys', (): void => {
   test('api.keys.delete', async (): Promise<void> => {
     const file: File = await api.files.first({ project });
     const keys: Key[] = await api.files.listKeys({ project, file, lang: Locales.ENGLISH });
-    const request: KeyDeleteRequest = { project, key: keys[0] };
+    const firstKey = assertNotNull(keys[0]);
+    const request: KeyDeleteRequest = { project, key: firstKey };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.keys.delete(request);
 

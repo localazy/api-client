@@ -1,11 +1,11 @@
-import { ApiBase } from '@/api/methods/api-base';
-import { GlossaryCreateRequest } from '@/types/glossary-create-request';
-import { GlossaryDeleteRequest } from '@/types/glossary-delete-request';
-import { GlossaryFindRequest } from '@/types/glossary-find-request';
-import { GlossaryListRequest } from '@/types/glossary-list-request';
-import { GlossaryRecord } from '@/types/glossary-record';
-import { GlossaryUpdateRequest } from '@/types/glossary-update-request';
-import { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { GlossaryCreateRequest } from '@/types/glossary-create-request.js';
+import type { GlossaryDeleteRequest } from '@/types/glossary-delete-request.js';
+import type { GlossaryFindRequest } from '@/types/glossary-find-request.js';
+import type { GlossaryListRequest } from '@/types/glossary-list-request.js';
+import type { GlossaryRecord } from '@/types/glossary-record.js';
+import type { GlossaryUpdateRequest } from '@/types/glossary-update-request.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class ApiGlossary extends ApiBase {
   /**
@@ -16,7 +16,10 @@ export class ApiGlossary extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/glossary#list-all-glossary-terms  Localazy API Docs}
    */
-  public async list(request: GlossaryListRequest, config?: RequestConfig): Promise<GlossaryRecord[]> {
+  public async list(
+    request: GlossaryListRequest,
+    config?: RequestConfig,
+  ): Promise<GlossaryRecord[]> {
     const { project }: GlossaryListRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const response: { glossaries: GlossaryRecord[] } = (await this.api.client.get(
@@ -40,7 +43,10 @@ export class ApiGlossary extends ApiBase {
     const projectId: string = ApiBase.getId(project, 'project');
     const id: string = typeof glossaryRecord === 'string' ? glossaryRecord : glossaryRecord.id;
 
-    return (await this.api.client.get(`/projects/${projectId}/glossary/${id}`, config)) as GlossaryRecord;
+    return (await this.api.client.get(
+      `/projects/${projectId}/glossary/${id}`,
+      config,
+    )) as GlossaryRecord;
   }
 
   /**
