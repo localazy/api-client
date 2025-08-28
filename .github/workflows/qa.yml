@@ -41,5 +41,5 @@ jobs:
         run: npm run test:coverage
 
       - name: 'Report Coverage'
-        if: always()
+        if: matrix.node == 22 && always()
         uses: davelosert/vitest-coverage-report-action@v2
