@@ -1,6 +1,7 @@
-import localazy from '@localazy/eslint-config';
+import { localazy } from '@localazy/eslint-config';
 
-export default localazy({
+/** @type {import('@localazy/eslint-config').LocalazyOptions} */
+const config = {
   ignoreDefinitions: ['.gitignore'],
   userConfigs: [
     {
@@ -15,4 +16,6 @@ export default localazy({
       },
     },
   ],
-});
+};
+
+export default localazy(config);

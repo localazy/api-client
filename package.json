@@ -52,12 +52,12 @@
     "check": "npm run prettier && npm run lint && npm run typecheck && npm run build && npm run test:coverage",
     "check:fix": "npm run prettier:fix && npm run lint:fix",
     "dev": "vite & npm run main-ts:watch",
-    "lint": "eslint --cache --cache-location .cache/eslint .",
+    "lint": "eslint .",
     "lint:fix": "eslint --fix .",
     "main-ts:build": "reexport src/main.ts",
     "main-ts:watch": "reexport --watch src/main.ts",
     "prepare": "husky",
-    "prettier": "prettier --check --cache --cache-location .cache/prettier .",
+    "prettier": "prettier --check .",
     "prettier:fix": "prettier --write .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
@@ -66,6 +66,7 @@
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
   },
+  "prettier": "@localazy/prettier-config",
   "dependencies": {
     "@localazy/languages": "^0.1.11",
     "lodash-es": "^4.17.21"
@@ -94,6 +95,5 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-node-polyfills": "^0.24.0",
     "vitest": "^3.2.4"
-  },
-  "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
+  }
 }
