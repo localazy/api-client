@@ -674,7 +674,13 @@ await api.webhooks.update({
       customId: '1',
       description: 'This is a test webhook',
       url: 'https://example.com/webhook',
-      events: ['comment_added', 'import_finished', 'import_finished_empty', 'project_published', 'tag_promoted'],
+      events: [
+        'comment_added',
+        'import_finished',
+        'import_finished_empty',
+        'project_published',
+        'tag_promoted',
+      ],
     },
   ],
 });

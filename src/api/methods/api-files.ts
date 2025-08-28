@@ -76,7 +76,10 @@ export class ApiFiles extends ApiBase {
    * @see {@link https://localazy.com/docs/api/files#retrieve-a-list-of-keys-and-translations-from-file
    * | Localazy API Docs}
    */
-  public async listKeysPage(request: FileListKeysRequest, config?: RequestConfig): Promise<KeysPaginated> {
+  public async listKeysPage(
+    request: FileListKeysRequest,
+    config?: RequestConfig,
+  ): Promise<KeysPaginated> {
     const { project, file, lang, ...params }: FileListKeysRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const fileId: string = ApiBase.getId(file, 'file');

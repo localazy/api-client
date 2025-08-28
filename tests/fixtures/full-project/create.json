@@ -1,1 +1,4 @@
-{ "description": "Exceptional term description", "term": [{ "lang": "en", "term": "Exceptional term" }] }
+{
+  "description": "Exceptional term description",
+  "term": [{ "lang": "en", "term": "Exceptional term" }]
+}

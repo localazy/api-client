@@ -8,7 +8,7 @@ import type {
 } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken } from '@tests/support';
-import type { MockInstance} from 'vitest';
+import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Glossary', (): void => {
@@ -26,13 +26,18 @@ describe('Glossary', (): void => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
 
     expect(records[0].term[0].term).toBe('Monitor');
-    expect(records[0].description).toBe('A screen used for displaying visual output from a computer.');
+    expect(records[0].description).toBe(
+      'A screen used for displaying visual output from a computer.',
+    );
   });
 
   test('api.glossary.find', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
-    const record: GlossaryRecord = await api.glossary.find({ project, glossaryRecord: records[0].id });
+    const record: GlossaryRecord = await api.glossary.find({
+      project,
+      glossaryRecord: records[0].id,
+    });
 
     expect(record.term[0].term).toBe('Monitor');
     expect(record.description).toBe('A screen used for displaying visual output from a computer.');
@@ -61,15 +66,18 @@ describe('Glossary', (): void => {
     const recordId: string = await api.glossary.create(request);
 
     expect(recordId).toBe(fullProject.serverResponses.resultPost.result);
-    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/glossary', {
-      body: '{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"term":[{"lang":"en","term":"Exceptional term"}]}',
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${getToken()}`,
-        'Content-Type': 'application/json',
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/glossary',
+      {
+        body: '{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"term":[{"lang":"en","term":"Exceptional term"}]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
       },
-      method: 'POST',
-    });
+    );
   });
 
   test('api.glossary.update', async (): Promise<void> => {

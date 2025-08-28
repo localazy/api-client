@@ -18,7 +18,10 @@ export class ApiWebhooks extends ApiBase {
   public async list(request: WebhooksListRequest, config?: RequestConfig): Promise<Webhook[]> {
     const { project }: WebhooksListRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
-    const response: { items: Webhook[] } = (await this.api.client.get(`/projects/${projectId}/webhooks`, config)) as {
+    const response: { items: Webhook[] } = (await this.api.client.get(
+      `/projects/${projectId}/webhooks`,
+      config,
+    )) as {
       items: Webhook[];
     };
 
@@ -50,7 +53,10 @@ export class ApiWebhooks extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/webhooks-api#webhook-secrets  Localazy API Docs}
    */
-  public async getSecret(request: WebhooksGetSecretRequest, config?: RequestConfig): Promise<WebhooksSecret> {
+  public async getSecret(
+    request: WebhooksGetSecretRequest,
+    config?: RequestConfig,
+  ): Promise<WebhooksSecret> {
     const { project }: WebhooksGetSecretRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const response: { secret: string } = (await this.api.client.get(

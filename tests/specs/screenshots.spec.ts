@@ -10,7 +10,7 @@ import type {
 } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken, readImageFile } from '@tests/support';
-import type { MockInstance} from 'vitest';
+import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Screenshots', (): void => {
@@ -43,21 +43,28 @@ describe('Screenshots', (): void => {
     const screenshotId: string = await api.screenshots.create(request);
 
     expect(screenshotId).toBe('_a0000000000000000001');
-    expect(spy).toHaveBeenCalledWith('https://api.localazy.com/projects/_a0000000000000000001/screenshots', {
-      body: `"${encodedData}"`,
-      headers: {
-        Accept: 'application/json',
-        Authorization: `Bearer ${getToken()}`,
-        'Content-Type': 'application/json',
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/screenshots',
+      {
+        body: `"${encodedData}"`,
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
       },
-      method: 'POST',
-    });
+    );
   });
 
   test('api.screenshots.updateImageData', async (): Promise<void> => {
     const encodedData: string = readImageFile('./tests/fixtures/screenshot.png', 'image/png');
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
-    const request: ScreenshotUpdateImageDataRequest = { project, screenshot: screenshots[0], encodedData };
+    const request: ScreenshotUpdateImageDataRequest = {
+      project,
+      screenshot: screenshots[0],
+      encodedData,
+    };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.screenshots.updateImageData(request);
 

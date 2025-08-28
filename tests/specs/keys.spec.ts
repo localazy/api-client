@@ -2,7 +2,7 @@ import type { ApiClient, File, Key, KeyDeleteRequest, KeyUpdateRequest, Project 
 import { Locales } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken } from '@tests/support';
-import type { MockInstance} from 'vitest';
+import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Keys', (): void => {
@@ -19,7 +19,11 @@ describe('Keys', (): void => {
   test('api.keys.update', async (): Promise<void> => {
     const file: File = await api.files.first({ project });
     const keys: Key[] = await api.files.listKeys({ project, file, lang: Locales.ENGLISH });
-    const request: KeyUpdateRequest = { project, key: keys[0], comment: 'Comment for translators.' };
+    const request: KeyUpdateRequest = {
+      project,
+      key: keys[0],
+      comment: 'Comment for translators.',
+    };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.keys.update(request);
 

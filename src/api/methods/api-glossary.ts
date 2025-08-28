@@ -16,7 +16,10 @@ export class ApiGlossary extends ApiBase {
    *
    * @see {@link https://localazy.com/docs/api/glossary#list-all-glossary-terms  Localazy API Docs}
    */
-  public async list(request: GlossaryListRequest, config?: RequestConfig): Promise<GlossaryRecord[]> {
+  public async list(
+    request: GlossaryListRequest,
+    config?: RequestConfig,
+  ): Promise<GlossaryRecord[]> {
     const { project }: GlossaryListRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
     const response: { glossaries: GlossaryRecord[] } = (await this.api.client.get(
@@ -40,7 +43,10 @@ export class ApiGlossary extends ApiBase {
     const projectId: string = ApiBase.getId(project, 'project');
     const id: string = typeof glossaryRecord === 'string' ? glossaryRecord : glossaryRecord.id;
 
-    return (await this.api.client.get(`/projects/${projectId}/glossary/${id}`, config)) as GlossaryRecord;
+    return (await this.api.client.get(
+      `/projects/${projectId}/glossary/${id}`,
+      config,
+    )) as GlossaryRecord;
   }
 
   /**

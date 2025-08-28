@@ -17,15 +17,21 @@ export class ApiExport extends ApiBase {
     const { project, file, langs }: ExportJsonRequest = request;
 
     const result: Key[][] = await Promise.all(
-      langs.map((lang: `${Locales}`): Promise<Key[]> => this.api.files.listKeys({ project, file, lang }, config)),
+      langs.map(
+        (lang: `${Locales}`): Promise<Key[]> =>
+          this.api.files.listKeys({ project, file, lang }, config),
+      ),
     );
 
     return Object.fromEntries(ApiExport.mapLanguages(langs, result));
   }
 
   protected static mapLanguages(languages: `${Locales}`[], result: Key[][]) {
-    // @ts-expect-error TODO check possible undefined
-    return languages.map((lang: `${Locales}`, index: number) => [lang, ApiExport.mapResult(result[index])]);
+    return languages.map((lang: `${Locales}`, index: number) => [
+      lang,
+      // @ts-expect-error TODO check possible undefined
+      ApiExport.mapResult(result[index]),
+    ]);
   }
 
   protected static mapResult(keysList: Key[]): Json {

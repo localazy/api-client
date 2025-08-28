@@ -5,14 +5,13 @@ import type {
   FileListKeysRequest,
   Key,
   KeysPaginated,
-  Project} from '@/main';
-import {
-  Locales
+  Project,
 } from '@/main';
+import { Locales } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getApiUrl, getToken } from '@tests/support';
 import type { Blob } from 'node:buffer';
-import type { MockInstance} from 'vitest';
+import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
 describe('Files', (): void => {

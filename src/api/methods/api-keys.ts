@@ -59,6 +59,10 @@ export class ApiKeys extends ApiBase {
     });
     const projectId: string = ApiBase.getId(project, 'project');
 
-    await this.api.client.post(`/projects/${projectId}/keys/deprecate`, { phrases: localPhrases }, config);
+    await this.api.client.post(
+      `/projects/${projectId}/keys/deprecate`,
+      { phrases: localPhrases },
+      config,
+    );
   }
 }
