@@ -1,6 +1,6 @@
-import type { ApiClient, I18nJson, ImportJsonRequest, Project } from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient, getToken } from '@tests/support';
+import type { ApiClient, I18nJson, ImportJsonRequest, Project } from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { getApiClient, getToken } from '@tests/support/index.js';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 

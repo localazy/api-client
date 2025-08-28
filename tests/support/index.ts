@@ -1,2 +1,2 @@
-export { fetchMock } from '@tests/support/fetch-mock';
-export * from '@tests/support/utils';
+export { fetchMock } from '@tests/support/fetch-mock.js';
+export * from '@tests/support/utils.js';

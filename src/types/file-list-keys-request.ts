@@ -1,5 +1,5 @@
-import type { File } from '@/types/file';
-import type { Project } from '@/types/project';
+import type { File } from '@/types/file.js';
+import type { Project } from '@/types/project.js';
 import type { Locales } from '@localazy/languages';
 
 export type FileListKeysRequest = {

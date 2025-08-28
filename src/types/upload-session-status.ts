@@ -1,4 +1,4 @@
-import type { UploadStatus } from '@/enums/upload-status';
+import type { UploadStatus } from '@/enums/upload-status.js';
 
 export type UploadSessionStatus = {
   /**

@@ -1,11 +1,11 @@
-import { ApiBase } from '@/api/methods/api-base';
-import type { GlossaryCreateRequest } from '@/types/glossary-create-request';
-import type { GlossaryDeleteRequest } from '@/types/glossary-delete-request';
-import type { GlossaryFindRequest } from '@/types/glossary-find-request';
-import type { GlossaryListRequest } from '@/types/glossary-list-request';
-import type { GlossaryRecord } from '@/types/glossary-record';
-import type { GlossaryUpdateRequest } from '@/types/glossary-update-request';
-import type { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { GlossaryCreateRequest } from '@/types/glossary-create-request.js';
+import type { GlossaryDeleteRequest } from '@/types/glossary-delete-request.js';
+import type { GlossaryFindRequest } from '@/types/glossary-find-request.js';
+import type { GlossaryListRequest } from '@/types/glossary-list-request.js';
+import type { GlossaryRecord } from '@/types/glossary-record.js';
+import type { GlossaryUpdateRequest } from '@/types/glossary-update-request.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class ApiGlossary extends ApiBase {
   /**

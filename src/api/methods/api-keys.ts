@@ -1,8 +1,8 @@
-import { ApiBase } from '@/api/methods/api-base';
-import type { KeyDeleteRequest } from '@/types/key-delete-request';
-import type { KeyDeprecateRequest } from '@/types/key-deprecate-request';
-import type { KeyUpdateRequest } from '@/types/key-update-request';
-import type { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { KeyDeleteRequest } from '@/types/key-delete-request.js';
+import type { KeyDeprecateRequest } from '@/types/key-deprecate-request.js';
+import type { KeyUpdateRequest } from '@/types/key-update-request.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class ApiKeys extends ApiBase {
   /**

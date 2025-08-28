@@ -9,8 +9,8 @@ import screenshots from '@tests/fixtures/full-project/screenshots.json';
 import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json';
 import webhooks from '@tests/fixtures/full-project/webhooks.json';
 import webhooksSecret from '@tests/fixtures/full-project/webhooksSecret.json';
-import { fetchMock } from '@tests/support';
-import { assertNotNull } from '@tests/support/assert-not-null';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { fetchMock } from '@tests/support/index.js';
 
 const baseUrl: string = 'https://api.localazy.com';
 

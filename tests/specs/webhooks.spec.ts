@@ -1,7 +1,7 @@
-import type { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient, getToken } from '@tests/support';
-import { assertNotNull } from '@tests/support/assert-not-null';
+import type { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { getApiClient, getToken } from '@tests/support/index.js';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 

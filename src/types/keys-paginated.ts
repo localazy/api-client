@@ -1,4 +1,4 @@
-import type { Key } from '@/types/key';
+import type { Key } from '@/types/key.js';
 
 export type KeysPaginated = {
   keys: Key[];

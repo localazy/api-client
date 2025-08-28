@@ -1,13 +1,13 @@
-import { ApiBase } from '@/api/methods/api-base';
-import type { RequestConfig } from '@/types/request-config';
-import type { Screenshot } from '@/types/screenshot';
-import type { ScreenshotCreateRequest } from '@/types/screenshot-create-request';
-import type { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request';
-import type { ScreenshotTag } from '@/types/screenshot-tag';
-import type { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request';
-import type { ScreenshotUpdateRequest } from '@/types/screenshot-update-request';
-import type { ScreenshotsListRequest } from '@/types/screenshots-list-request';
-import type { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { ScreenshotCreateRequest } from '@/types/screenshot-create-request.js';
+import type { ScreenshotDeleteRequest } from '@/types/screenshot-delete-request.js';
+import type { ScreenshotTag } from '@/types/screenshot-tag.js';
+import type { ScreenshotUpdateImageDataRequest } from '@/types/screenshot-update-image-data-request.js';
+import type { ScreenshotUpdateRequest } from '@/types/screenshot-update-request.js';
+import type { Screenshot } from '@/types/screenshot.js';
+import type { ScreenshotsListRequest } from '@/types/screenshots-list-request.js';
+import type { ScreenshotsListTagsRequest } from '@/types/screenshots-list-tags-request.js';
 
 export class ApiScreenshots extends ApiBase {
   /**

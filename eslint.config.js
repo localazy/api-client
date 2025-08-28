@@ -3,6 +3,10 @@ import { localazy } from '@localazy/eslint-config';
 /** @type {import('@localazy/eslint-config').LocalazyOptions} */
 const config = {
   ignoreDefinitions: ['.gitignore'],
+  features: {
+    forcePathAliases: true,
+    forceJsExtensions: true,
+  },
   userConfigs: [
     {
       ignores: ['examples'],

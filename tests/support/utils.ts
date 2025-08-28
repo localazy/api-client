@@ -1,4 +1,4 @@
-import { ApiClient } from '@/api/api-client';
+import { ApiClient } from '@/api/api-client.js';
 import fs from 'node:fs';
 
 export const readImageFile = (path: string, type: string): string => {

@@ -6,11 +6,11 @@ import type {
   Key,
   KeysPaginated,
   Project,
-} from '@/main';
-import { Locales } from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient, getApiUrl, getToken } from '@tests/support';
-import { assertNotNull } from '@tests/support/assert-not-null';
+} from '@/main.js';
+import { Locales } from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { getApiClient, getApiUrl, getToken } from '@tests/support/index.js';
 import type { Blob } from 'node:buffer';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';

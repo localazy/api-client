@@ -1,9 +1,9 @@
-import { ApiBase } from '@/api/methods/api-base';
-import type { ExportJsonRequest } from '@/types/export-json-request';
-import type { I18nJson } from '@/types/i18n-json';
-import type { Json } from '@/types/json';
-import type { Key } from '@/types/key';
-import type { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { ExportJsonRequest } from '@/types/export-json-request.js';
+import type { I18nJson } from '@/types/i18n-json.js';
+import type { Json } from '@/types/json.js';
+import type { Key } from '@/types/key.js';
+import type { RequestConfig } from '@/types/request-config.js';
 import type { Locales } from '@localazy/languages';
 
 export class ApiExport extends ApiBase {

@@ -1,7 +1,7 @@
-import { ApiBase } from '@/api/methods/api-base';
-import type { Project } from '@/types/project';
-import type { ProjectsListRequest } from '@/types/projects-list-request';
-import type { RequestConfig } from '@/types/request-config';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { Project } from '@/types/project.js';
+import type { ProjectsListRequest } from '@/types/projects-list-request.js';
+import type { RequestConfig } from '@/types/request-config.js';
 
 export class ApiProjects extends ApiBase {
   /**

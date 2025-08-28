@@ -7,10 +7,10 @@ import type {
   ScreenshotTag,
   ScreenshotUpdateImageDataRequest,
   ScreenshotUpdateRequest,
-} from '@/main';
-import { fullProject } from '@tests/fixtures';
-import { getApiClient, getToken, readImageFile } from '@tests/support';
-import { assertNotNull } from '@tests/support/assert-not-null';
+} from '@/main.js';
+import { fullProject } from '@tests/fixtures/index.js';
+import { assertNotNull } from '@tests/support/assert-not-null.js';
+import { getApiClient, getToken, readImageFile } from '@tests/support/index.js';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 

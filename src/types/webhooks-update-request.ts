@@ -1,5 +1,5 @@
-import type { Project } from '@/types/project';
-import type { Webhook } from '@/types/webhook';
+import type { Project } from '@/types/project.js';
+import type { Webhook } from '@/types/webhook.js';
 
 export type WebhooksUpdateRequest = {
   /**

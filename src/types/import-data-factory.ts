@@ -1,7 +1,7 @@
-import type { I18nJson } from '@/types/i18n-json';
-import type { ImportData } from '@/types/import-data';
-import type { ImportDataFile } from '@/types/import-data-file';
-import type { ImportJsonRequest } from '@/types/import-json-request';
+import type { I18nJson } from '@/types/i18n-json.js';
+import type { ImportDataFile } from '@/types/import-data-file.js';
+import type { ImportData } from '@/types/import-data.js';
+import type { ImportJsonRequest } from '@/types/import-json-request.js';
 
 export const importDataFactory = (request: ImportJsonRequest, chunks: I18nJson[]): ImportData => ({
   ...request.i18nOptions,

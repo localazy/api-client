@@ -1,4 +1,4 @@
-import type { ApiClient } from '@/api/api-client';
+import type { ApiClient } from '@/api/api-client.js';
 
 export abstract class ApiBase {
   protected api: ApiClient;

@@ -1,6 +1,6 @@
-import type { ApiClient, Project } from '@/main';
-import { emptyProject, fullProject } from '@tests/fixtures';
-import { getApiClient } from '@tests/support';
+import type { ApiClient, Project } from '@/main.js';
+import { emptyProject, fullProject } from '@tests/fixtures/index.js';
+import { getApiClient } from '@tests/support/index.js';
 import { describe, expect, test } from 'vitest';
 
 describe('Errors', (): void => {

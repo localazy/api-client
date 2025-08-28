@@ -1,16 +1,16 @@
-import { ApiBase } from '@/api/methods/api-base';
-import type { File } from '@/types/file';
-import type { I18nJson } from '@/types/i18n-json';
-import type { ImportData } from '@/types/import-data';
-import { importDataFactory } from '@/types/import-data-factory';
-import type { ImportDataFile } from '@/types/import-data-file';
-import type { ImportJsonRequest } from '@/types/import-json-request';
-import type { ImportProgressRequest } from '@/types/import-progress-request';
-import type { Project } from '@/types/project';
-import type { RequestConfig } from '@/types/request-config';
-import type { UploadSessionStatus } from '@/types/upload-session-status';
-import { delay } from '@/utils/delay';
-import { JsonUtils } from '@/utils/json-utils';
+import { ApiBase } from '@/api/methods/api-base.js';
+import type { File } from '@/types/file.js';
+import type { I18nJson } from '@/types/i18n-json.js';
+import { importDataFactory } from '@/types/import-data-factory.js';
+import type { ImportDataFile } from '@/types/import-data-file.js';
+import type { ImportData } from '@/types/import-data.js';
+import type { ImportJsonRequest } from '@/types/import-json-request.js';
+import type { ImportProgressRequest } from '@/types/import-progress-request.js';
+import type { Project } from '@/types/project.js';
+import type { RequestConfig } from '@/types/request-config.js';
+import type { UploadSessionStatus } from '@/types/upload-session-status.js';
+import { delay } from '@/utils/delay.js';
+import { JsonUtils } from '@/utils/json-utils.js';
 
 export class ApiImport extends ApiBase {
   /**
