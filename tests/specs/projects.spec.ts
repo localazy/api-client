@@ -1,6 +1,7 @@
 import type { ApiClient, Project } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null';
 import { beforeEach, describe, expect, test } from 'vitest';
 
 describe('Projects', (): void => {
@@ -15,13 +16,15 @@ describe('Projects', (): void => {
   test('api.projects.list', async (): Promise<void> => {
     const projects: Project[] = await api.projects.list();
 
-    expect(projects[0].name).toBe('Test project');
+    const firstProject = assertNotNull(projects[0]);
+    expect(firstProject.name).toBe('Test project');
   });
 
   test('api.projects.list | organization and languages', async (): Promise<void> => {
     const projects: Project[] = await api.projects.list({ languages: true, organization: true });
 
-    expect(projects[0].name).toBe('Test project');
+    const firstProject = assertNotNull(projects[0]);
+    expect(firstProject.name).toBe('Test project');
   });
 
   test('api.projects.first', async (): Promise<void> => {

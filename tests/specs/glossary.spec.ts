@@ -8,6 +8,7 @@ import type {
 } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
@@ -25,8 +26,10 @@ describe('Glossary', (): void => {
   test('api.glossary.list', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
 
-    expect(records[0].term[0].term).toBe('Monitor');
-    expect(records[0].description).toBe(
+    const firstRecord = assertNotNull(records[0]);
+    const firstTerm = assertNotNull(firstRecord.term[0]);
+    expect(firstTerm.term).toBe('Monitor');
+    expect(firstRecord.description).toBe(
       'A screen used for displaying visual output from a computer.',
     );
   });
@@ -34,12 +37,14 @@ describe('Glossary', (): void => {
   test('api.glossary.find', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    const firstRecord = assertNotNull(records[0]);
     const record: GlossaryRecord = await api.glossary.find({
       project,
-      glossaryRecord: records[0].id,
+      glossaryRecord: firstRecord.id,
     });
 
-    expect(record.term[0].term).toBe('Monitor');
+    const firstTerm = assertNotNull(record.term[0]);
+    expect(firstTerm.term).toBe('Monitor');
     expect(record.description).toBe('A screen used for displaying visual output from a computer.');
     expect(spy).toHaveBeenCalledWith(
       'https://api.localazy.com/projects/_a0000000000000000001/glossary/_a0000000000000000001',
@@ -82,9 +87,10 @@ describe('Glossary', (): void => {
 
   test('api.glossary.update', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
+    const firstRecord = assertNotNull(records[0]);
     const request: GlossaryUpdateRequest = {
       project,
-      glossaryRecord: records[0],
+      glossaryRecord: firstRecord,
       description: 'Exceptional term description',
       caseSensitive: true,
       translateTerm: true,
@@ -109,7 +115,8 @@ describe('Glossary', (): void => {
 
   test('api.glossary.delete', async (): Promise<void> => {
     const records: GlossaryRecord[] = await api.glossary.list({ project });
-    const request: GlossaryDeleteRequest = { project, glossaryRecord: records[0] };
+    const firstRecord = assertNotNull(records[0]);
+    const request: GlossaryDeleteRequest = { project, glossaryRecord: firstRecord };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.glossary.delete(request);
 

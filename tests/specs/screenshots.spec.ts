@@ -10,6 +10,7 @@ import type {
 } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken, readImageFile } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
@@ -27,13 +28,15 @@ describe('Screenshots', (): void => {
   test('api.screenshots.list', async (): Promise<void> => {
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
 
-    expect(screenshots[0].comment).toBe('Hey! Nice screenshot.');
+    const firstScreenshot = assertNotNull(screenshots[0]);
+    expect(firstScreenshot.comment).toBe('Hey! Nice screenshot.');
   });
 
   test('api.screenshots.listTags', async (): Promise<void> => {
     const tags: ScreenshotTag[] = await api.screenshots.listTags({ project });
 
-    expect(tags[0]).toBe('Important example');
+    const firstTag = assertNotNull(tags[0]);
+    expect(firstTag).toBe('Important example');
   });
 
   test('api.screenshots.create', async (): Promise<void> => {
@@ -60,9 +63,10 @@ describe('Screenshots', (): void => {
   test('api.screenshots.updateImageData', async (): Promise<void> => {
     const encodedData: string = readImageFile('./tests/fixtures/screenshot.png', 'image/png');
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
+    const firstScreenshot = assertNotNull(screenshots[0]);
     const request: ScreenshotUpdateImageDataRequest = {
       project,
-      screenshot: screenshots[0],
+      screenshot: firstScreenshot,
       encodedData,
     };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
@@ -84,9 +88,10 @@ describe('Screenshots', (): void => {
 
   test('api.screenshots.update', async (): Promise<void> => {
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
+    const firstScreenshot = assertNotNull(screenshots[0]);
     const request: ScreenshotUpdateRequest = {
       project,
-      screenshot: screenshots[0],
+      screenshot: firstScreenshot,
       comment: 'Hey! Nice screenshot.',
       tags: ['blue'],
     };
@@ -109,7 +114,7 @@ describe('Screenshots', (): void => {
 
   test('api.screenshots.delete', async (): Promise<void> => {
     const screenshots: Screenshot[] = await api.screenshots.list({ project });
-    const request: ScreenshotDeleteRequest = { project, screenshot: screenshots[0] };
+    const request: ScreenshotDeleteRequest = { project, screenshot: assertNotNull(screenshots[0]) };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.screenshots.delete(request);
 

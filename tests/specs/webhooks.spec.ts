@@ -1,6 +1,7 @@
 import type { ApiClient, Project, Webhook, WebhooksSecret, WebhooksUpdateRequest } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getToken } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
 
@@ -18,7 +19,7 @@ describe('Webhooks', (): void => {
   test('api.webhooks.list', async (): Promise<void> => {
     const webhooks: Webhook[] = await api.webhooks.list({ project });
 
-    expect(webhooks[0].description).toBe('This is a test webhook');
+    expect(assertNotNull(webhooks[0]).description).toBe('This is a test webhook');
   });
 
   test('api.webhooks.update', async (): Promise<void> => {

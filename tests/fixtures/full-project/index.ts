@@ -10,6 +10,7 @@ import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json';
 import webhooks from '@tests/fixtures/full-project/webhooks.json';
 import webhooksSecret from '@tests/fixtures/full-project/webhooksSecret.json';
 import { fetchMock } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null';
 
 const baseUrl: string = 'https://api.localazy.com';
 
@@ -66,9 +67,10 @@ export const mockResponses = (): void => {
 
   // glossary
   fetchMock.get(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.glossary);
+  const firstGlossary = assertNotNull(serverResponses.glossary.glossaries[0]);
   fetchMock.get(
     `${baseUrl}/projects/_a0000000000000000001/glossary/_a0000000000000000001`,
-    serverResponses.glossary.glossaries[0],
+    firstGlossary,
   );
   fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/glossary`, serverResponses.resultPost);
   fetchMock.put(

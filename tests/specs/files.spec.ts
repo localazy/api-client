@@ -10,6 +10,7 @@ import type {
 import { Locales } from '@/main';
 import { fullProject } from '@tests/fixtures';
 import { getApiClient, getApiUrl, getToken } from '@tests/support';
+import { assertNotNull } from '@tests/support/assert-not-null';
 import type { Blob } from 'node:buffer';
 import type { MockInstance } from 'vitest';
 import { beforeEach, describe, expect, test, vi } from 'vitest';
@@ -29,8 +30,9 @@ describe('Files', (): void => {
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const files: File[] = await api.files.list({ project });
 
-    expect(files[0].name).toBe('en.json');
-    expect(files[0].type).toBe('json');
+    const firstFile = assertNotNull(files[0]);
+    expect(firstFile.name).toBe('en.json');
+    expect(firstFile.type).toBe('json');
     expect(spy).toHaveBeenCalledWith(`${getApiUrl()}/projects/_a0000000000000000001/files`, {
       headers: {
         Accept: 'application/json',
@@ -63,7 +65,8 @@ describe('Files', (): void => {
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     const keys: Key[] = await api.files.listKeys(request);
 
-    expect(keys[0].value).toBe('My Application');
+    const firstKey = assertNotNull(keys[0]);
+    expect(firstKey.value).toBe('My Application');
     expect(spy).toHaveBeenCalledWith(
       `${getApiUrl()}/projects/_a0000000000000000001/files/_e000000000001/keys/en?next=`,
       {
