@@ -1,3 +1,19 @@
+## 2.1.10 (2025-08-28)
+### 🔀 Pull Requests
+
+- [Update workflows, dependencies, and code structure for consistency #34](https://github.com/localazy/api-client/pull/34)
+
+### 🧰 Other Commits
+
+- **imports:** Use explicit `.js` extensions in all imports ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- **prettier:** Fix formatting across the codebase ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- **scripts:** introduce Node.js test matrix and update workflows ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- **tests:** Add `assertNotNull` utility for improved null handling ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- **types:** convert imports to `import type` where applicable ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- Update CI ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- update configurations for ESLint, Prettier, and TypeScript ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+- update dependencies ([8c41e56](https://github.com/localazy/api-client/commit/8c41e56)) ([#34](https://github.com/localazy/api-client/pull/34))
+
 ## 2.1.9 (2025-08-08)
 
 ### 🐛 Bug Fixes
