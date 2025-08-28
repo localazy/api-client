@@ -42,9 +42,7 @@
   "module": "./dist/localazy-api-client.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist/**/*",
-    "docs/**/*",
-    "README.md"
+    "dist"
   ],
   "scripts": {
     "build": "rimraf dist && npm run main-ts:build && vite build",
@@ -62,6 +60,7 @@
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
+    "test:matrix": "./scripts/node-test-matrix.sh",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
     "typecheck": "tsc --noEmit"
@@ -95,5 +94,8 @@
     "vite-plugin-dts": "^4.5.4",
     "vite-plugin-node-polyfills": "^0.24.0",
     "vitest": "^3.2.4"
+  },
+  "engines": {
+    "node": ">=20"
   }
 }
