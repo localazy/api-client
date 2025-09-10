@@ -1,6 +1,6 @@
 {
   "name": "@localazy/api-client",
-  "version": "2.1.10",
+  "version": "2.1.11",
   "description": "Official Node.js client for the Localazy API, providing a simple and type-safe way to integrate localization features into your JavaScript and TypeScript projects.",
   "keywords": [
     "Localazy",
