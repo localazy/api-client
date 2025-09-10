@@ -1,14 +1,14 @@
 <svg width="168" height="20" viewBox="0 0 1680 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="minzipped size: 19.94 kB">
   <title>minzipped size: 19.94 kB</title>
-  <linearGradient id="pzGPw" x2="0" y2="100%">
+  <linearGradient id="qoPlC" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="GYaGc"><rect width="1680" height="200" rx="30" fill="#FFF"/></mask>
-  <g mask="url(#GYaGc)">
+  <mask id="aaFEv"><rect width="1680" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#aaFEv)">
     <rect width="1081" height="200" fill="#555555"/>
     <rect width="599" height="200" fill="#43b816" x="1081"/>
-    <rect width="1680" height="200" fill="url(#pzGPw)"/>
+    <rect width="1680" height="200" fill="url(#qoPlC)"/>
   </g>
   <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="220" y="148" textLength="821" fill="#000" opacity="0.25">minzipped size</text>
