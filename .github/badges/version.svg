@@ -1,20 +1,20 @@
-<svg width="96.9" height="20" viewBox="0 0 969 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="npm: 2.1.11">
-  <title>npm: 2.1.11</title>
-  <linearGradient id="QSPuE" x2="0" y2="100%">
+<svg width="96.9" height="20" viewBox="0 0 969 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="npm: 2.1.12">
+  <title>npm: 2.1.12</title>
+  <linearGradient id="wkrrr" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="YxxOB"><rect width="969" height="200" rx="30" fill="#FFF"/></mask>
-  <g mask="url(#YxxOB)">
+  <mask id="hdTnY"><rect width="969" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#hdTnY)">
     <rect width="509" height="200" fill="#555555"/>
     <rect width="460" height="200" fill="#066fef" x="509"/>
-    <rect width="969" height="200" fill="url(#QSPuE)"/>
+    <rect width="969" height="200" fill="url(#wkrrr)"/>
   </g>
   <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="220" y="148" textLength="249" fill="#000" opacity="0.25">npm</text>
     <text x="210" y="138" textLength="249">npm</text>
-    <text x="564" y="148" textLength="360" fill="#000" opacity="0.25">2.1.11</text>
-    <text x="554" y="138" textLength="360">2.1.11</text>
+    <text x="564" y="148" textLength="360" fill="#000" opacity="0.25">2.1.12</text>
+    <text x="554" y="138" textLength="360">2.1.12</text>
   </g>
   <image x="40" y="35" width="130" height="130" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZD0iTTAgMGg0MHY0MEgwVjB6IiBmaWxsPSIjY2IwMDAwIi8+PHBhdGggZmlsbD0iI2ZmZiIgZD0iTTcgN2gyNnYyNmgtN1YxNGgtNnYxOUg3eiIvPjwvc3ZnPg=="/>
 </svg>

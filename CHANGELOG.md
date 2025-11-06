@@ -1,3 +1,12 @@
+## 2.1.12 (2025-11-06)
+### 🔀 Pull Requests
+
+- [update dependencies #38](https://github.com/localazy/api-client/pull/38)
+
+### 🧰 Other Commits
+
+- update dependencies ([7fbc4d4](https://github.com/localazy/api-client/commit/7fbc4d4)) ([#38](https://github.com/localazy/api-client/pull/38))
+
 ## 2.1.11 (2025-09-10)
 ### 🔀 Pull Requests
 
