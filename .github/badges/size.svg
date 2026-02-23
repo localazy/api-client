@@ -1,20 +1,20 @@
-<svg width="168" height="20" viewBox="0 0 1680 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="minzipped size: 19.88 kB">
-  <title>minzipped size: 19.88 kB</title>
-  <linearGradient id="ubycA" x2="0" y2="100%">
+<svg width="168" height="20" viewBox="0 0 1680 200" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" role="img" aria-label="minzipped size: 19.81 kB">
+  <title>minzipped size: 19.81 kB</title>
+  <linearGradient id="HCmbJ" x2="0" y2="100%">
     <stop offset="0" stop-opacity=".1" stop-color="#EEE"/>
     <stop offset="1" stop-opacity=".1"/>
   </linearGradient>
-  <mask id="fptMR"><rect width="1680" height="200" rx="30" fill="#FFF"/></mask>
-  <g mask="url(#fptMR)">
+  <mask id="vEgvo"><rect width="1680" height="200" rx="30" fill="#FFF"/></mask>
+  <g mask="url(#vEgvo)">
     <rect width="1081" height="200" fill="#555555"/>
     <rect width="599" height="200" fill="#43b816" x="1081"/>
-    <rect width="1680" height="200" fill="url(#ubycA)"/>
+    <rect width="1680" height="200" fill="url(#HCmbJ)"/>
   </g>
   <g aria-hidden="true" fill="#fff" text-anchor="start" font-family="Verdana,DejaVu Sans,sans-serif" font-size="110">
     <text x="220" y="148" textLength="821" fill="#000" opacity="0.25">minzipped size</text>
     <text x="210" y="138" textLength="821">minzipped size</text>
-    <text x="1136" y="148" textLength="499" fill="#000" opacity="0.25">19.88 kB</text>
-    <text x="1126" y="138" textLength="499">19.88 kB</text>
+    <text x="1136" y="148" textLength="499" fill="#000" opacity="0.25">19.81 kB</text>
+    <text x="1126" y="138" textLength="499">19.81 kB</text>
   </g>
   <image x="40" y="35" width="130" height="130" xlink:href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjEgMSAyMiAyMiIgZmlsbD0iIzQzYjgxNiI+PHBhdGggZD0iTTE5LjQ2IDEwYTEgMSAwIDAgMC0uMDcgMSA3LjU1IDcuNTUgMCAwIDEgLjUyIDEuODEgOCA4IDAgMCAxLS42OSA0LjczIDEgMSAwIDAgMS0uODkuNTNINS42OGExIDEgMCAwIDEtLjg5LS41NEE4IDggMCAwIDEgMTMgNi4wNmE3LjY5IDcuNjkgMCAwIDEgMi4xMS41NiAxIDEgMCAwIDAgMS0uMDcgMSAxIDAgMCAwLS4xNy0xLjc2QTEwIDEwIDAgMCAwIDMuMzUgMTlhMiAyIDAgMCAwIDEuNzIgMWgxMy44NWEyIDIgMCAwIDAgMS43NC0xIDEwIDEwIDAgMCAwIC41NS04Ljg5IDEgMSAwIDAgMC0xLjc1LS4xMSIgLz48cGF0aCBkPSJNMTAuNTkgMTIuNTlhMiAyIDAgMCAwIDIuODMgMi44M2w1LjY2LTguNDl6IiAvPjwvc3ZnPg=="/>
 </svg>
