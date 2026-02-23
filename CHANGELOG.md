@@ -1,3 +1,12 @@
+## 2.1.14 (2026-02-23)
+### 🔀 Pull Requests
+
+- [Fix unplugin-dts as prod dep #42](https://github.com/localazy/api-client/pull/42)
+
+### 🐛 Bug Fixes
+
+- Fix unplugin-dts as prod dep ([46b57f1](https://github.com/localazy/api-client/commit/46b57f1)) ([#42](https://github.com/localazy/api-client/pull/42))
+
 ## 2.1.13 (2026-02-23)
 ### 🔀 Pull Requests
 
