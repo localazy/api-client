@@ -25,13 +25,16 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run Prettier
-        run: npm run prettier
+      - name: Run Format
+        if: matrix.node == 22
+        run: npm run format
 
       - name: Lint source files
+        if: matrix.node == 22
         run: npm run lint
 
       - name: Check types
+        if: matrix.node == 22
         run: npm run typecheck
 
       - name: Build package

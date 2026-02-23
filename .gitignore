@@ -141,3 +141,6 @@ typedoc
 
 # Husky hooks
 .husky/_/
+
+# Models
+.claude/

@@ -1,3 +1,4 @@
+import { ApiAi } from '@/api/methods/api-ai.js';
 import { ApiExport } from '@/api/methods/api-export.js';
 import { ApiFiles } from '@/api/methods/api-files.js';
 import { ApiFormats } from '@/api/methods/api-formats.js';
@@ -13,6 +14,8 @@ import type { ApiClientOptions } from '@/types/api-client-options.js';
 
 export class ApiClient {
   public client: IHttpAdapter;
+
+  public ai: ApiAi;
 
   public projects: ApiProjects;
 
@@ -35,6 +38,7 @@ export class ApiClient {
   constructor(options: ApiClientOptions) {
     this.client = new FetchHttpAdapter(options);
 
+    this.ai = new ApiAi(this);
     this.projects = new ApiProjects(this);
     this.import = new ApiImport(this);
     this.export = new ApiExport(this);

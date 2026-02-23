@@ -1,0 +1,15 @@
+{
+  "result": true,
+  "items": [
+    {
+      "key": "btn_submit",
+      "source": "Submit",
+      "translation": "Odeslat"
+    },
+    {
+      "key": "welcome_message",
+      "source": "Welcome back, %s!",
+      "translation": "Vítejte zpět, %s!"
+    }
+  ]
+}

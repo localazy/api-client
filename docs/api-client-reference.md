@@ -3,6 +3,8 @@
 ## Table of Contents
 
 - [Setup](#setup)
+- [AI Translation](#ai-translation)
+  - [ai.translate](#aitranslaterequest-config)
 - [Projects](#projects)
   - [projects.list](#projectslistrequest-config)
   - [projects.first](#projectsfirstrequest-config)
@@ -55,6 +57,82 @@ Create a new instance of ApiClient and pass in your project token.
 import { ApiClient } from '@localazy/api-client';
 
 const api = new ApiClient({ authToken: 'project-token' });
+```
+
+## AI Translation
+
+### ai.translate(request[, config])
+
+Translate provided items from the source language to the target language using Localazy AI and considering the provided context, project-defined style guide and glossary. Each translation request consumes Localazy credits from your account.
+
+> This endpoint is only available with the Owner's token or a Translation Token.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/ai-translation#translate)
+
+| Arguments         | Type                                                         |
+| ----------------- | ------------------------------------------------------------ |
+| request           | [`AiTranslateRequest`](../src/types/ai-translate-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)            |
+
+| Returns                        | Type                                                           |
+| ------------------------------ | :------------------------------------------------------------- |
+| `Promise<AiTranslateResponse>` | [`AiTranslateResponse`](../src/types/ai-translate-response.ts) |
+
+Simple strings:
+
+```javascript
+const response = await api.ai.translate({
+  project: 'project-id', // or Project object
+  from: 'en',
+  to: 'cs',
+  items: [
+    {
+      key: 'btn_submit',
+      source: 'Submit',
+      comment: 'Button label for form submission',
+    },
+    {
+      key: 'welcome_message',
+      source: 'Welcome back, %s!',
+      lengthLimit: 50,
+    },
+  ],
+});
+```
+
+Plural forms:
+
+```javascript
+const response = await api.ai.translate({
+  project: 'project-id', // or Project object
+  from: 'en',
+  to: 'cs',
+  items: [
+    {
+      key: 'item_count',
+      source: {
+        one: '%d item',
+        other: '%d items',
+      },
+    },
+  ],
+});
+```
+
+With fallback engine:
+
+```javascript
+const response = await api.ai.translate({
+  project: 'project-id', // or Project object
+  from: 'en',
+  to: 'de',
+  fallback: 'deepl',
+  items: [
+    {
+      source: 'Hello, world!',
+    },
+  ],
+});
 ```
 
 ## Projects

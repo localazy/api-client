@@ -29,7 +29,6 @@ export class ApiExport extends ApiBase {
   protected static mapLanguages(languages: `${Locales}`[], result: Key[][]) {
     return languages.map((lang: `${Locales}`, index: number) => [
       lang,
-      // @ts-expect-error TODO check possible undefined
       ApiExport.mapResult(result[index]),
     ]);
   }

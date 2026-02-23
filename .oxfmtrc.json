@@ -1,0 +1,23 @@
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "ignorePatterns": ["**/CHANGELOG.md", "**/.env*", "**/src/main.ts"],
+  "printWidth": 100,
+  "singleQuote": true,
+  "jsxSingleQuote": true,
+  "htmlWhitespaceSensitivity": "ignore",
+  "singleAttributePerLine": true,
+  //  "experimentalSortImports": {
+  //    "groups": [
+  //      ["side-effect"],
+  //      ["builtin"],
+  //      ["external", "type-external"],
+  //      ["internal", "type-internal"],
+  //      ["parent", "type-parent"],
+  //      ["sibling", "type-sibling"],
+  //      ["index", "type-index"]
+  //    ]
+  //  },
+  "experimentalSortPackageJson": {
+    "sortScripts": true
+  }
+}
