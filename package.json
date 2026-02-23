@@ -14,13 +14,21 @@
   "bugs": {
     "url": "https://github.com/localazy/api-client/issues"
   },
+  "license": "MIT",
+  "author": "Localazy <team@localazy.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/localazy/api-client"
   },
-  "license": "MIT",
-  "author": "Localazy <team@localazy.com>",
+  "files": [
+    "dist"
+  ],
   "type": "module",
+  "main": "./dist/node/localazy-api-client.cjs",
+  "module": "./dist/localazy-api-client.js",
+  "types": "./dist/index.d.ts",
+  "unpkg": "./dist/browser/localazy-api-client.umd.min.js",
+  "jsdelivr": "./dist/browser/localazy-api-client.umd.min.js",
   "exports": {
     ".": {
       "types": {
@@ -36,63 +44,54 @@
       }
     }
   },
-  "main": "./dist/node/localazy-api-client.cjs",
-  "jsdelivr": "./dist/browser/localazy-api-client.umd.min.js",
-  "unpkg": "./dist/browser/localazy-api-client.umd.min.js",
-  "module": "./dist/localazy-api-client.js",
-  "types": "./dist/index.d.ts",
-  "files": [
-    "dist"
-  ],
   "scripts": {
     "build": "rimraf dist && npm run main-ts:build && vite build",
     "bundle:visualize": "vite-bundle-visualizer",
-    "check": "npm run prettier && npm run lint && npm run typecheck && npm run build && npm run test:coverage",
-    "check:fix": "npm run prettier:fix && npm run lint:fix",
+    "check": "npm run format && npm run lint && npm run typecheck && npm run build && npm run test:coverage",
+    "check:fix": "npm run format:fix && npm run lint:fix",
     "dev": "vite & npm run main-ts:watch",
-    "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
+    "format": "pnpm oxfmt --check",
+    "format:fix": "pnpm oxfmt",
+    "lint": "pnpm oxlint --type-aware",
+    "lint:fix": "pnpm oxlint --type-aware --fix",
     "main-ts:build": "reexport src/main.ts",
     "main-ts:watch": "reexport --watch src/main.ts",
     "prepare": "husky",
-    "prettier": "prettier --check .",
-    "prettier:fix": "prettier --write .",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
     "test:debug": "vitest --inspect-brk --no-file-parallelism",
     "test:matrix": "./scripts/node-test-matrix.sh",
     "test:ui": "vitest --ui",
     "test:watch": "vitest",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --build"
   },
-  "prettier": "@localazy/prettier-config",
   "dependencies": {
     "@localazy/languages": "^0.1.11",
-    "lodash-es": "^4.17.23"
+    "lodash-es": "^4.17.23",
+    "unplugin-dts": "^1.0.0-beta.6"
   },
   "devDependencies": {
-    "@localazy/eslint-config": "^1.3.0",
-    "@localazy/prettier-config": "^1.2.0",
-    "@localazy/tsconfig": "^1.1.1",
+    "@microsoft/api-extractor": "^7.43.7",
     "@rollup/plugin-terser": "^0.4.4",
+    "@tsconfig/node22": "^22.0.5",
     "@types/isomorphic-fetch": "^0.0.39",
     "@types/lodash-es": "^4.17.9",
     "@types/node": "^22.19.11",
     "@vitest/coverage-v8": "^4.0.18",
     "@vitest/ui": "^4.0.18",
-    "eslint": "^9.39.3",
     "fetch-mock": "^12.6.0",
     "husky": "^9.1.7",
     "isomorphic-fetch": "^3.0.0",
-    "prettier": "^3.8.1",
+    "oxfmt": "^0.35.0",
+    "oxlint": "^1.38.0",
+    "oxlint-tsgolint": "^0.14.2",
     "reexport": "^1.4.1",
     "rimraf": "^6.1.3",
     "typescript": "^5.9.3",
     "unplugin-replace": "^0.6.3",
     "vite": "^7.3.1",
     "vite-bundle-visualizer": "^1.2.1",
-    "vite-plugin-dts": "^4.5.4",
-    "vite-plugin-node-polyfills": "^0.24.0",
+    "vite-plugin-node-polyfills": "^0.2.0",
     "vitest": "^4.0.18"
   },
   "engines": {

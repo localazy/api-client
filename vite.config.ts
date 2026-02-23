@@ -2,9 +2,9 @@ import terser from '@rollup/plugin-terser';
 import { resolve } from 'node:path';
 import Replace from 'unplugin-replace/vite';
 import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import dts from 'unplugin-dts/vite';
 // eslint-disable-next-line no-relative-import-paths/no-relative-import-paths
-import pkg from './package.json';
+import pkg from './package.json' with { type: 'json' };
 
 const banner: string = `/* ${pkg.name}@${pkg.version}
  * (c) ${new Date().getFullYear().toString()} ${pkg.author}
@@ -43,6 +43,7 @@ export default defineConfig({
           format: 'esm',
           entryFileNames: 'localazy-api-client.min.js',
           banner,
+          // @ts-expect-error old plugin
           plugins: [terser()],
         },
         // Browser UMD + JS CDNs
@@ -53,16 +54,17 @@ export default defineConfig({
           banner,
           name: 'LocalazyCDN',
           esModule: false,
+          // @ts-expect-error old plugin
           plugins: [terser()],
         },
       ],
 
-      external: [...Object.keys(pkg.devDependencies || {})],
+      external: Object.keys(pkg.devDependencies || {}),
     },
   },
 
   plugins: [
-    dts({ rollupTypes: true }),
+    dts({ tsconfigPath: 'tsconfig.lib.json', bundleTypes: true }),
 
     Replace({
       values: {
