@@ -1,3 +1,5 @@
+import aiTranslate from '@tests/fixtures/full-project/aiTranslate.json';
+import aiTranslatePlurals from '@tests/fixtures/full-project/aiTranslatePlurals.json';
 import fileDownload from '@tests/fixtures/full-project/fileDownload.json';
 import fileKeys from '@tests/fixtures/full-project/fileKeys.json';
 import files from '@tests/fixtures/full-project/files.json';
@@ -15,6 +17,8 @@ import { fetchMock } from '@tests/support/index.js';
 const baseUrl: string = 'https://api.localazy.com';
 
 export const serverResponses = {
+  aiTranslate,
+  aiTranslatePlurals,
   formats,
   projects,
   projectsOrgsLangs,
@@ -54,6 +58,9 @@ export const serverResponses = {
 export const mockResponses = (): void => {
   fetchMock.hardReset();
   fetchMock.mockGlobal();
+
+  // ai translate
+  fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/ai`, serverResponses.aiTranslate);
 
   // formats
   fetchMock.get(`${baseUrl}/import/formats`, serverResponses.formats);

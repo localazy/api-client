@@ -1,0 +1,17 @@
+{
+  "result": true,
+  "items": [
+    {
+      "key": "item_count",
+      "source": {
+        "one": "%d item",
+        "other": "%d items"
+      },
+      "translation": {
+        "one": "%d položka",
+        "few": "%d položky",
+        "other": "%d položek"
+      }
+    }
+  ]
+}

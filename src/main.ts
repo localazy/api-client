@@ -14,6 +14,7 @@
 
 // @reexport ./**/*!(.d).ts:export * from '@/$TS_PATH.js';
 export * from '@/api/api-client.js';
+export * from '@/api/methods/api-ai.js';
 export * from '@/api/methods/api-base.js';
 export * from '@/api/methods/api-export.js';
 export * from '@/api/methods/api-files.js';
@@ -32,6 +33,10 @@ export * from '@/enums/user-role.js';
 export * from '@/enums/webhook-event.js';
 export * from '@/http/fetch-http-adapter.js';
 export * from '@/http/i-http-adapter.js';
+export * from '@/types/ai-translate-item.js';
+export * from '@/types/ai-translate-request.js';
+export * from '@/types/ai-translate-response-item.js';
+export * from '@/types/ai-translate-response.js';
 export * from '@/types/api-client-options.js';
 export * from '@/types/export-json-request.js';
 export * from '@/types/file-get-contents-request.js';
