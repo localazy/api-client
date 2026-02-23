@@ -1,3 +1,18 @@
+## 2.1.13 (2026-02-23)
+### 🔀 Pull Requests
+
+- [Add AI translations #40](https://github.com/localazy/api-client/pull/40)
+
+### ✨ Features
+
+- Add support for AI translate ([96d5dae](https://github.com/localazy/api-client/commit/96d5dae)) ([#40](https://github.com/localazy/api-client/pull/40))
+
+### 🧰 Other Commits
+
+- Fix workflow ([96d5dae](https://github.com/localazy/api-client/commit/96d5dae)) ([#40](https://github.com/localazy/api-client/pull/40))
+- Update deps ([96d5dae](https://github.com/localazy/api-client/commit/96d5dae)) ([#40](https://github.com/localazy/api-client/pull/40))
+- Update deps and migrate to oxlint a oxfmt ([96d5dae](https://github.com/localazy/api-client/commit/96d5dae)) ([#40](https://github.com/localazy/api-client/pull/40))
+
 ## 2.1.12 (2025-11-06)
 ### 🔀 Pull Requests
 
