@@ -3,6 +3,7 @@ import type {
   File,
   FileGetContentsRequest,
   FileListKeysRequest,
+  FileListKeysSinceEventResult,
   Key,
   KeysPaginated,
   Project,
@@ -100,6 +101,47 @@ describe('Files', (): void => {
     } while (pageResult.next);
 
     expect(keys.length).toBe(7);
+  });
+
+  test('api.files.listKeysSinceEvent returns all keys and maxEvent when sinceEvent is null', async (): Promise<void> => {
+    const file: File = await api.files.first({ project });
+    const result: FileListKeysSinceEventResult = await api.files.listKeysSinceEvent({
+      project,
+      file,
+      lang: Locales.ENGLISH,
+      sinceEvent: null,
+    });
+
+    expect(result.keys.length).toBe(4);
+    expect(result.maxEvent).toBe(300);
+  });
+
+  test('api.files.listKeysSinceEvent filters keys by sinceEvent', async (): Promise<void> => {
+    const file: File = await api.files.first({ project });
+    const result: FileListKeysSinceEventResult = await api.files.listKeysSinceEvent({
+      project,
+      file,
+      lang: Locales.ENGLISH,
+      sinceEvent: 100,
+    });
+
+    // Keys with event 200 and 300 (3 keys), excludes event 100
+    expect(result.keys.length).toBe(3);
+    expect(result.maxEvent).toBe(300);
+    expect(result.keys.every((k) => (k.event ?? 0) > 100)).toBe(true);
+  });
+
+  test('api.files.listKeysSinceEvent returns empty keys when sinceEvent >= maxEvent', async (): Promise<void> => {
+    const file: File = await api.files.first({ project });
+    const result: FileListKeysSinceEventResult = await api.files.listKeysSinceEvent({
+      project,
+      file,
+      lang: Locales.ENGLISH,
+      sinceEvent: 300,
+    });
+
+    expect(result.keys.length).toBe(0);
+    expect(result.maxEvent).toBe(300);
   });
 
   test('api.files.getContents', async (): Promise<void> => {

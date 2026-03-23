@@ -1,8 +1,9 @@
 import type { File } from '@/types/file.js';
+import type { Key } from '@/types/key.js';
 import type { Project } from '@/types/project.js';
 import type { Locales } from '@localazy/languages';
 
-export type FileListKeysRequest = {
+export type FileListKeysSinceEventRequest = {
   /**
    * Project object or Project ID.
    */
@@ -19,19 +20,15 @@ export type FileListKeysRequest = {
   lang: `${Locales}`;
 
   /**
+   * Only return keys with event number greater than this value.
+   * Pass null or omit to return all keys.
+   */
+  sinceEvent?: number | null;
+
+  /**
    * Returns also deprecated keys.
    */
   deprecated?: boolean;
-
-  /**
-   * Number of keys to be returned in a single call (max 1000). Default 1000.
-   */
-  limit?: number;
-
-  /**
-   * Used for paging long lists.
-   */
-  next?: string;
 
   /**
    * Receive additional info such as translation note, whether it's hidden etc.
@@ -42,10 +39,17 @@ export type FileListKeysRequest = {
    * Receive also metadata for the key.
    */
   metadata?: boolean;
+};
+
+export type FileListKeysSinceEventResult = {
+  /**
+   * The filtered keys (only those with event > sinceEvent, or all if sinceEvent is null).
+   */
+  keys: Key[];
 
   /**
-   * When true, the response includes an `event` number on each key
-   * representing the last modification event. Used for incremental sync.
+   * The maximum event number found across all returned keys (before filtering).
+   * Null if no keys were returned.
    */
-  event?: boolean;
+  maxEvent: number | null;
 };

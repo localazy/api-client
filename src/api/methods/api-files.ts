@@ -1,6 +1,10 @@
 import { ApiBase } from '@/api/methods/api-base.js';
 import type { FileGetContentsRequest } from '@/types/file-get-contents-request.js';
 import type { FileListKeysRequest } from '@/types/file-list-keys-request.js';
+import type {
+  FileListKeysSinceEventRequest,
+  FileListKeysSinceEventResult,
+} from '@/types/file-list-keys-since-event-request.js';
 import type { File } from '@/types/file.js';
 import type { FilesListRequest } from '@/types/files-list-request.js';
 import type { Key } from '@/types/key.js';
@@ -88,6 +92,36 @@ export class ApiFiles extends ApiBase {
       ...config,
       params,
     })) as KeysPaginated;
+  }
+
+  /**
+   * List {@link Key  keys} for the language in the {@link File  file} with event-based filtering.
+   * Fetches all keys with `event=true`, computes the maximum event number, and optionally
+   * filters to only keys changed since a given event cursor.
+   *
+   * This method is designed for incremental sync: pass `sinceEvent` from a previous sync
+   * to receive only keys that have changed since then.
+   *
+   * @param request File list keys since event request config.
+   * @param config Request config.
+   * @returns An object containing the filtered keys and the maximum event number.
+   */
+  public async listKeysSinceEvent(
+    request: FileListKeysSinceEventRequest,
+    config?: RequestConfig,
+  ): Promise<FileListKeysSinceEventResult> {
+    const { sinceEvent, ...rest } = request;
+    const allKeys: Key[] = await this.listKeys({ ...rest, event: true }, config);
+
+    const maxEvent: number | null =
+      allKeys.length > 0 ? allKeys.reduce((max, key) => Math.max(max, key.event ?? 0), 0) : null;
+
+    const keys: Key[] =
+      sinceEvent !== null && sinceEvent !== undefined
+        ? allKeys.filter((key) => (key.event ?? 0) > sinceEvent)
+        : allKeys;
+
+    return { keys, maxEvent };
   }
 
   /**
