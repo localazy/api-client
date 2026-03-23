@@ -2,6 +2,7 @@ import aiTranslate from '@tests/fixtures/full-project/aiTranslate.json';
 import aiTranslatePlurals from '@tests/fixtures/full-project/aiTranslatePlurals.json';
 import fileDownload from '@tests/fixtures/full-project/fileDownload.json';
 import fileKeys from '@tests/fixtures/full-project/fileKeys.json';
+import fileKeysWithEvents from '@tests/fixtures/full-project/fileKeysWithEvents.json';
 import files from '@tests/fixtures/full-project/files.json';
 import formats from '@tests/fixtures/full-project/formats.json';
 import glossary from '@tests/fixtures/full-project/glossary.json';
@@ -25,6 +26,7 @@ export const serverResponses = {
   glossary,
   files,
   fileKeys,
+  fileKeysWithEvents,
   fileDownload,
   screenshots,
   screenshotTags,
@@ -104,6 +106,10 @@ export const mockResponses = (): void => {
   fetchMock.get(
     `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en?next=`,
     serverResponses.fileKeys,
+  );
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/files/_e000000000001/keys/en?event=true&next=`,
+    serverResponses.fileKeysWithEvents,
   );
   fetchMock.put(
     `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001`,

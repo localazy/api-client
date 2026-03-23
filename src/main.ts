@@ -41,6 +41,7 @@ export * from '@/types/api-client-options.js';
 export * from '@/types/export-json-request.js';
 export * from '@/types/file-get-contents-request.js';
 export * from '@/types/file-list-keys-request.js';
+export * from '@/types/file-list-keys-since-event-request.js';
 export * from '@/types/file.js';
 export * from '@/types/files-list-request.js';
 export * from '@/types/format-array-meta.js';

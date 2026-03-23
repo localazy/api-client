@@ -36,4 +36,10 @@ export type Key = {
    * Only available when extra_info=true.
    */
   limit?: number;
+
+  /**
+   * Event number representing the last modification event for this key.
+   * Only available when event=true in the request.
+   */
+  event?: number;
 };
