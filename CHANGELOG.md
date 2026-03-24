@@ -1,3 +1,14 @@
+## 2.1.17 (2026-03-24)
+### 🔀 Pull Requests
+
+- [Resolve lint errors blocking release #49](https://github.com/localazy/api-client/pull/49)
+- [Handle negative Kotlin Long event values in listKeysSinceEvent #48](https://github.com/localazy/api-client/pull/48)
+
+### 🐛 Bug Fixes
+
+- Resolve lint errors blocking release ([a7982de](https://github.com/localazy/api-client/commit/a7982de)) ([#49](https://github.com/localazy/api-client/pull/49))
+- Handle negative Kotlin Long event values in listKeysSinceEvent ([42d1d12](https://github.com/localazy/api-client/commit/42d1d12)) ([#48](https://github.com/localazy/api-client/pull/48))
+
 ## 2.1.16 (2026-03-23)
 
 ## 2.1.15 (2026-03-09)
