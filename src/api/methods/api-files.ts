@@ -113,12 +113,17 @@ export class ApiFiles extends ApiBase {
     const { sinceEvent, ...rest } = request;
     const allKeys: Key[] = await this.listKeys({ ...rest, event: true }, config);
 
+    const keysWithEvent = allKeys.filter((key) => key.event !== undefined && key.event !== null);
     const maxEvent: number | null =
-      allKeys.length > 0 ? allKeys.reduce((max, key) => Math.max(max, key.event ?? 0), 0) : null;
+      keysWithEvent.length > 0
+        ? keysWithEvent.reduce((max, key) => Math.max(max, key.event!), -Infinity)
+        : null;
 
     const keys: Key[] =
       sinceEvent !== null && sinceEvent !== undefined
-        ? allKeys.filter((key) => (key.event ?? 0) > sinceEvent)
+        ? allKeys.filter(
+            (key) => key.event !== undefined && key.event !== null && key.event > sinceEvent,
+          )
         : allKeys;
 
     return { keys, maxEvent };

@@ -113,7 +113,7 @@ describe('Files', (): void => {
     });
 
     expect(result.keys.length).toBe(4);
-    expect(result.maxEvent).toBe(300);
+    expect(result.maxEvent).toBe(-6585819442721180000);
   });
 
   test('api.files.listKeysSinceEvent filters keys by sinceEvent', async (): Promise<void> => {
@@ -122,13 +122,13 @@ describe('Files', (): void => {
       project,
       file,
       lang: Locales.ENGLISH,
-      sinceEvent: 100,
+      sinceEvent: -6585819442721198000,
     });
 
-    // Keys with event 200 and 300 (3 keys), excludes event 100
+    // Keys with event > -6585819442721198000 (3 keys), excludes the oldest
     expect(result.keys.length).toBe(3);
-    expect(result.maxEvent).toBe(300);
-    expect(result.keys.every((k) => (k.event ?? 0) > 100)).toBe(true);
+    expect(result.maxEvent).toBe(-6585819442721180000);
+    expect(result.keys.every((k) => k.event! > -6585819442721198000)).toBe(true);
   });
 
   test('api.files.listKeysSinceEvent returns empty keys when sinceEvent >= maxEvent', async (): Promise<void> => {
@@ -137,11 +137,11 @@ describe('Files', (): void => {
       project,
       file,
       lang: Locales.ENGLISH,
-      sinceEvent: 300,
+      sinceEvent: -6585819442721180000,
     });
 
     expect(result.keys.length).toBe(0);
-    expect(result.maxEvent).toBe(300);
+    expect(result.maxEvent).toBe(-6585819442721180000);
   });
 
   test('api.files.getContents', async (): Promise<void> => {
