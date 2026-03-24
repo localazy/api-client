@@ -116,7 +116,7 @@ export class ApiFiles extends ApiBase {
     const keysWithEvent = allKeys.filter((key) => key.event !== undefined && key.event !== null);
     const maxEvent: number | null =
       keysWithEvent.length > 0
-        ? keysWithEvent.reduce((max, key) => Math.max(max, key.event!), -Infinity)
+        ? keysWithEvent.reduce((max, key) => Math.max(max, key.event ?? -Infinity), -Infinity)
         : null;
 
     const keys: Key[] =

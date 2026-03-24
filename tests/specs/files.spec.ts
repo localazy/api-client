@@ -128,7 +128,7 @@ describe('Files', (): void => {
     // Keys with event > -6585819442721198000 (3 keys), excludes the oldest
     expect(result.keys.length).toBe(3);
     expect(result.maxEvent).toBe(-6585819442721180000);
-    expect(result.keys.every((k) => k.event! > -6585819442721198000)).toBe(true);
+    expect(result.keys.every((k) => (k.event ?? 0) > -6585819442721198000)).toBe(true);
   });
 
   test('api.files.listKeysSinceEvent returns empty keys when sinceEvent >= maxEvent', async (): Promise<void> => {
