@@ -11,7 +11,7 @@ describe('Errors', (): void => {
 
     await expect(async (): Promise<void> => {
       await api.keys.update({ project, key: 'unknown-key-id', comment: 'Key comment' });
-    }).rejects.toThrowError('Request failed with status code 400: invalid_id');
+    }).rejects.toThrow('Request failed with status code 400: invalid_id');
   });
 
   test('Update key with random id', async (): Promise<void> => {
@@ -21,7 +21,7 @@ describe('Errors', (): void => {
 
     await expect(async (): Promise<void> => {
       await api.keys.update({ project, key: '_a1111111111111111111', comment: 'Key comment' });
-    }).rejects.toThrowError('Request failed with status code 401: unauthorized');
+    }).rejects.toThrow('Request failed with status code 401: unauthorized');
   });
 
   test('Get first file in empty project', async (): Promise<void> => {
