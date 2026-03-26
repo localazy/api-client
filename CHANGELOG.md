@@ -1,3 +1,12 @@
+## 2.1.18 (2026-03-26)
+### 🔀 Pull Requests
+
+- [preserve @meta: keys during JSON chunking #51](https://github.com/localazy/api-client/pull/51)
+
+### 🐛 Bug Fixes
+
+- **import:** preserve @meta: keys during JSON chunking ([624378b](https://github.com/localazy/api-client/commit/624378b)) ([#51](https://github.com/localazy/api-client/pull/51))
+
 ## 2.1.17 (2026-03-24)
 ### 🔀 Pull Requests
 
