@@ -40,7 +40,7 @@ export class JsonUtils {
    */
   protected static sliceByValue(json: Json, keys: string[] = []): Json[] {
     return Object.entries(json).reduce((prev: Json[], [key, value]: [string, Json]) => {
-      if (isPlainObject(value)) {
+      if (isPlainObject(value) && !key.startsWith('@meta:')) {
         prev.push(...JsonUtils.sliceByValue(value, [...keys, key]));
       } else if (keys.length > 1) {
         prev.push(setWith({}, [...keys, key].join('.'), value, Object));
