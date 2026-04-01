@@ -1,3 +1,12 @@
+## 2.1.19 (2026-04-01)
+### 🔀 Pull Requests
+
+- [Update deps #53](https://github.com/localazy/api-client/pull/53)
+
+### 🧰 Other Commits
+
+- Update deps ([a04eebf](https://github.com/localazy/api-client/commit/a04eebf)) ([#53](https://github.com/localazy/api-client/pull/53))
+
 ## 2.1.18 (2026-03-26)
 ### 🔀 Pull Requests
 
