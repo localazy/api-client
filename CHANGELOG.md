@@ -1,3 +1,18 @@
+# Changelog
+
+## 2.1.20 (2026-04-14)
+
+### 🔀 Merged Pull Requests
+- 🔧 chore: Fix release command paths [#56](https://github.com/localazy/api-client/pull/56)
+- 🔧 chore: Update deps, migrate to pnpm [#55](https://github.com/localazy/api-client/pull/55)
+
+### 🧰 Other Commits
+- Fix release command paths (*[ad9a0a0](https://github.com/localazy/api-client/commit/ad9a0a00ae324c0d9fe1701e589ce6bec48a49dc)*) (*[#56](https://github.com/localazy/api-client/pull/56)*)
+- Update deps, migrate to pnpm (*[8e8f6ec](https://github.com/localazy/api-client/commit/8e8f6ec500b9a4ab9c4ae1d9a74a7db607ee308b)*) (*[#55](https://github.com/localazy/api-client/pull/55)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.1.19 (2026-04-01)
 ### 🔀 Pull Requests
 
