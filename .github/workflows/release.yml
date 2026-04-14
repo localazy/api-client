@@ -25,7 +25,7 @@ jobs:
         id: auth
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.AUTH_APP_ID }}
+          client-id: ${{ secrets.AUTH_APP_ID }}
           private-key: ${{ secrets.AUTH_APP_KEY }}
 
       - name: Clean pnpm setup cache
@@ -44,7 +44,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run release script
-        run: pnpx @localazy/workflow-scripts create-release-pr .
+        run: pnpx @localazy/workflow-scripts create-release-pr
         env:
           GITHUB_TOKEN: ${{ steps.auth.outputs.token }}
 
@@ -60,7 +60,7 @@ jobs:
         id: auth
         uses: actions/create-github-app-token@v3
         with:
-          app-id: ${{ secrets.AUTH_APP_ID }}
+          client-id: ${{ secrets.AUTH_APP_ID }}
           private-key: ${{ secrets.AUTH_APP_KEY }}
 
       - name: Checkout repository
@@ -102,12 +102,10 @@ jobs:
       - name: Create and push git tag
         id: git-tag
         run: |
-          NAME=$(node -p "require('./package.json').name")
           VERSION=$(node -p "require('./package.json').version")
-          TAG="${NAME}@${VERSION}"
-          git tag "${TAG}"
-          git push origin "${TAG}"
-          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          git tag "${VERSION}"
+          git push origin "${VERSION}"
+          echo "tag=${VERSION}" >> "$GITHUB_OUTPUT"
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
