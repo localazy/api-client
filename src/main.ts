@@ -3,10 +3,10 @@
  * EXPORTS ARE AUTO-GENERATED BASED ON INSTRUCTIONS IN `@reexport` COMMENTS.
  *
  * Use these scripts:
- * - npm run main-ts:build
- * - npm run main-ts:watch
+ * - pnpm run main-ts:build
+ * - pnpm run main-ts:watch
  *
- * Please note that `npm run dev` script already contains `run main-ts:watch`.
+ * Please note that `pnpm run dev` script already contains `run main-ts:watch`.
  *
  * Available variables for reexport configuration:
  * https://github.com/ViliamKopecky/reexport#available-variables

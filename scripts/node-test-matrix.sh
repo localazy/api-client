@@ -27,17 +27,16 @@ if ! command -v nvm > /dev/null 2>&1; then
 fi
 
 NODE_MATRIX=("20" "22" "24")
-PM="npm"
 
 echo "=== Test matrix - Node 20, 22 and 24 ==="
 for v in "${NODE_MATRIX[@]}"; do
   echo -e "\n--- Node $v: install + test + build ---"
-  nvm exec "$v" "$PM" ci
-  nvm exec "$v" "$PM" run prettier
-  nvm exec "$v" "$PM" run lint
-  nvm exec "$v" "$PM" run typecheck
-  nvm exec "$v" "$PM" run build
-  nvm exec "$v" "$PM" run test
+  nvm exec "$v" pnpm install --frozen-lockfile
+  nvm exec "$v" pnpm run format
+  nvm exec "$v" pnpm run lint
+  nvm exec "$v" pnpm run typecheck
+  nvm exec "$v" pnpm run build
+  nvm exec "$v" pnpm run test
 done
 
 echo -e "\nAll done."

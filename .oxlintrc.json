@@ -55,6 +55,7 @@
     "unicorn/numeric-separators-style": "off",
     "unicorn/prefer-module": "off",
     "unicorn/catch-error-name": "off",
+    "typescript/no-unnecessary-type-arguments": "off",
     // custom config
     // "eslint/func-style": ["error", "declaration"],
     "typescript/return-await": ["error", "error-handling-correctness-only"],
