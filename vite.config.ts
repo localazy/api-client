@@ -37,6 +37,7 @@ export default defineConfig({
           dir: 'dist/node',
           entryFileNames: 'localazy-api-client.cjs',
           banner,
+          generatedCode: { symbols: false },
         },
         // Browser ES Module
         {
