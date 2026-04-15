@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.1.21 (2026-04-15)
+
+### 🔀 Merged Pull Requests
+- 🐛 fix: Fix CJS build after Vite upgrade [#59](https://github.com/localazy/api-client/pull/59)
+
+### 🐛 Bug Fixes
+- Fix CJS build after Vite upgrade (*[6c00a54](https://github.com/localazy/api-client/commit/6c00a54fa99af4b20216356387f2bf8ffa036f30)*) (*[#59](https://github.com/localazy/api-client/pull/59)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.1.20 (2026-04-14)
 
 ### 🔀 Merged Pull Requests
