@@ -3,7 +3,6 @@ import { resolve } from 'node:path';
 import Replace from 'unplugin-replace/vite';
 import { defineConfig } from 'vite';
 import dts from 'unplugin-dts/vite';
-// eslint-disable-next-line no-relative-import-paths/no-relative-import-paths
 import pkg from './package.json' with { type: 'json' };
 
 const banner: string = `/* ${pkg.name}@${pkg.version}
@@ -37,6 +36,7 @@ export default defineConfig({
           dir: 'dist/node',
           entryFileNames: 'localazy-api-client.cjs',
           banner,
+          // https://github.com/localazy/api-client/issues/58
           generatedCode: { symbols: false },
         },
         // Browser ES Module
@@ -55,6 +55,8 @@ export default defineConfig({
           banner,
           name: 'LocalazyCDN',
           esModule: false,
+          // https://github.com/localazy/api-client/issues/58
+          generatedCode: { symbols: false },
           // @ts-expect-error old plugin
           plugins: [terser()],
         },

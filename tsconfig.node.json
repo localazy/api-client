@@ -12,6 +12,7 @@
   "include": [
     ".github/scripts",
     "scripts",
+    "tests",
     "package.json",
     "*.ts",
     "*.cts",

@@ -1,6 +1,6 @@
 import type { I18nJson } from '@/types/i18n-json.js';
 import type { Json } from '@/types/json.js';
-import { chunk, isPlainObject, merge, setWith } from 'lodash-es';
+import { chunk, isPlainObject, merge, setWith } from 'es-toolkit/compat';
 
 export class JsonUtils {
   /**
