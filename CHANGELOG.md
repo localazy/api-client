@@ -1,5 +1,21 @@
 # Changelog
 
+## 2.1.22 (2026-05-15)
+
+### 🔀 Merged Pull Requests
+- Fix audit [#61](https://github.com/localazy/api-client/pull/61)
+
+### 🧰 Other Commits
+- Update deps (*[7ade8b3](https://github.com/localazy/api-client/commit/7ade8b338ed28b2f75b9cbf4d0c5a433020d6bc3)*) (*[#61](https://github.com/localazy/api-client/pull/61)*)
+- Add provenance (*[006cc60](https://github.com/localazy/api-client/commit/006cc608382e9a8100d57440854ad2c35e545cea)*) (*[#61](https://github.com/localazy/api-client/pull/61)*)
+- Update tsconfig (*[025f7f0](https://github.com/localazy/api-client/commit/025f7f0ad533ea443f7497ba7d78ad6e9ee9cfcf)*) (*[#61](https://github.com/localazy/api-client/pull/61)*)
+- Add bundle tests (*[e01fe14](https://github.com/localazy/api-client/commit/e01fe14b74a344a7ed73d9c3f24768af43865790)*) (*[#61](https://github.com/localazy/api-client/pull/61)*)
+- Test Node 26 (*[17805a8](https://github.com/localazy/api-client/commit/17805a89d8624d1f6883a86d4c37957f16077913)*) (*[#61](https://github.com/localazy/api-client/pull/61)*)
+- Use es-toolkit instead of lodash-es (*[673210d](https://github.com/localazy/api-client/commit/673210dec88a21ed0374619b540d82bf6bee5cb7)*) (*[#61](https://github.com/localazy/api-client/pull/61)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.1.21 (2026-04-15)
 
 ### 🔀 Merged Pull Requests
