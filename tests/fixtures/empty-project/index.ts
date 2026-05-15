@@ -1,5 +1,5 @@
-import files from '@tests/fixtures/empty-project/files.json';
-import projects from '@tests/fixtures/empty-project/projects.json';
+import files from '@tests/fixtures/empty-project/files.json' with { type: 'json' };
+import projects from '@tests/fixtures/empty-project/projects.json' with { type: 'json' };
 import { fetchMock } from '@tests/support/index.js';
 
 const baseUrl: string = 'https://api.localazy.com';
