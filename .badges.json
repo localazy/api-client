@@ -1,34 +1,21 @@
 {
-  "dir": ".github/badges",
-  "files": [
-    {
-      "fileName": "version.svg",
-      "label": "npm",
-      "status": "2.1.19",
-      "icon": "npm"
-    },
-    {
-      "fileName": "coverage.svg",
+  "outputDir": ".github/badges",
+  "badges": {
+    "version": { "label": "npm", "value": "@version", "icon": "npm" },
+    "coverage": {
       "label": "coverage",
-      "status": "93.89",
+      "value": "$BADGES_COVERAGE",
+      "format": "percent",
       "icon": "vitest"
     },
-    {
-      "fileName": "size.svg",
+    "size": {
       "label": "minzipped size",
-      "status": "19939",
+      "value": "$BADGES_SIZE",
+      "format": "bytes",
       "icon": "speed",
       "color": "43b816"
     },
-    {
-      "fileName": "maintainer.svg",
-      "label": "maintainer",
-      "status": "Localazy"
-    },
-    {
-      "fileName": "license.svg",
-      "label": "license",
-      "status": "MIT"
-    }
-  ]
+    "maintainer": { "label": "maintainer", "value": "Localazy" },
+    "license": { "label": "license", "value": "@license" }
+  }
 }
