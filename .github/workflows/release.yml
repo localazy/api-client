@@ -42,6 +42,11 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      - name: Prepare data for badges
+        run: |
+          pnpm run build
+          pnpm run test:coverage
+
       - name: Run release script
         run: npx @localazy/workflow-scripts create-release-pr
         env:
