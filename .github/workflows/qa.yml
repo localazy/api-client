@@ -16,7 +16,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        node: [20, 22, 24, 26]
+        node: [22, 24, 26]
     steps:
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -36,15 +36,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run Format
-        if: matrix.node == 22
+        if: matrix.node == 24
         run: pnpm run format
 
       - name: Lint source files
-        if: matrix.node == 22
+        if: matrix.node == 24
         run: pnpm run lint
 
       - name: Check types
-        if: matrix.node == 22
+        if: matrix.node == 24
         run: pnpm run typecheck
 
       - name: Build package
@@ -54,5 +54,5 @@ jobs:
         run: pnpm run test:coverage
 
       - name: 'Report Coverage'
-        if: matrix.node == 22 && always()
+        if: matrix.node == 24 && always()
         uses: davelosert/vitest-coverage-report-action@v2
