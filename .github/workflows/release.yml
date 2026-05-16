@@ -43,7 +43,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run release script
-        run: pnpx @localazy/workflow-scripts create-release-pr
+        run: npx @localazy/workflow-scripts create-release-pr
         env:
           GITHUB_TOKEN: ${{ steps.auth.outputs.token }}
 
@@ -108,6 +108,6 @@ jobs:
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
-        run: pnpx @localazy/workflow-scripts create-github-release "${{ steps.git-tag.outputs.version }}"
+        run: npx @localazy/workflow-scripts create-github-release "${{ steps.git-tag.outputs.version }}"
         env:
           GITHUB_TOKEN: ${{ steps.auth.outputs.token }}
