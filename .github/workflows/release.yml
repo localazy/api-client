@@ -46,7 +46,7 @@ jobs:
         run: |
           pnpm run build
           pnpm run test:coverage
-          echo "BADGES_COVERAGE=$(node -e 'console.log(require("./coverage/coverage-summary.json").total.lines.pct)')" >> "$GITHUB_ENV"
+          echo "BADGES_COVERAGE=$(node -e 'process.stdout.write(String(require("./coverage/coverage-summary.json").total.lines.pct))')" >> "$GITHUB_ENV"
           echo "BADGES_SIZE=$(gzip -c dist/browser/localazy-api-client.umd.min.js | wc -c)" >> "$GITHUB_ENV"
 
       - name: Run release script
