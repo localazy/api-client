@@ -1,5 +1,29 @@
 # Changelog
 
+## 2.1.23 (2026-05-16)
+
+### 🔀 Merged Pull Requests
+- 🔧 chore: Fix formated console output [#69](https://github.com/localazy/api-client/pull/69)
+- 🔧 chore: Remove unnecessary escape [#68](https://github.com/localazy/api-client/pull/68)
+- 🔧 chore: Add env vars for badges [#67](https://github.com/localazy/api-client/pull/67)
+- 🔧 chore: Use latest version when calling workflow scripts [#66](https://github.com/localazy/api-client/pull/66)
+- Update pnpm [#65](https://github.com/localazy/api-client/pull/65)
+- Update ci [#63](https://github.com/localazy/api-client/pull/63)
+
+### 🧰 Other Commits
+- Fix formated console output (*[a7501ea](https://github.com/localazy/api-client/commit/a7501ead5e91aeb193f5d880f0e522914fed37c1)*) (*[#69](https://github.com/localazy/api-client/pull/69)*)
+- Remove unnecessary escape (*[c52bb6a](https://github.com/localazy/api-client/commit/c52bb6ad9d5c8d1005bd638ae79a7e224008a2dc)*) (*[#68](https://github.com/localazy/api-client/pull/68)*)
+- Add env vars for badges (*[012a0c3](https://github.com/localazy/api-client/commit/012a0c354595628ee2eaea96956c7acf5e93db2a)*) (*[#67](https://github.com/localazy/api-client/pull/67)*)
+- Use latest version when calling workflow scripts (*[4bb1b29](https://github.com/localazy/api-client/commit/4bb1b29b05f98ade3bb1141032c94b06eb834b0d)*) (*[#66](https://github.com/localazy/api-client/pull/66)*)
+- Update pnpm (*[359463b](https://github.com/localazy/api-client/commit/359463b131f780a64d47dd0c2fc64dcfe017de49)*) (*[#65](https://github.com/localazy/api-client/pull/65)*)
+- Collect coverage for badges (*[c32d94b](https://github.com/localazy/api-client/commit/c32d94b612b4975534cef161891cb5b69f0f268e)*) (*[#65](https://github.com/localazy/api-client/pull/65)*)
+- Update QA (*[4c4c41a](https://github.com/localazy/api-client/commit/4c4c41a12482ecfdfcefcbebacbe8387280db484)*) (*[#65](https://github.com/localazy/api-client/pull/65)*)
+- Disable Husky in workflows (*[b875f96](https://github.com/localazy/api-client/commit/b875f9691fa7e9314a13696edca08472bea3a0c9)*) (*[#63](https://github.com/localazy/api-client/pull/63)*)
+- Update badges (*[dbb8489](https://github.com/localazy/api-client/commit/dbb84891735e21fdb60b9f255eaa2d7e0ec0b6ed)*) (*[#63](https://github.com/localazy/api-client/pull/63)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.1.22 (2026-05-15)
 
 ### 🔀 Merged Pull Requests
