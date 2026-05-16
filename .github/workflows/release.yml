@@ -48,7 +48,7 @@ jobs:
           pnpm run test:coverage
 
       - name: Run release script
-        run: npx @localazy/workflow-scripts create-release-pr
+        run: npx @localazy/workflow-scripts@latest create-release-pr
         env:
           GITHUB_TOKEN: ${{ steps.auth.outputs.token }}
 
@@ -113,6 +113,6 @@ jobs:
           echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
 
       - name: Create GitHub Release
-        run: npx @localazy/workflow-scripts create-github-release "${{ steps.git-tag.outputs.version }}"
+        run: npx @localazy/workflow-scripts@latest create-github-release "${{ steps.git-tag.outputs.version }}"
         env:
           GITHUB_TOKEN: ${{ steps.auth.outputs.token }}
