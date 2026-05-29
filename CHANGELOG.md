@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.1.24 (2026-05-29)
+
+### 🔀 Merged Pull Requests
+- Fix audit [#70](https://github.com/localazy/api-client/pull/70)
+
+### 🧰 Other Commits
+- Update badges link (*[5025da2](https://github.com/localazy/api-client/commit/5025da24c7a454f485637a2cd49a0bc9d00a565e)*) (*[#70](https://github.com/localazy/api-client/pull/70)*)
+- Fix audit (*[5b8c30a](https://github.com/localazy/api-client/commit/5b8c30a44c2ed2f6b659862aecbcbcb4260b63b0)*) (*[#70](https://github.com/localazy/api-client/pull/70)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.1.23 (2026-05-16)
 
 ### 🔀 Merged Pull Requests
