@@ -6,11 +6,11 @@
 
 Node.js client for the [Localazy API](https://localazy.com/docs/api), providing a simple and type-safe way to integrate localization features into your JavaScript and TypeScript projects.
 
-[![npm](.github/badges/version.svg)](https://www.npmjs.com/package/@localazy/api-client)
-[![maintainer](.github/badges/maintainer.svg)](https://github.com/localazy)
-[![license](.github/badges/license.svg)](https://github.com/localazy/api-client/blob/main/LICENSE)<br>
-[![coverage](.github/badges/coverage.svg)](https://github.com/localazy/api-client/actions)
-[![size](.github/badges/size.svg)](https://bundlephobia.com/package/@localazy/api-client)
+[![npm](https://raw.githubusercontent.com/localazy/api-client/main/.github/badges/version.svg)](https://www.npmjs.com/package/@localazy/api-client)
+[![maintainer](https://raw.githubusercontent.com/localazy/api-client/main/.github/badges/maintainer.svg)](https://github.com/localazy)
+[![license](https://raw.githubusercontent.com/localazy/api-client/main/.github/badges/license.svg)](https://github.com/localazy/api-client/blob/main/LICENSE)<br>
+[![coverage](https://raw.githubusercontent.com/localazy/api-client/main/.github/badges/coverage.svg)](https://github.com/localazy/api-client/actions)
+[![size](https://raw.githubusercontent.com/localazy/api-client/main/.github/badges/size.svg)](https://bundlephobia.com/package/@localazy/api-client)
 
 </div>
 
