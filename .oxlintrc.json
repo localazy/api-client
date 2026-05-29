@@ -57,6 +57,7 @@
     "unicorn/catch-error-name": "off",
     "typescript/no-unnecessary-type-arguments": "off",
     "typescript/explicit-member-accessibility": "off",
+    "unicorn/import-style": "off",
     // custom config
     // "eslint/func-style": ["error", "declaration"],
     "typescript/return-await": ["error", "error-handling-correctness-only"],
