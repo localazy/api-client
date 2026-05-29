@@ -1,2 +1,5 @@
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - brace-expansion@5.0.6
+  - tmp@0.2.6
