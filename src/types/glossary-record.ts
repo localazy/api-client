@@ -22,6 +22,11 @@ export type GlossaryRecord = {
   caseSensitive: boolean;
 
   /**
+   * Whether the term must match exactly (as opposed to matching any inflected form).
+   */
+  exactMatch: boolean;
+
+  /**
    * Contains an array of the term and it’s translations.
    */
   term: GlossaryRecordTerm[];
