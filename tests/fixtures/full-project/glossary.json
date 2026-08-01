@@ -10,7 +10,8 @@
       ],
       "description": "A screen used for displaying visual output from a computer.",
       "translateTerm": false,
-      "caseSensitive": false
+      "caseSensitive": false,
+      "exactMatch": true
     }
   ]
 }

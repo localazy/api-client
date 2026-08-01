@@ -32,6 +32,7 @@ describe('Glossary', (): void => {
     expect(firstRecord.description).toBe(
       'A screen used for displaying visual output from a computer.',
     );
+    expect(firstRecord.exactMatch).toBe(true);
   });
 
   test('api.glossary.find', async (): Promise<void> => {
@@ -94,6 +95,7 @@ describe('Glossary', (): void => {
       description: 'Exceptional term description',
       caseSensitive: true,
       translateTerm: true,
+      exactMatch: false,
       term: [{ lang: 'en', term: 'Exceptional term' }],
     };
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
@@ -102,7 +104,7 @@ describe('Glossary', (): void => {
     expect(spy).toHaveBeenCalledWith(
       'https://api.localazy.com/projects/_a0000000000000000001/glossary/_a0000000000000000001',
       {
-        body: '{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"term":[{"lang":"en","term":"Exceptional term"}]}',
+        body: '{"description":"Exceptional term description","caseSensitive":true,"translateTerm":true,"exactMatch":false,"term":[{"lang":"en","term":"Exceptional term"}]}',
         headers: {
           Accept: 'application/json',
           Authorization: `Bearer ${getToken()}`,
