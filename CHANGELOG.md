@@ -1,5 +1,16 @@
 # Changelog
 
+## 2.2.0 (2026-08-01)
+
+### 🔀 Merged Pull Requests
+- ✨ feat(glossary): expose exactMatch on glossary types [#72](https://github.com/localazy/api-client/pull/72)
+
+### ✨ Features
+- **glossary:** expose exactMatch on glossary types (*[6814841](https://github.com/localazy/api-client/commit/681484140cc334267cf2b083a3a4424f7f06251f)*) (*[#72](https://github.com/localazy/api-client/pull/72)*)
+
+### ❤️ Contributors
+- [*Daniel Charvat*](https://github.com/elisiondan)
+
 ## 2.1.24 (2026-05-29)
 
 ### 🔀 Merged Pull Requests
