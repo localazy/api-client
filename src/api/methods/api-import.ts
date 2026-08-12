@@ -11,6 +11,7 @@ import type { RequestConfig } from '@/types/request-config.js';
 import type { UploadSessionStatus } from '@/types/upload-session-status.js';
 import { delay } from '@/utils/delay.js';
 import { JsonUtils } from '@/utils/json-utils.js';
+import { encodePluralMarkers } from '@/utils/plural.js';
 
 export class ApiImport extends ApiBase {
   /**
@@ -27,7 +28,9 @@ export class ApiImport extends ApiBase {
   ): Promise<ReturnType<ApiImport['getImportedFile']>> {
     const { project, json }: ImportJsonRequest = request;
     const projectId: string = ApiBase.getId(project, 'project');
-    const chunks: I18nJson[] = JsonUtils.slice(json);
+    // Markers must be resolved before chunking: the chunker recurses into every
+    // plain object, so an unresolved marker would be split and sent verbatim.
+    const chunks: I18nJson[] = JsonUtils.slice(encodePluralMarkers(json));
     const data: ImportData = importDataFactory(request, chunks);
 
     const { result }: { result: string } = (await this.api.client.post(

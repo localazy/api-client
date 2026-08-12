@@ -10,6 +10,19 @@ export type ImportJsonRequest = {
    */
   project: Project | string;
 
+  /**
+   * The content to import, keyed by locale.
+   *
+   * **Plural keys need `@`-prefixed CLDR classes** — `{ ITEMS: { '@one': '%d
+   * item', '@other': '%d items' } }`. The prefix is what distinguishes a plural
+   * from a nested key group: without it, `{ ITEMS: { one: '…', other: '…' } }`
+   * silently creates two nested keys `ITEMS.one` and `ITEMS.other` instead, and
+   * neither the API nor the type system reports a problem, because declaring
+   * nested keys that way is legitimate.
+   *
+   * Note this differs from `keys.submitTranslation`, which takes plain classes
+   * because the key it targets is already identified in the URL.
+   */
   json: I18nJson;
 
   i18nOptions?: ImportI18nOptions;
