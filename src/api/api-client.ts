@@ -7,6 +7,7 @@ import { ApiImport } from '@/api/methods/api-import.js';
 import { ApiKeys } from '@/api/methods/api-keys.js';
 import { ApiProjects } from '@/api/methods/api-projects.js';
 import { ApiScreenshots } from '@/api/methods/api-screenshots.js';
+import { ApiSuggestions } from '@/api/methods/api-suggestions.js';
 import { ApiWebhooks } from '@/api/methods/api-webhooks.js';
 import { FetchHttpAdapter } from '@/http/fetch-http-adapter.js';
 import type { IHttpAdapter } from '@/http/i-http-adapter.js';
@@ -35,6 +36,8 @@ export class ApiClient {
 
   public screenshots: ApiScreenshots;
 
+  public suggestions: ApiSuggestions;
+
   constructor(options: ApiClientOptions) {
     this.client = new FetchHttpAdapter(options);
 
@@ -48,5 +51,6 @@ export class ApiClient {
     this.glossary = new ApiGlossary(this);
     this.webhooks = new ApiWebhooks(this);
     this.screenshots = new ApiScreenshots(this);
+    this.suggestions = new ApiSuggestions(this);
   }
 }

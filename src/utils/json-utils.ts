@@ -1,5 +1,6 @@
 import type { I18nJson } from '@/types/i18n-json.js';
 import type { Json } from '@/types/json.js';
+import { isPrefixedPluralObject } from '@/utils/plural.js';
 import { chunk, isPlainObject, merge, setWith } from 'es-toolkit/compat';
 
 export class JsonUtils {
@@ -40,7 +41,7 @@ export class JsonUtils {
    */
   protected static sliceByValue(json: Json, keys: string[] = []): Json[] {
     return Object.entries(json).reduce((prev: Json[], [key, value]: [string, Json]) => {
-      if (isPlainObject(value) && !key.startsWith('@meta:')) {
+      if (isPlainObject(value) && !key.startsWith('@meta:') && !isPrefixedPluralObject(value)) {
         prev.push(...JsonUtils.sliceByValue(value, [...keys, key]));
       } else if (keys.length > 1) {
         prev.push(setWith({}, [...keys, key].join('.'), value, Object));
@@ -51,7 +52,14 @@ export class JsonUtils {
     }, []);
   }
 
+  /**
+   * Folds the leaves of one chunk back into a single object.
+   *
+   * Deliberately a fold rather than `merge(...values)`: spreading produces one
+   * argument per leaf, so a payload approaching {@link CHUNK_LIMIT} overflows
+   * the call stack before any request is sent.
+   */
   protected static mergeChunkValues(values: Json[]): Json {
-    return merge(...(values as [number, Json]));
+    return values.reduce<Json>((acc: Json, value: Json): Json => merge(acc, value), {});
   }
 }

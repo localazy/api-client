@@ -1,0 +1,20 @@
+{
+  "enabled": true,
+  "items": [
+    {
+      "source": "Save changes",
+      "suggestions": [
+        {
+          "value": "Uložit změny",
+          "phraseId": "_e845123154101354564",
+          "project": {
+            "id": "_a0000000000000000001",
+            "name": "My App",
+            "image": "https://img.localazy.com/project.png",
+            "url": "/p/my-app"
+          }
+        }
+      ]
+    }
+  ]
+}

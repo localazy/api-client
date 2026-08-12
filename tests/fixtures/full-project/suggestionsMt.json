@@ -1,0 +1,22 @@
+{
+  "enabled": true,
+  "allowedEngines": ["google", "deepl"],
+  "errors": {
+    "azure": "Engine timed out."
+  },
+  "items": [
+    {
+      "source": "Save changes",
+      "suggestions": [
+        {
+          "value": "Uložit změny",
+          "engine": "google"
+        },
+        {
+          "value": "Uložit úpravy",
+          "engine": "deepl"
+        }
+      ]
+    }
+  ]
+}

@@ -12,7 +12,7 @@ export class ApiAi extends ApiBase {
    * @param request AI translate request config.
    * @param config Request config.
    *
-   * @see {@link https://localazy.com/docs/api/ai-translation#translate  Localazy API Docs}
+   * @see {@link https://localazy.com/docs/api/ai-translation-api#translate  Localazy API Docs}
    */
   public async translate(
     request: AiTranslateRequest,
