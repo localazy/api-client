@@ -17,6 +17,16 @@
 - [Keys](#keys)
   - [keys.update](#keysupdaterequest-config)
   - [keys.delete](#keysdeleterequest-config)
+  - [keys.deprecate](#keysdeprecaterequest-config)
+  - [keys.submitTranslation](#keyssubmittranslationrequest-config)
+  - [keys.setTags](#keyssettagsrequest-config)
+  - [keys.setPriority](#keyssetpriorityrequest-config)
+- [Suggestions](#suggestions)
+  - [suggestions.tm](#suggestionstmrequest-config)
+  - [suggestions.mt](#suggestionsmtrequest-config)
+  - [suggestions.ai](#suggestionsairequest-config)
+- [Plural keys](#plural-keys)
+  - [plural()](#pluralforms)
 - [Import](#import)
   - [import.json](#importjsonrequest-config)
 - [Export](#export)
@@ -67,7 +77,7 @@ Translate provided items from the source language to the target language using L
 
 > This endpoint is only available with the Owner's token or a Translation Token.
 
-See: [Localazy API Docs](https://localazy.com/docs/api/ai-translation#translate)
+See: [Localazy API Docs](https://localazy.com/docs/api/ai-translation-api#translate)
 
 | Arguments         | Type                                                         |
 | ----------------- | ------------------------------------------------------------ |
@@ -361,11 +371,352 @@ await api.keys.delete({
 });
 ```
 
+### keys.deprecate(request[, config])
+
+Deprecate [keys](../src/types/key.ts).
+
+| Arguments         | Type                                                           |
+| ----------------- | -------------------------------------------------------------- |
+| request           | [`KeyDeprecateRequest`](../src/types/key-deprecate-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)              |
+
+| Returns         |
+| --------------- |
+| `Promise<void>` |
+
+```javascript
+await api.keys.deprecate({
+  project: 'project-id', // or Project object
+  phrases: ['key-id'], // or Key objects
+});
+```
+
+### keys.submitTranslation(request[, config])
+
+Submit a translation for a single [key](../src/types/key.ts) in one target language.
+
+`value` must match the key's form: a string for a singular key, an array of strings for an array
+key, or an object keyed by CLDR plural class for a plural key. `lang` accepts a locale code or
+Localazy's numeric language id, and is URL-escaped, so script-qualified locales such as `zh#Hans`
+are transmitted intact.
+
+Plural values may use either the plain classes the write API expects (`{ one: '1 item' }`) or the
+`@`-prefixed form the read API returns (`{ '@one': '1 item' }`) — the prefix is stripped for you, so
+a value taken straight from `files.listKeys()` round-trips correctly.
+
+**Check `result` on the response.** The API answers HTTP 200 with `result: false` and a `message`
+when a submission is deliberately not applied — the target is the project's source language, the
+project is momentarily locked by a running import, or the translation could not be stored. None of
+those reject the promise.
+
+| Arguments         | Type                                                                            |
+| ----------------- | ------------------------------------------------------------------------------- |
+| request           | [`KeySubmitTranslationRequest`](../src/types/key-submit-translation-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                               |
+
+| Returns                                                                             |
+| ----------------------------------------------------------------------------------- |
+| [`Promise<SubmitTranslationResponse>`](../src/types/submit-translation-response.ts) |
+
+```javascript
+// singular key
+await api.keys.submitTranslation({
+  project: 'project-id', // or Project object
+  key: 'key-id', // or Key object
+  lang: 'cs',
+  value: 'Uložit změny',
+});
+
+// plural key
+await api.keys.submitTranslation({
+  project: 'project-id',
+  key: 'key-id',
+  lang: 'cs',
+  value: { one: '1 položka', few: '%d položky', other: '%d položek' },
+});
+```
+
+### keys.setTags(request[, config])
+
+Add and/or remove tags on [keys](../src/types/key.ts).
+
+Removal is applied before addition, so a tag name present in both `addTags` and `removeTags` ends up
+added. Tag names that do not exist yet are created, subject to the project's 50-tag limit. At most
+1000 keys may be passed per call; larger sets are rejected outright rather than truncated, and
+splitting them is the caller's responsibility.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#set-tags-on-multiple-keys)
+
+| Arguments         | Type                                                        |
+| ----------------- | ----------------------------------------------------------- |
+| request           | [`KeySetTagsRequest`](../src/types/key-set-tags-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)           |
+
+| Returns                                                    |
+| ---------------------------------------------------------- |
+| [`Promise<BooleanResult>`](../src/types/boolean-result.ts) |
+
+`result` reports that the request was processed, not that it changed anything: key ids that do not
+resolve within the project are skipped silently, and a call in which none of them resolve still
+answers `true`.
+
+```javascript
+const { result } = await api.keys.setTags({
+  project: 'project-id', // or Project object
+  keys: ['key-id'], // or Key objects
+  addTags: ['ui'],
+  removeTags: ['legacy'],
+});
+```
+
+### keys.setPriority(request[, config])
+
+Set the priority level on [keys](../src/types/key.ts).
+
+`normal` clears any priority currently set. At most 1000 keys may be passed per call; larger sets
+are rejected outright rather than truncated, and splitting them is the caller's responsibility.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#set-priority-on-multiple-keys)
+
+| Arguments         | Type                                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| request           | [`KeySetPriorityRequest`](../src/types/key-set-priority-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                   |
+
+| Returns                                                    |
+| ---------------------------------------------------------- |
+| [`Promise<BooleanResult>`](../src/types/boolean-result.ts) |
+
+`result` reports that the request was processed, not that it changed anything: key ids that do not
+resolve within the project are skipped silently, and a call in which none of them resolve still
+answers `true`.
+
+```javascript
+const { result } = await api.keys.setPriority({
+  project: 'project-id', // or Project object
+  keys: ['key-id'], // or Key objects
+  priority: 'high', // lowest | low | normal | high | highest
+});
+```
+
+## Suggestions
+
+Per-key translation suggestions. Every response shares the same envelope:
+
+- `enabled` — whether the family could run at all. `false` means the feature is unavailable for the
+  project, or the target language is the (possibly overridden) source language.
+- `errors` — soft failures keyed by engine name. A soft error never fails the request. The reserved
+  key `general` covers failures belonging to no single engine, most commonly the key having no value
+  in the source language.
+- `items` — one entry per source form: a singular key yields one entry, a plural or array key one per
+  form.
+
+Read those three deliberately: `enabled: true` with empty `items` means "ran, found nothing", which
+is a different answer from `enabled: false`.
+
+In every method `to` is required and `from` is optional, defaulting to the project's source
+language. Both accept a locale code (`'pt_BR'`) or Localazy's numeric language id (`112`).
+
+### suggestions.tm(request[, config])
+
+Translation Memory (InTM) suggestions for a single [key](../src/types/key.ts). Free and read-only.
+
+| Arguments         | Type                                                        |
+| ----------------- | ----------------------------------------------------------- |
+| request           | [`SuggestionsRequest`](../src/types/suggestions-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)           |
+
+| Returns                                                                     |
+| --------------------------------------------------------------------------- |
+| [`Promise<TmSuggestionsResponse>`](../src/types/tm-suggestions-response.ts) |
+
+```javascript
+const response = await api.suggestions.tm({
+  project: 'project-id', // or Project object
+  key: 'key-id', // or Key object
+  to: 'cs',
+});
+```
+
+### suggestions.mt(request[, config])
+
+Machine Translation suggestions for a single [key](../src/types/key.ts).
+
+Free to the caller, but a cache miss computes the translations live and meters them against the
+organization's machine translation fair-use quota.
+
+| Arguments         | Type                                                        |
+| ----------------- | ----------------------------------------------------------- |
+| request           | [`SuggestionsRequest`](../src/types/suggestions-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)           |
+
+| Returns                                                                     |
+| --------------------------------------------------------------------------- |
+| [`Promise<MtSuggestionsResponse>`](../src/types/mt-suggestions-response.ts) |
+
+```javascript
+const response = await api.suggestions.mt({
+  project: 'project-id',
+  key: 'key-id',
+  to: 'cs',
+  from: 'en', // optional source override
+});
+```
+
+### suggestions.ai(request[, config])
+
+Localazy AI suggestions for a single [key](../src/types/key.ts).
+
+> **This method spends AI credits** — that is why the underlying endpoint is a `POST`. Not to be
+> confused with [`ai.translate`](#aitranslaterequest-config), which translates arbitrary texts you
+> supply rather than an existing key.
+
+`enabled` requires both AI suggestions and Machine Translation to be switched on in the project's
+settings; producing results additionally requires an active paid MT tier, so `enabled: true` can
+still yield empty `items` with no error.
+
+| Arguments         | Type                                                        |
+| ----------------- | ----------------------------------------------------------- |
+| request           | [`SuggestionsRequest`](../src/types/suggestions-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)           |
+
+| Returns                                                                     |
+| --------------------------------------------------------------------------- |
+| [`Promise<AiSuggestionsResponse>`](../src/types/ai-suggestions-response.ts) |
+
+```javascript
+const response = await api.suggestions.ai({
+  project: 'project-id',
+  key: 'key-id',
+  to: 'cs',
+});
+```
+
+## Plural keys
+
+Plural values are objects keyed by [CLDR plural class](../src/types/plural-class.ts) (`zero`, `one`,
+`two`, `few`, `many`, `other`). Which classes a language uses is defined by CLDR — English uses
+`one`/`other`, Czech `one`/`few`/`many`/`other`.
+
+Two spellings exist, and **which one you need depends on the endpoint**:
+
+| Surface                          | Spelling                 | Example                                       |
+| -------------------------------- | ------------------------ | --------------------------------------------- |
+| `import.json` (write)            | `@`-prefixed             | `{ "@one": "%d item", "@other": "%d items" }` |
+| `files.listKeys` (read)          | `@`-prefixed             | `{ "@one": "%d item", "@other": "%d items" }` |
+| `keys.submitTranslation` (write) | plain, `@` also accepted | `{ "one": "%d item", "other": "%d items" }`   |
+
+### `plural()` — spell it once
+
+`plural()` tags a value as a plural explicitly, so the client can render the right spelling for
+whichever endpoint receives it. This is the recommended way to author plural values by hand.
+
+```javascript
+import { plural } from '@localazy/api-client';
+
+// import  -> { "ITEMS": { "@one": "%d item", "@other": "%d items" } }
+await api.import.json({
+  project,
+  json: { en: { ITEMS: plural({ one: '%d item', other: '%d items' }) } },
+});
+
+// submit  -> { "value": { "one": "%d élément", "other": "%d éléments" } }
+await api.keys.submitTranslation({
+  project,
+  key,
+  lang: 'fr',
+  value: plural({ one: '%d élément', other: '%d éléments' }),
+});
+```
+
+| Arguments | Type                                          |
+| --------- | --------------------------------------------- |
+| forms     | [`PluralValue`](../src/types/plural-class.ts) |
+
+| Returns                                         |
+| ----------------------------------------------- |
+| [`PluralMarker`](../src/types/plural-marker.ts) |
+
+You always write plain CLDR classes; the `@` prefix is added only where the wire format needs it.
+Raw objects keep working unchanged, so nothing existing breaks — `plural()` is opt-in.
+
+Two things worth knowing:
+
+- The marker is resolved before the import payload is chunked, so it never reaches the wire. If you
+  ever see `__localazyPlural` in a request body, a marker escaped unresolved — that is a bug, and it
+  is deliberately a visible string rather than a symbol so it fails loudly instead of serializing to
+  an empty object.
+- `plural()` only affects values you construct. A value read back from `files.listKeys()` is a plain
+  `@`-prefixed object, and `keys.submitTranslation` normalises that on its own.
+
+### The `@` prefix is a disambiguator, not decoration
+
+On import, the prefix is the _only_ thing separating a plural key from a nested key group. Omitting
+it does not fail — it silently creates something else:
+
+```javascript
+// ✅ ONE plural key `ITEMS` with classes one/other
+await api.import.json({
+  project,
+  json: { en: { ITEMS: { '@one': '%d item', '@other': '%d items' } } },
+});
+
+// ❌ TWO nested singular keys `ITEMS.one` and `ITEMS.other`
+await api.import.json({
+  project,
+  json: { en: { ITEMS: { one: '%d item', other: '%d items' } } },
+});
+```
+
+Both are valid JSON and valid TypeScript, so nothing catches the second form — it is a legitimate
+way to declare nested keys, which is exactly why the client cannot add the prefix for you. Using
+[`plural()`](#pluralforms) removes the choice, and with it the mistake.
+
+### Submitting a plural translation
+
+`keys.submitTranslation` needs no prefix: the key is identified in the URL, so its form is already
+known and an object value can only mean plural classes. The `@`-prefixed form is accepted too and
+the prefix is stripped before sending, so a value read from `files.listKeys()` round-trips safely:
+
+```javascript
+const keys = await api.files.listKeys({ project, file, lang: 'en' });
+const key = keys.find((k) => k.key[0] === 'ITEMS');
+// key.value === { '@one': '%d item', '@other': '%d items' }
+
+await api.keys.submitTranslation({
+  project,
+  key,
+  lang: 'fr',
+  value: { one: '%d élément', other: '%d éléments' }, // or the '@'-prefixed form
+});
+```
+
+### What the types check
+
+`TranslationValue` uses the real CLDR classes, so a typo is a compile error — but only in an object
+_literal_:
+
+```typescript
+value: { one: '1', otehr: 'n' }  // ✗ TS2353: 'otehr' does not exist
+value: someRecord                // ✓ compiles — Key.value is Record<string, any>
+```
+
+Excess-property checking does not apply to values held in variables, so a value round-tripped from
+the read API is never inspected by the compiler. That path is safe because the client normalises it
+at runtime, not because the types verified it.
+
+This is the gap [`plural()`](#pluralforms) closes on the import side: the compiler cannot tell a
+plural from a nested key group, because both are well-typed — but a tagged value carries the intent
+regardless of shape.
+
 ## Import
 
 ### import.json(request[, config])
 
 Import JSON object as source keys.
+
+Declaring plural keys requires `@`-prefixed CLDR classes — see [Plural keys](#plural-keys). Without
+the prefix you get nested keys instead, with no error.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/import#import-content-to-a-project)
 
