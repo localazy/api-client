@@ -1,5 +1,28 @@
 # Changelog
 
+## 2.3.0 (2026-08-12)
+
+### 🔀 Merged Pull Requests
+- ✨ feat: add suggestions, translation & key endpoints to api-client [#74](https://github.com/localazy/api-client/pull/74)
+
+### ✨ Features
+- **suggestions:** add per-key translation suggestion endpoints (*[e67e64b](https://github.com/localazy/api-client/commit/e67e64b0655d5e7927ee47a4d0adbcf15290b78d)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+- **keys:** submit translations and set tags and priority (*[93a7592](https://github.com/localazy/api-client/commit/93a75927fd111d83582ac7f916b2cb4b69aba34e)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+- **plural:** add plural helper for authoring plural values (*[25092ed](https://github.com/localazy/api-client/commit/25092edbaf0d506d222b3649128d9ef074be7f8f)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+
+### 🐛 Bug Fixes
+- **api-reference:** point AI translation link at the live docs page (*[934d63e](https://github.com/localazy/api-client/commit/934d63e0cd4c356c156e592f00841411cbbc78eb)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+- **import-chunking:** stop large imports crashing and splitting plurals (*[16ae6cd](https://github.com/localazy/api-client/commit/16ae6cd8c714383f6ecb43f8ba7f29fa25c1b577)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+
+### 📚 Documentation
+- **api-reference:** document new methods and the plural conventions (*[138ca24](https://github.com/localazy/api-client/commit/138ca247aeb06b44e47890da562ed240485eeabe)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+
+### 🧰 Other Commits
+- **exports:** regenerate main entry point (*[17efacb](https://github.com/localazy/api-client/commit/17efacbf57c8fed1b9a24c8bab9d303d4082fa08)*) (*[#74](https://github.com/localazy/api-client/pull/74)*)
+
+### ❤️ Contributors
+- [*Daniel Charvat*](https://github.com/elisiondan)
+
 ## 2.2.0 (2026-08-01)
 
 ### 🔀 Merged Pull Requests
