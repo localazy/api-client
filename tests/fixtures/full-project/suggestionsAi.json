@@ -1,0 +1,14 @@
+{
+  "enabled": true,
+  "items": [
+    {
+      "source": "Save changes",
+      "suggestions": [
+        {
+          "value": "Uložit změny",
+          "engine": "localazyAi"
+        }
+      ]
+    }
+  ]
+}

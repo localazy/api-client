@@ -10,6 +10,10 @@ import projects from '@tests/fixtures/full-project/projects.json' with { type: '
 import projectsOrgsLangs from '@tests/fixtures/full-project/projectsOrgsLangs.json' with { type: 'json' };
 import screenshots from '@tests/fixtures/full-project/screenshots.json' with { type: 'json' };
 import screenshotTags from '@tests/fixtures/full-project/screenshotTags.json' with { type: 'json' };
+import suggestionsAi from '@tests/fixtures/full-project/suggestionsAi.json' with { type: 'json' };
+import suggestionsMt from '@tests/fixtures/full-project/suggestionsMt.json' with { type: 'json' };
+import suggestionsMtDisabled from '@tests/fixtures/full-project/suggestionsMtDisabled.json' with { type: 'json' };
+import suggestionsTm from '@tests/fixtures/full-project/suggestionsTm.json' with { type: 'json' };
 import webhooks from '@tests/fixtures/full-project/webhooks.json' with { type: 'json' };
 import webhooksSecret from '@tests/fixtures/full-project/webhooksSecret.json' with { type: 'json' };
 import { assertNotNull } from '@tests/support/assert-not-null.js';
@@ -30,6 +34,10 @@ export const serverResponses = {
   fileDownload,
   screenshots,
   screenshotTags,
+  suggestionsTm,
+  suggestionsMt,
+  suggestionsMtDisabled,
+  suggestionsAi,
   webhooks,
   webhooksSecret,
   resultPostScreenshot: {
@@ -40,6 +48,10 @@ export const serverResponses = {
   },
   resultPut: {
     result: true,
+  },
+  resultSubmitTranslation: {
+    result: true,
+    versionId: '_v000000000000000001',
   },
   resultDelete: {
     result: true,
@@ -156,6 +168,45 @@ export const mockResponses = (): void => {
     serverResponses.webhooksSecret,
   );
   fetchMock.post(`${baseUrl}/projects/_a0000000000000000001/webhooks`, serverResponses.resultPost);
+
+  // suggestions
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/suggestions/mt?extra=1&to=cs`,
+    serverResponses.suggestionsMt,
+  );
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/suggestions/tm?to=cs`,
+    serverResponses.suggestionsTm,
+  );
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/suggestions/mt?to=cs`,
+    serverResponses.suggestionsMt,
+  );
+  fetchMock.get(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/suggestions/mt?to=112&from=85`,
+    serverResponses.suggestionsMtDisabled,
+  );
+  fetchMock.post(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/suggestions/ai`,
+    serverResponses.suggestionsAi,
+  );
+
+  // translations
+  fetchMock.post(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/translations/zh%23Hans`,
+    serverResponses.resultSubmitTranslation,
+  );
+  fetchMock.post(
+    `${baseUrl}/projects/_a0000000000000000001/keys/_a0000000000000000001/translations/cs`,
+    serverResponses.resultSubmitTranslation,
+  );
+
+  // tags & priority
+  fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/tags`, serverResponses.resultPut);
+  fetchMock.put(
+    `${baseUrl}/projects/_a0000000000000000001/keys/priority`,
+    serverResponses.resultPut,
+  );
 
   // errors
   fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/unknown-key-id`, {
