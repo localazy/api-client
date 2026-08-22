@@ -17,9 +17,8 @@ export class ApiExport extends ApiBase {
     const { project, file, langs }: ExportJsonRequest = request;
 
     const result: Key[][] = await Promise.all(
-      langs.map(
-        (lang: `${Locales}`): Promise<Key[]> =>
-          this.api.files.listKeys({ project, file, lang }, config),
+      langs.map((lang: `${Locales}`): Promise<Key[]> =>
+        this.api.files.listKeys({ project, file, lang }, config),
       ),
     );
 

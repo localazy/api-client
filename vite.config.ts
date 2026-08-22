@@ -1,5 +1,5 @@
 import terser from '@rollup/plugin-terser';
-import { resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import Replace from 'unplugin-replace/vite';
 import { defineConfig } from 'vite';
 import dts from 'unplugin-dts/vite';
@@ -12,13 +12,13 @@ const banner: string = `/* ${pkg.name}@${pkg.version}
 export default defineConfig({
   resolve: {
     alias: {
-      '@/': `${resolve(__dirname, '')}/src/`,
+      '@/': fileURLToPath(new URL('src/', import.meta.url)),
     },
   },
 
   build: {
     lib: {
-      entry: resolve(__dirname, 'src/main.ts'),
+      entry: fileURLToPath(new URL('src/main.ts', import.meta.url)),
     },
     minify: false,
     sourcemap: true,

@@ -16,6 +16,8 @@
     "node": true
   },
   "rules": {
+    "eslint/one-var": "off",
+    "unicorn/prefer-export-from": "off",
     "typescript/explicit-function-return-type": "off",
     "typescript/no-unsafe-member-access": "off",
     "typescript/no-unsafe-argument": "off",
