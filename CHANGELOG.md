@@ -1,5 +1,18 @@
 # Changelog
 
+## 2.3.1 (2026-08-22)
+
+### 🔀 Merged Pull Requests
+- Fix audit [#76](https://github.com/localazy/api-client/pull/76)
+
+### 🧰 Other Commits
+- Update deps (*[6af5e41](https://github.com/localazy/api-client/commit/6af5e41306d59e3ec35eca188eca641ad8b84a72)*) (*[#76](https://github.com/localazy/api-client/pull/76)*)
+- Fix format (*[91d0b52](https://github.com/localazy/api-client/commit/91d0b52bd16f004569661a70d6cadd92b4132284)*) (*[#76](https://github.com/localazy/api-client/pull/76)*)
+- Update Vite config after upgrade (*[1c9584e](https://github.com/localazy/api-client/commit/1c9584e3b96024b60f111de1116087974d2f7e38)*) (*[#76](https://github.com/localazy/api-client/pull/76)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.3.0 (2026-08-12)
 
 ### 🔀 Merged Pull Requests
