@@ -1,5 +1,17 @@
 # Changelog
 
+## 2.3.2 (2026-10-26)
+
+### 🔀 Merged Pull Requests
+- Fix dependabot alerts [#79](https://github.com/localazy/api-client/pull/79)
+
+### 🧰 Other Commits
+- Fix dependabot alerts (*[8cf43c8](https://github.com/localazy/api-client/commit/8cf43c87e29c30be688372cce11e6f9deacb8def)*) (*[#79](https://github.com/localazy/api-client/pull/79)*)
+- Fix audit (*[641eb29](https://github.com/localazy/api-client/commit/641eb29766c6d969f7a65ed0bc2cd3529dd144e5)*) (*[#79](https://github.com/localazy/api-client/pull/79)*)
+
+### ❤️ Contributors
+- [*Bubinek*](https://github.com/honzabubenik)
+
 ## 2.3.1 (2026-09-29)
 
 ### 🔀 Merged Pull Requests
