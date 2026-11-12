@@ -42,4 +42,10 @@ export type Key = {
    * Only available when event=true in the request.
    */
   event?: number;
+
+  /**
+   * Custom metadata of the key.
+   * Only available when metadata=true in the request, and only for keys that have any.
+   */
+  metadata?: Record<string, unknown>;
 };

@@ -53,6 +53,13 @@ export const serverResponses = {
     result: true,
     versionId: '_v000000000000000001',
   },
+  resultSetMetadata: {
+    result: true,
+    keys: [
+      { id: '_a0000000000000000001', state: 'updated' },
+      { id: '_a0000000000000000002', state: 'not_found' },
+    ],
+  },
   resultDelete: {
     result: true,
   },
@@ -203,6 +210,10 @@ export const mockResponses = (): void => {
 
   // tags & priority
   fetchMock.put(`${baseUrl}/projects/_a0000000000000000001/keys/tags`, serverResponses.resultPut);
+  fetchMock.put(
+    `${baseUrl}/projects/_a0000000000000000001/keys/metadata`,
+    serverResponses.resultSetMetadata,
+  );
   fetchMock.put(
     `${baseUrl}/projects/_a0000000000000000001/keys/priority`,
     serverResponses.resultPut,
