@@ -20,6 +20,7 @@
   - [keys.deprecate](#keysdeprecaterequest-config)
   - [keys.submitTranslation](#keyssubmittranslationrequest-config)
   - [keys.setTags](#keyssettagsrequest-config)
+  - [keys.setMetadata](#keyssetmetadatarequest-config)
   - [keys.setPriority](#keyssetpriorityrequest-config)
 - [Suggestions](#suggestions)
   - [suggestions.tm](#suggestionstmrequest-config)
@@ -346,6 +347,8 @@ await api.keys.update({
   hidden: false,
   comment: 'Comment.',
   limit: -1,
+  addMetadata: { 'figma:doc': { node: '1:2' } }, // merged into the key's metadata
+  removeMetadata: ['figma:old'],
 });
 ```
 
@@ -466,6 +469,41 @@ const { result } = await api.keys.setTags({
   keys: ['key-id'], // or Key objects
   addTags: ['ui'],
   removeTags: ['legacy'],
+});
+```
+
+### keys.setMetadata(request[, config])
+
+Add and/or remove entries of the custom metadata of [keys](../src/types/key.ts), each key with its
+own change. The metadata is what `files.listKeys()` returns in `metadata` with `metadata: true`.
+
+Each top-level entry of `addMetadata` replaces the entry of the same name and keeps all others.
+Removal is applied before addition, so a name present in both `addMetadata` and `removeMetadata` ends
+up added. At most 1000 keys may be passed per call, each listed once and each adding or removing
+something; a request that breaks these rules is rejected and changes nothing.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#update-metadata-of-multiple-keys)
+
+| Arguments         | Type                                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| request           | [`KeySetMetadataRequest`](../src/types/key-set-metadata-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                   |
+
+| Returns                                                                        |
+| ------------------------------------------------------------------------------ |
+| [`Promise<KeySetMetadataResponse>`](../src/types/key-set-metadata-response.ts) |
+
+Each key gets its own `state`: `updated`, `not_found` (missing, deleted or in another project) or
+`not_supported` (a cluster-qualified ID or a single segment of a segmented key). A key that cannot be
+changed doesn't stop the others.
+
+```javascript
+const { keys } = await api.keys.setMetadata({
+  project: 'project-id', // or Project object
+  keys: [
+    { key: 'key-id', addMetadata: { 'figma:doc': { node: '1:2' } } }, // or Key object
+    { key: 'other-key-id', removeMetadata: ['figma:doc'] },
+  ],
 });
 ```
 

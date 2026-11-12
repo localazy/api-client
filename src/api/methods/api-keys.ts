@@ -1,6 +1,8 @@
 import { ApiBase } from '@/api/methods/api-base.js';
 import type { KeyDeleteRequest } from '@/types/key-delete-request.js';
 import type { KeyDeprecateRequest } from '@/types/key-deprecate-request.js';
+import type { KeySetMetadataRequest } from '@/types/key-set-metadata-request.js';
+import type { KeySetMetadataResponse } from '@/types/key-set-metadata-response.js';
 import type { KeySetPriorityRequest } from '@/types/key-set-priority-request.js';
 import type { KeySetTagsRequest } from '@/types/key-set-tags-request.js';
 import type { KeySubmitTranslationRequest } from '@/types/key-submit-translation-request.js';
@@ -142,6 +144,41 @@ export class ApiKeys extends ApiBase {
       { keys: ApiBase.getIds(keys, 'key'), ...data },
       config,
     )) as BooleanResult;
+  }
+
+  /**
+   * Add and/or remove entries of the custom metadata of {@link Key  keys}, each key with its own change.
+   *
+   * Each top-level entry of `addMetadata` replaces the entry of the same name and keeps all others.
+   * Removal is applied before addition, so a name present in both `addMetadata` and `removeMetadata`
+   * ends up added. Nothing else about the keys changes.
+   *
+   * At most 1000 keys may be passed per call, each listed once and each adding or removing something;
+   * a request that breaks these rules is rejected and changes nothing. Otherwise every key gets its own
+   * `state` in the response: a key that is missing (`not_found`) or cannot take metadata
+   * (`not_supported`: cluster-qualified IDs and single segments of segmented keys) does not stop the
+   * others.
+   *
+   * @param request Key set metadata request config.
+   * @param config Request config.
+   *
+   * @see {@link https://localazy.com/docs/api/source-keys#update-metadata-of-multiple-keys  Localazy API Docs}
+   */
+  public async setMetadata(
+    request: KeySetMetadataRequest,
+    config?: RequestConfig,
+  ): Promise<KeySetMetadataResponse> {
+    const { project, keys }: KeySetMetadataRequest = request;
+    const projectId: string = ApiBase.getId(project, 'project');
+    if (!Array.isArray(keys)) {
+      throw new TypeError('Invalid key list: an array is required.');
+    }
+
+    return (await this.api.client.put(
+      `/projects/${projectId}/keys/metadata`,
+      { keys: keys.map(({ key, ...change }) => ({ id: ApiBase.getId(key, 'key'), ...change })) },
+      config,
+    )) as KeySetMetadataResponse;
   }
 
   /**

@@ -76,6 +76,8 @@ export * from '@/types/json.js';
 export * from '@/types/key-delete-request.js';
 export * from '@/types/key-deprecate-request.js';
 export * from '@/types/key-priority.js';
+export * from '@/types/key-set-metadata-request.js';
+export * from '@/types/key-set-metadata-response.js';
 export * from '@/types/key-set-priority-request.js';
 export * from '@/types/key-set-tags-request.js';
 export * from '@/types/key-submit-translation-request.js';
