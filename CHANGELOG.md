@@ -1,5 +1,20 @@
 # Changelog
 
+## 2.4.0 (2026-11-16)
+
+### 🔀 Merged Pull Requests
+- ✨ feat(keys): key metadata and renaming (LOC-4789) [#81](https://github.com/localazy/api-client/pull/81)
+
+### ✨ Features
+- **keys:** add and remove the metadata of keys (*[e663dbe](https://github.com/localazy/api-client/commit/e663dbedede80448af293cfd6cee2bc48dd6f622)*) (*[#81](https://github.com/localazy/api-client/pull/81)*)
+- **keys:** rename keys (*[24f2978](https://github.com/localazy/api-client/commit/24f2978bebc35aadca0298555253b43c8f180a41)*) (*[#81](https://github.com/localazy/api-client/pull/81)*)
+
+### 📚 Documentation
+- **keys:** tell empty metadata from none (*[62a6cb7](https://github.com/localazy/api-client/commit/62a6cb76b2dc0bae13b8e4090d7346e79b85f566)*) (*[#81](https://github.com/localazy/api-client/pull/81)*)
+
+### ❤️ Contributors
+- [*David Václavek*](https://github.com/david-vaclavek)
+
 ## 2.3.2 (2026-10-26)
 
 ### 🔀 Merged Pull Requests
