@@ -21,6 +21,7 @@
   - [keys.submitTranslation](#keyssubmittranslationrequest-config)
   - [keys.setTags](#keyssettagsrequest-config)
   - [keys.setMetadata](#keyssetmetadatarequest-config)
+  - [keys.rename](#keysrenamerequest-config)
   - [keys.setPriority](#keyssetpriorityrequest-config)
 - [Suggestions](#suggestions)
   - [suggestions.tm](#suggestionstmrequest-config)
@@ -503,6 +504,46 @@ const { keys } = await api.keys.setMetadata({
   keys: [
     { key: 'key-id', addMetadata: { 'figma:doc': { node: '1:2' } } }, // or Key object
     { key: 'other-key-id', removeMetadata: ['figma:doc'] },
+  ],
+});
+```
+
+### keys.rename(request[, config])
+
+Rename [keys](../src/types/key.ts): each key keeps its ID, translations and their history, comments,
+screenshots, tags and other settings; only its name changes. The key stays in its file and keeps its
+kind.
+
+At most 1000 keys may be passed per call, each listed once. The whole request is checked first: if
+one entry can't be applied, no key is renamed. A new name must not be used by another key of the
+same file, deprecated keys included; keys may swap names within one call. Segmented keys, keys of
+files that use key clustering, of filled-in document formats and of XLIFF imports can't be renamed.
+The call fails while an import or another rename runs in the project; retry when it finishes.
+
+Downloads and the CDN get the new names with the project's next publish. Rename the keys in your
+source files too: an import of the old name creates it again as a new key.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#rename-keys)
+
+| Arguments         | Type                                                     |
+| ----------------- | -------------------------------------------------------- |
+| request           | [`KeyRenameRequest`](../src/types/key-rename-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)        |
+
+| Returns                                                             |
+| ------------------------------------------------------------------- |
+| [`Promise<KeyRenameResponse>`](../src/types/key-rename-response.ts) |
+
+Each key gets its `state`: `renamed`, or `unchanged` when it already had the name, so repeating a call
+is safe. `name` is a list of segments, as `key` in `files.listKeys()`: `['checkout', 'title']` is a
+nested key, `['checkout.title']` a flat key that contains a dot.
+
+```javascript
+const { keys } = await api.keys.rename({
+  project: 'project-id', // or Project object
+  keys: [
+    { key: 'key-id', name: ['checkout', 'title'] }, // or Key object
+    { key: 'other-key-id', name: ['checkout.subtitle'] },
   ],
 });
 ```

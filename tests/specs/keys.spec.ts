@@ -3,6 +3,8 @@ import type {
   File,
   Key,
   KeyDeleteRequest,
+  KeyRenameRequest,
+  KeyRenameResponse,
   KeySetMetadataRequest,
   KeySetMetadataResponse,
   KeySetPriorityRequest,
@@ -219,6 +221,47 @@ describe('Keys', (): void => {
       api.keys.setMetadata({
         project,
         keys: undefined as unknown as KeySetMetadataRequest['keys'],
+      }),
+    ).rejects.toThrow(TypeError);
+  });
+
+  test('api.keys.rename', async (): Promise<void> => {
+    const file: File = await api.files.first({ project });
+    const keys: Key[] = await api.files.listKeys({ project, file, lang: Locales.ENGLISH });
+    const firstKey = assertNotNull(keys[0]);
+    const request: KeyRenameRequest = {
+      project,
+      keys: [
+        { key: firstKey, name: ['checkout', 'title'] },
+        { key: '_a0000000000000000002', name: ['checkout.subtitle'] },
+      ],
+    };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    const response: KeyRenameResponse = await api.keys.rename(request);
+
+    expect(response.keys).toEqual([
+      { id: '_a0000000000000000001', key: ['checkout', 'title'], state: 'renamed' },
+      { id: '_a0000000000000000002', key: ['checkout.subtitle'], state: 'unchanged' },
+    ]);
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/keys/rename',
+      {
+        body: '{"keys":[{"id":"_a0000000000000000001","key":["checkout","title"]},{"id":"_a0000000000000000002","key":["checkout.subtitle"]}]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      },
+    );
+  });
+
+  test('api.keys.rename rejects a missing key list', async (): Promise<void> => {
+    await expect(
+      api.keys.rename({
+        project,
+        keys: undefined as unknown as KeyRenameRequest['keys'],
       }),
     ).rejects.toThrow(TypeError);
   });
