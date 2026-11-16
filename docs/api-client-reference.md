@@ -483,6 +483,11 @@ Removal is applied before addition, so a name present in both `addMetadata` and 
 up added. At most 1000 keys may be passed per call, each listed once and each adding or removing
 something; a request that breaks these rules is rejected and changes nothing.
 
+`files.listKeys()` leaves `metadata` out for a key whose metadata was never written. Once a write has
+touched it (this method, `keys.update`, an import's `@meta` or the web app, even a removal of a name
+the key didn't have), it lists an object, `{}` after the last entry was removed. Check entries, not
+whether `metadata` is present.
+
 See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#update-metadata-of-multiple-keys)
 
 | Arguments         | Type                                                                |

@@ -17,6 +17,7 @@ export type KeyMetadataChange = {
   /**
    * Names of top-level entries to remove from the key's custom metadata. Names the key doesn't have
    * are ignored. Removal is applied before addition, so a name present in both ends up added.
+   * Removing the last entry leaves the metadata empty (`{}` in `files.listKeys()`), not absent.
    */
   removeMetadata?: string[];
 };
