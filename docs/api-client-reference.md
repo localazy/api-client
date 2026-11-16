@@ -20,6 +20,8 @@
   - [keys.deprecate](#keysdeprecaterequest-config)
   - [keys.submitTranslation](#keyssubmittranslationrequest-config)
   - [keys.setTags](#keyssettagsrequest-config)
+  - [keys.setMetadata](#keyssetmetadatarequest-config)
+  - [keys.rename](#keysrenamerequest-config)
   - [keys.setPriority](#keyssetpriorityrequest-config)
 - [Suggestions](#suggestions)
   - [suggestions.tm](#suggestionstmrequest-config)
@@ -346,6 +348,8 @@ await api.keys.update({
   hidden: false,
   comment: 'Comment.',
   limit: -1,
+  addMetadata: { 'figma:doc': { node: '1:2' } }, // merged into the key's metadata
+  removeMetadata: ['figma:old'],
 });
 ```
 
@@ -466,6 +470,86 @@ const { result } = await api.keys.setTags({
   keys: ['key-id'], // or Key objects
   addTags: ['ui'],
   removeTags: ['legacy'],
+});
+```
+
+### keys.setMetadata(request[, config])
+
+Add and/or remove entries of the custom metadata of [keys](../src/types/key.ts), each key with its
+own change. The metadata is what `files.listKeys()` returns in `metadata` with `metadata: true`.
+
+Each top-level entry of `addMetadata` replaces the entry of the same name and keeps all others.
+Removal is applied before addition, so a name present in both `addMetadata` and `removeMetadata` ends
+up added. At most 1000 keys may be passed per call, each listed once and each adding or removing
+something; a request that breaks these rules is rejected and changes nothing.
+
+`files.listKeys()` leaves `metadata` out for a key whose metadata was never written. Once a write has
+touched it (this method, `keys.update`, an import's `@meta` or the web app, even a removal of a name
+the key didn't have), it lists an object, `{}` after the last entry was removed. Check entries, not
+whether `metadata` is present.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#update-metadata-of-multiple-keys)
+
+| Arguments         | Type                                                                |
+| ----------------- | ------------------------------------------------------------------- |
+| request           | [`KeySetMetadataRequest`](../src/types/key-set-metadata-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                   |
+
+| Returns                                                                        |
+| ------------------------------------------------------------------------------ |
+| [`Promise<KeySetMetadataResponse>`](../src/types/key-set-metadata-response.ts) |
+
+Each key gets its own `state`: `updated`, `not_found` (missing, deleted or in another project) or
+`not_supported` (a cluster-qualified ID or a single segment of a segmented key). A key that cannot be
+changed doesn't stop the others.
+
+```javascript
+const { keys } = await api.keys.setMetadata({
+  project: 'project-id', // or Project object
+  keys: [
+    { key: 'key-id', addMetadata: { 'figma:doc': { node: '1:2' } } }, // or Key object
+    { key: 'other-key-id', removeMetadata: ['figma:doc'] },
+  ],
+});
+```
+
+### keys.rename(request[, config])
+
+Rename [keys](../src/types/key.ts): each key keeps its ID, translations and their history, comments,
+screenshots, tags and other settings; only its name changes. The key stays in its file and keeps its
+kind.
+
+At most 1000 keys may be passed per call, each listed once. The whole request is checked first: if
+one entry can't be applied, no key is renamed. A new name must not be used by another key of the
+same file, deprecated keys included; keys may swap names within one call. Segmented keys, keys of
+files that use key clustering, of filled-in document formats and of XLIFF imports can't be renamed.
+The call fails while an import or another rename runs in the project; retry when it finishes.
+
+Downloads and the CDN get the new names with the project's next publish. Rename the keys in your
+source files too: an import of the old name creates it again as a new key.
+
+See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#rename-keys)
+
+| Arguments         | Type                                                     |
+| ----------------- | -------------------------------------------------------- |
+| request           | [`KeyRenameRequest`](../src/types/key-rename-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)        |
+
+| Returns                                                             |
+| ------------------------------------------------------------------- |
+| [`Promise<KeyRenameResponse>`](../src/types/key-rename-response.ts) |
+
+Each key gets its `state`: `renamed`, or `unchanged` when it already had the name, so repeating a call
+is safe. `name` is a list of segments, as `key` in `files.listKeys()`: `['checkout', 'title']` is a
+nested key, `['checkout.title']` a flat key that contains a dot.
+
+```javascript
+const { keys } = await api.keys.rename({
+  project: 'project-id', // or Project object
+  keys: [
+    { key: 'key-id', name: ['checkout', 'title'] }, // or Key object
+    { key: 'other-key-id', name: ['checkout.subtitle'] },
+  ],
 });
 ```
 

@@ -3,6 +3,10 @@ import type {
   File,
   Key,
   KeyDeleteRequest,
+  KeyRenameRequest,
+  KeyRenameResponse,
+  KeySetMetadataRequest,
+  KeySetMetadataResponse,
   KeySetPriorityRequest,
   KeySetTagsRequest,
   KeySubmitTranslationRequest,
@@ -52,6 +56,24 @@ describe('Keys', (): void => {
         },
         method: 'PUT',
       },
+    );
+  });
+
+  test('api.keys.update with metadata', async (): Promise<void> => {
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    await api.keys.update({
+      project,
+      key: '_a0000000000000000001',
+      addMetadata: { 'figma:doc': { node: '1:2' } },
+      removeMetadata: ['figma:old'],
+    });
+
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/keys/_a0000000000000000001',
+      expect.objectContaining({
+        body: '{"addMetadata":{"figma:doc":{"node":"1:2"}},"removeMetadata":["figma:old"]}',
+        method: 'PUT',
+      }),
     );
   });
 
@@ -163,6 +185,85 @@ describe('Keys', (): void => {
         method: 'PUT',
       }),
     );
+  });
+
+  test('api.keys.setMetadata', async (): Promise<void> => {
+    const file: File = await api.files.first({ project });
+    const keys: Key[] = await api.files.listKeys({ project, file, lang: Locales.ENGLISH });
+    const firstKey = assertNotNull(keys[0]);
+    const request: KeySetMetadataRequest = {
+      project,
+      keys: [
+        { key: firstKey, addMetadata: { 'figma:doc': { node: '1:2' } } },
+        { key: '_a0000000000000000002', removeMetadata: ['figma:doc'] },
+      ],
+    };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    const response: KeySetMetadataResponse = await api.keys.setMetadata(request);
+
+    expect(response.keys.map((key) => key.state)).toEqual(['updated', 'not_found']);
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/keys/metadata',
+      {
+        body: '{"keys":[{"id":"_a0000000000000000001","addMetadata":{"figma:doc":{"node":"1:2"}}},{"id":"_a0000000000000000002","removeMetadata":["figma:doc"]}]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'PUT',
+      },
+    );
+  });
+
+  test('api.keys.setMetadata rejects a missing key list', async (): Promise<void> => {
+    await expect(
+      api.keys.setMetadata({
+        project,
+        keys: undefined as unknown as KeySetMetadataRequest['keys'],
+      }),
+    ).rejects.toThrow(TypeError);
+  });
+
+  test('api.keys.rename', async (): Promise<void> => {
+    const file: File = await api.files.first({ project });
+    const keys: Key[] = await api.files.listKeys({ project, file, lang: Locales.ENGLISH });
+    const firstKey = assertNotNull(keys[0]);
+    const request: KeyRenameRequest = {
+      project,
+      keys: [
+        { key: firstKey, name: ['checkout', 'title'] },
+        { key: '_a0000000000000000002', name: ['checkout.subtitle'] },
+      ],
+    };
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    const response: KeyRenameResponse = await api.keys.rename(request);
+
+    expect(response.keys).toEqual([
+      { id: '_a0000000000000000001', key: ['checkout', 'title'], state: 'renamed' },
+      { id: '_a0000000000000000002', key: ['checkout.subtitle'], state: 'unchanged' },
+    ]);
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects/_a0000000000000000001/keys/rename',
+      {
+        body: '{"keys":[{"id":"_a0000000000000000001","key":["checkout","title"]},{"id":"_a0000000000000000002","key":["checkout.subtitle"]}]}',
+        headers: {
+          Accept: 'application/json',
+          Authorization: `Bearer ${getToken()}`,
+          'Content-Type': 'application/json',
+        },
+        method: 'POST',
+      },
+    );
+  });
+
+  test('api.keys.rename rejects a missing key list', async (): Promise<void> => {
+    await expect(
+      api.keys.rename({
+        project,
+        keys: undefined as unknown as KeyRenameRequest['keys'],
+      }),
+    ).rejects.toThrow(TypeError);
   });
 
   test('api.keys.setPriority', async (): Promise<void> => {
