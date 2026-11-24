@@ -27,7 +27,7 @@ export type File = {
   /**
    * A list of associated product flavors. Optional and only available if provided.
    */
-  productFlavors?: string;
+  productFlavors?: string[];
 
   /**
    * A build type the file is associated with. Optional and only available if provided.
