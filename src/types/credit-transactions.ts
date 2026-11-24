@@ -19,7 +19,7 @@ export type CreditSource =
 
 export type CreditTransaction = {
   /**
-   * Time of the charge, ISO 8601 UTC with microsecond precision.
+   * Time of the charge, ISO 8601 UTC with up to 6 fraction digits.
    */
   ts: string;
 

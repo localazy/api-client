@@ -153,7 +153,7 @@ export class ApiBranches extends ApiBase {
   /**
    * Report what `merge()` with the same request would do, changing nothing. It answers only when the
    * analysis finishes, which can take long on a large project, and fails with `409` while another
-   * analysis or merge runs on the target branch.
+   * analysis or merge runs on one of the branches it uses.
    *
    * @param request Branch analyze merge request config.
    * @param config Request config.
@@ -180,8 +180,8 @@ export class ApiBranches extends ApiBase {
    * be reverted, and the `target` and `time-bidi` strategies also write back to the source branch.
    *
    * The merge runs in the background. The returned operation ID goes to `getOperation()`; poll it
-   * until the status is `done` (with the merge counts) or `error`. Only one analysis or merge may
-   * run on a branch at a time; otherwise it fails with `409`.
+   * until the status is `done` (with the merge counts) or `error`. It fails with `409` while
+   * another analysis or merge runs on one of the branches it uses.
    *
    * @param request Branch merge request config.
    * @param config Request config.
@@ -230,7 +230,8 @@ export class ApiBranches extends ApiBase {
   protected static getName(val: string | Pick<Branch, 'name'>, prop: string): string {
     const name: string = typeof val === 'string' ? val : val.name || '';
 
-    if (!name) {
+    // `.` and `..` are dot-segments: URL resolution would drop them and hit another endpoint.
+    if (!name || name === '.' || name === '..') {
       throw new Error(`Invalid ${prop} name.`);
     }
 

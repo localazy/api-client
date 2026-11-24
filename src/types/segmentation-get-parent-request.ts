@@ -16,8 +16,8 @@ export type SegmentationGetParentRequest = {
   parent: Key | string;
 
   /**
-   * Language to reassemble the text in, as a locale code (e.g. `pt_BR`) or Localazy's numeric
-   * language id (e.g. `112`).
+   * Language to reassemble the text in, as a locale code (e.g. `pt_BR`); numeric language ids are
+   * not accepted.
    */
-  lang: `${Locales}` | number;
+  lang: `${Locales}`;
 };

@@ -12,7 +12,10 @@ export type PluralRule = {
    */
   exact: boolean;
 
-  forms: PluralClass[];
+  /**
+   * The forms as stored in the rule; not validated against the CLDR classes.
+   */
+  forms: string[];
 };
 
 export type PluralSamples = {

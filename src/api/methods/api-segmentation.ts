@@ -10,7 +10,8 @@ export class ApiSegmentation extends ApiBase {
    * back into its key.
    *
    * An unknown ID, a parent of another project and a project without segmentation all reject with
-   * `unauthorized`; an unknown `lang` rejects with `unknown_lang`.
+   * `unauthorized`; a malformed ID rejects with `invalid_id` and an unknown `lang` with
+   * `unknown_lang`.
    *
    * @param request Segmentation get parent request config.
    * @param config Request config.

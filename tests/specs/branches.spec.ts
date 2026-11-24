@@ -212,6 +212,17 @@ describe('Branches', (): void => {
     expect(result).toEqual(mergeStatus);
   });
 
+  test('api.branches rejects a dot-segment branch name', async (): Promise<void> => {
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    await expect(api.branches.delete({ project, branch: '..' })).rejects.toThrow(
+      'Invalid branch name.',
+    );
+    await expect(api.branches.rename({ project, branch: '.', name: 'x1' })).rejects.toThrow(
+      'Invalid branch name.',
+    );
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   test('api.branches rejects a missing branch name', async (): Promise<void> => {
     await expect(api.branches.delete({ project, branch: '' })).rejects.toThrow(
       'Invalid branch name.',

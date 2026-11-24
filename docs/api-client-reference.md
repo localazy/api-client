@@ -40,7 +40,6 @@
   - [comments.create](#commentscreaterequest-config)
   - [comments.update](#commentsupdaterequest-config)
   - [comments.delete](#commentsdeleterequest-config)
-  - [glossary.createMany](#glossarycreatemanyrequest-config)
 - [Suggestions](#suggestions)
   - [suggestions.tm](#suggestionstmrequest-config)
   - [suggestions.mt](#suggestionsmtrequest-config)
@@ -99,6 +98,7 @@
   - [glossary.list](#glossarylistrequest-config)
   - [glossary.find](#glossaryfindrequest-config)
   - [glossary.create](#glossarycreaterequest-config)
+  - [glossary.createMany](#glossarycreatemanyrequest-config)
   - [glossary.update](#glossaryupdaterequest-config)
   - [glossary.delete](#glossarydeleterequest-config)
 - [Webhooks](#webhooks)
@@ -1081,44 +1081,6 @@ await api.comments.delete({
 });
 ```
 
-### glossary.createMany(request[, config])
-
-Create several [glossary records](../src/types/glossary-record.ts) in one request.
-
-Unlike `glossary.create()`, a duplicate of an existing term is merged into it instead of being
-refused: its translations and the options it sets are applied to that term. Terms are duplicates
-when their trimmed source-language text and `exactMatch` match; case matters only when both are
-case-sensitive. An option left out keeps the existing value on merge and takes the default on a new
-term. The response lists each item, by its source-language text, as `created`, `updated` or
-`skipped`. The whole batch is rejected if the created terms would exceed the 1000-term project
-limit.
-
-| Arguments         | Type                                                                        |
-| ----------------- | --------------------------------------------------------------------------- |
-| request           | [`GlossaryCreateManyRequest`](../src/types/glossary-create-many-request.ts) |
-| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                           |
-
-| Returns                                                                                |
-| -------------------------------------------------------------------------------------- |
-| [`Promise<GlossaryCreateManyResponse>`](../src/types/glossary-create-many-response.ts) |
-
-```javascript
-import { Locales } from '@localazy/api-client';
-
-const { created, updated, skipped } = await api.glossary.createMany({
-  project: 'project-id', // or Project object
-  terms: [
-    { term: [{ lang: Locales.ENGLISH, term: 'Save' }], description: 'UI action' },
-    {
-      term: [
-        { lang: Locales.ENGLISH, term: 'Monitor' },
-        { lang: Locales.CZECH, term: 'Monitor' },
-      ],
-    },
-  ],
-});
-```
-
 ## Suggestions
 
 Per-key translation suggestions. Every response shares the same envelope:
@@ -1422,7 +1384,8 @@ const formats = await api.formats.list();
 ## Languages
 
 Languages are passed as a locale code (`pt_BR`; `pt-BR` works too) or Localazy's numeric language id
-(`112`). An unknown region falls back to the plain language (`pt-XX` resolves to `pt`); every response
+(`112`), except in `languages.listKeys`, which takes locale codes only. An unknown region falls back
+to the plain language (`pt-XX` resolves to `pt`); every response
 echoes the resolved `code`. The project's source language can't be hidden, enabled, disabled, deleted,
 copied onto or replaced. Read the languages back with `projects.list({ languages: true })`, adding
 `hidden_languages: true` to also list hidden ones.
@@ -1958,8 +1921,9 @@ strategy does not resolve is a conflict and is never merged. `details` adds the 
 and/or failures, which have no length limit.
 
 The analysis is synchronous and reads every current translation of both branches, so it can take a
-long time on a large project. Only one analysis or merge can run on a target branch at a time,
-including ones started in Localazy or the CLI; another request fails with `409`.
+long time on a large project. It fails with `409` while another analysis or merge, including one
+started in Localazy or the CLI, runs on the target branch, or on the source branch with the `target`
+and `time-bidi` strategies.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/branching#analyze-a-merge)
 
@@ -2153,7 +2117,8 @@ of a segment back into its key.
 `parent` accepts either the parent id (`segParentId`) or the parent handle (the id of a segmented key
 in the default mode of `files.listKeys()`); a deprecated parent is addressable only by its parent id.
 An unknown id, a parent of another project and a project without segmentation all reject with
-`unauthorized`; an unknown `lang` rejects with `unknown_lang`.
+`unauthorized`; a malformed ID rejects with `invalid_id`. `lang` must be a locale code; an unknown
+one rejects with `unknown_lang`.
 
 | Arguments         | Type                                                                              |
 | ----------------- | --------------------------------------------------------------------------------- |
@@ -2406,6 +2371,44 @@ const id = await api.glossary.create({
   caseSensitive: true,
   translateTerm: true,
   term: [{ lang: Locales.ENGLISH, term: 'befitting' }],
+});
+```
+
+### glossary.createMany(request[, config])
+
+Create several [glossary records](../src/types/glossary-record.ts) in one request.
+
+Unlike `glossary.create()`, a duplicate of an existing term is merged into it instead of being
+refused: its translations and the options it sets are applied to that term. Terms are duplicates
+when their trimmed source-language text and `exactMatch` match; case matters only when both are
+case-sensitive. An option left out keeps the existing value on merge and takes the default on a new
+term. The response lists each item, by its source-language text, as `created`, `updated` or
+`skipped`. The whole batch is rejected if the created terms would exceed the 1000-term project
+limit.
+
+| Arguments         | Type                                                                        |
+| ----------------- | --------------------------------------------------------------------------- |
+| request           | [`GlossaryCreateManyRequest`](../src/types/glossary-create-many-request.ts) |
+| config `optional` | [`RequestConfig`](../src/types/request-config.ts)                           |
+
+| Returns                                                                                |
+| -------------------------------------------------------------------------------------- |
+| [`Promise<GlossaryCreateManyResponse>`](../src/types/glossary-create-many-response.ts) |
+
+```javascript
+import { Locales } from '@localazy/api-client';
+
+const { created, updated, skipped } = await api.glossary.createMany({
+  project: 'project-id', // or Project object
+  terms: [
+    { term: [{ lang: Locales.ENGLISH, term: 'Save' }], description: 'UI action' },
+    {
+      term: [
+        { lang: Locales.ENGLISH, term: 'Monitor' },
+        { lang: Locales.CZECH, term: 'Monitor' },
+      ],
+    },
+  ],
 });
 ```
 

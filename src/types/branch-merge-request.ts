@@ -72,7 +72,8 @@ export type BranchMergeRequest = {
 
   /**
    * Deprecate target keys that are deprecated in the source branch; keys only in the target stay
-   * active. Applies only when the source language is processed. Defaults to `false`.
+   * active. Applies only when the source language is processed and, with `keys`, only to those keys.
+   * Defaults to `false`.
    */
   mergeDeprecations?: boolean;
 

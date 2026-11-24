@@ -26,9 +26,9 @@ export type OrganizationSearchResult = {
 
   /**
    * Current value in `lang`, shaped by the key's form; plural forms carry the `@` prefix. An empty
-   * string when the key has no value in `lang`.
+   * string when the key has no value in `lang`, `null` when the stored value can't be read.
    */
-  value: string | string[] | PrefixedPluralValue;
+  value: string | string[] | PrefixedPluralValue | null;
 
   /**
    * Developer comment from the import, or an empty string.

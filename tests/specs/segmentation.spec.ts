@@ -53,20 +53,18 @@ describe('Segmentation', (): void => {
     });
   });
 
-  test('api.segmentation.getParent escapes the language and accepts a numeric id', async (): Promise<void> => {
+  test('api.segmentation.getParent escapes the language', async (): Promise<void> => {
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.segmentation.getParent({
       project,
       parent: { id: '_b1c2d3e4f5061708' } as never,
       lang: 'zh#Hans',
     });
-    await api.segmentation.getParent({ project, parent: '_b1c2d3e4f5061708', lang: 112 });
 
     expect(spy).toHaveBeenCalledWith(
       `${parentsUrl}/_b1c2d3e4f5061708/zh%23Hans`,
       expect.anything(),
     );
-    expect(spy).toHaveBeenCalledWith(`${parentsUrl}/_b1c2d3e4f5061708/112`, expect.anything());
   });
 
   test('api.segmentation.getParent rejects a missing language', async (): Promise<void> => {

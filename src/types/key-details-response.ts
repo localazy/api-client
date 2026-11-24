@@ -34,7 +34,10 @@ export type KeyDetailReview = {
    */
   versionId: string;
 
-  value: KeyValue;
+  /**
+   * `null` when the stored value can't be read.
+   */
+  value: KeyValue | null;
 
   /**
    * ID of the user that wrote the version.

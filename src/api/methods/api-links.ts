@@ -60,7 +60,8 @@ export class ApiLinks extends ApiBase {
    *
    * Links are honoured during publishing only on the Business plan and above; on other plans they
    * are stored but ignored. A segmented key as a whole cannot be linked on either side (its
-   * individual segments can), and a key or target that does not exist rejects with `unauthorized`.
+   * individual segments can), and a key or target that does not exist rejects with `unauthorized`; an unknown `linkedProject`
+   * rejects with `project_not_found`.
    *
    * @param request Link create request config.
    * @param config Request config.

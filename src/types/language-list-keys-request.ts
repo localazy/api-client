@@ -1,4 +1,4 @@
-import type { LanguageRef } from '@/types/language-ref.js';
+import type { Locales } from '@localazy/languages';
 import type { Project } from '@/types/project.js';
 
 export type LanguageListKeysRequest = {
@@ -8,9 +8,10 @@ export type LanguageListKeysRequest = {
   project: Project | string;
 
   /**
-   * The language of the values.
+   * The language of the values, as a locale code; unlike the other language endpoints, this one
+   * does not resolve numeric language ids.
    */
-  lang: LanguageRef;
+  lang: `${Locales}` | (string & Record<never, never>);
 
   /**
    * Also return deprecated keys, alongside the active ones.

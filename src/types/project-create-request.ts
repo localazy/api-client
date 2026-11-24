@@ -14,10 +14,10 @@ export type ProjectCreateRequest = {
   slug?: string;
 
   /**
-   * Source language of the project as a locale code or Localazy's numeric language id, such as
-   * `Project.sourceLanguage`. Default `en`.
+   * Source language of the project as a locale code; numeric language ids are not accepted.
+   * Default `en`.
    */
-  sourceLanguage?: `${Locales}` | number;
+  sourceLanguage?: `${Locales}`;
 
   /**
    * Project visibility. Default `restricted`.
