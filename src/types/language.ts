@@ -10,6 +10,11 @@ export type Language = {
   code: string;
 
   /**
+   * BCP 47 locale tag.
+   */
+  tag: string;
+
+  /**
    * English name of the language / locale.
    */
   name: string;
@@ -43,4 +48,26 @@ export type Language = {
    * Number of keys in the need review state.
    */
   needImprovement: number;
+
+  /**
+   * Hidden languages are not listed in the project, but keep their translations, which come back
+   * when the language is added again. Listed only with `hidden_languages: true`.
+   */
+  hidden: boolean;
+
+  /**
+   * The negation of `hidden`; prefer `hidden`.
+   */
+  enabled: boolean;
+
+  /**
+   * Whether publishing includes the language.
+   */
+  published: boolean;
+
+  /**
+   * Code of the language that supplies texts for keys untranslated in this one, or `null`. Applies
+   * only to file outputs (publish, CDN, downloads), never to key listings.
+   */
+  fallback: string | null;
 };

@@ -19,12 +19,13 @@ export type KeyUpdateRequest = {
   deprecated?: number;
 
   /**
-   * Set to true to mark the key as hidden on Localazy.
+   * Set to true to mark the key as hidden on Localazy. A key linked to another key stays hidden.
    */
   hidden?: boolean;
 
   /**
-   * Provide custom comment for translators.
+   * The context note for translators, reported as `contextNote` by `keys.getDetails()`. The
+   * developer comment that came with the key from the import is not changed.
    */
   comment?: string;
 

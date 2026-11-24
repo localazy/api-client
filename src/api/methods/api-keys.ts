@@ -1,6 +1,11 @@
 import { ApiBase } from '@/api/methods/api-base.js';
 import type { KeyDeleteRequest } from '@/types/key-delete-request.js';
 import type { KeyDeprecateRequest } from '@/types/key-deprecate-request.js';
+import type { KeyDetailsRequest } from '@/types/key-details-request.js';
+import type { KeyDetailsResponse } from '@/types/key-details-response.js';
+import type { KeyEditSourceRequest } from '@/types/key-edit-source-request.js';
+import type { KeyReviewTranslationRequest } from '@/types/key-review-translation-request.js';
+import type { ReviewTranslationResponse } from '@/types/review-translation-response.js';
 import type { KeyRenameRequest } from '@/types/key-rename-request.js';
 import type { KeyRenameResponse } from '@/types/key-rename-response.js';
 import type { KeySetMetadataRequest } from '@/types/key-set-metadata-request.js';
@@ -115,6 +120,92 @@ export class ApiKeys extends ApiBase {
       { value: normalizeTranslationValue(value) },
       config,
     )) as SubmitTranslationResponse;
+  }
+
+  /**
+   * Get the details of {@link Key  keys} in one language, 1 to 100 keys per call. Keys that can't be
+   * read are reported in `errors` and don't fail the request.
+   *
+   * @param request Key details request config.
+   * @param config Request config. Its `params` are preserved; `ids` is merged over them.
+   *
+   * @see {@link https://localazy.com/docs/api/source-keys#get-key-details  Localazy API Docs}
+   */
+  public async getDetails(
+    request: KeyDetailsRequest,
+    config?: RequestConfig,
+  ): Promise<KeyDetailsResponse> {
+    const { project, keys, lang }: KeyDetailsRequest = request;
+    const projectId: string = ApiBase.getId(project, 'project');
+    const ids: string = ApiBase.getIds(keys, 'key').join(',');
+    const locale: string = encodeURIComponent(ApiBase.requireLang(lang, 'lang'));
+
+    return (await this.api.client.get(`/projects/${projectId}/keys/details/${locale}`, {
+      ...config,
+      params: { ...config?.params, ids },
+    })) as KeyDetailsResponse;
+  }
+
+  /**
+   * Write a new source text for a {@link Key  key}.
+   *
+   * The text becomes current immediately only for callers allowed to auto-approve their own
+   * versions (manager, owner); for others it waits for a review. `value` follows the same rules as
+   * in `submitTranslation()`. Segmented keys and their segments are rejected.
+   *
+   * **Check `result` on the response**: `false` with a `message` means the project was momentarily
+   * locked or the value was not stored, and does not reject the promise.
+   *
+   * @param request Key edit source request config.
+   * @param config Request config.
+   *
+   * @see {@link https://localazy.com/docs/api/source-keys#edit-source-text  Localazy API Docs}
+   */
+  public async editSource(
+    request: KeyEditSourceRequest,
+    config?: RequestConfig,
+  ): Promise<SubmitTranslationResponse> {
+    const { project, key, value, sourceChanged }: KeyEditSourceRequest = request;
+    const projectId: string = ApiBase.getId(project, 'project');
+    const keyId: string = ApiBase.getId(key, 'key');
+
+    return (await this.api.client.post(
+      `/projects/${projectId}/keys/${keyId}/source`,
+      { value: normalizeTranslationValue(value), sourceChanged },
+      config,
+    )) as SubmitTranslationResponse;
+  }
+
+  /**
+   * Approve or reject one version of a {@link Key  key} in one language.
+   *
+   * Approving makes the version current and rejects the other versions waiting for review;
+   * approving the already-current version confirms it. The current version cannot be rejected
+   * (`current_version_cannot_be_rejected`). Approving one's own version needs the
+   * `project.translations.approve.own` permission.
+   *
+   * **Check `result` on the response**: `false` means the project was momentarily locked; retry.
+   *
+   * @param request Key review translation request config.
+   * @param config Request config.
+   *
+   * @see {@link https://localazy.com/docs/api/source-keys#review-a-translation  Localazy API Docs}
+   */
+  public async reviewTranslation(
+    request: KeyReviewTranslationRequest,
+    config?: RequestConfig,
+  ): Promise<ReviewTranslationResponse> {
+    const { project, key, lang, versionId, action, sourceChanged }: KeyReviewTranslationRequest =
+      request;
+    const projectId: string = ApiBase.getId(project, 'project');
+    const keyId: string = ApiBase.getId(key, 'key');
+    const locale: string = encodeURIComponent(ApiBase.requireLang(lang, 'lang'));
+
+    return (await this.api.client.post(
+      `/projects/${projectId}/keys/${keyId}/translations/${locale}/review`,
+      { versionId, action, sourceChanged },
+      config,
+    )) as ReviewTranslationResponse;
   }
 
   /**

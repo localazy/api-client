@@ -1,0 +1,23 @@
+{
+  "keys": [
+    {
+      "id": "_a0000000000000000001",
+      "key": ["home", "title"],
+      "value": "Vítejte zpět",
+      "vid": 845123154101354564,
+      "file": "_e000000000001"
+    },
+    {
+      "id": "_a0000000000000000002",
+      "key": ["cart", "item_count"],
+      "value": { "@one": "1 položka", "@few": "%d položky", "@other": "%d položek" },
+      "vid": 845123154101354565,
+      "file": "_e000000000002"
+    }
+  ],
+  "files": {
+    "_e000000000001": { "id": "_e000000000001", "name": "home.json", "type": "json" },
+    "_e000000000002": { "id": "_e000000000002", "name": "cart.json", "type": "json" }
+  },
+  "next": "e4f7a2c1d5"
+}

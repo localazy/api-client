@@ -35,8 +35,10 @@
         "translated": 6,
         "sourceChanged": 0,
         "needImprovement": 0,
+        "hidden": false,
         "enabled": true,
-        "published": true
+        "published": true,
+        "fallback": null
       }
     ],
     "sourceLanguage": 85

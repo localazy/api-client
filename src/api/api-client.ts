@@ -9,6 +9,15 @@ import { ApiProjects } from '@/api/methods/api-projects.js';
 import { ApiScreenshots } from '@/api/methods/api-screenshots.js';
 import { ApiSuggestions } from '@/api/methods/api-suggestions.js';
 import { ApiWebhooks } from '@/api/methods/api-webhooks.js';
+import { ApiOrganizations } from '@/api/methods/api-organizations.js';
+import { ApiLanguages } from '@/api/methods/api-languages.js';
+import { ApiBranches } from '@/api/methods/api-branches.js';
+import { ApiComments } from '@/api/methods/api-comments.js';
+import { ApiLinks } from '@/api/methods/api-links.js';
+import { ApiSegmentation } from '@/api/methods/api-segmentation.js';
+import { ApiTags } from '@/api/methods/api-tags.js';
+import { ApiStyleguides } from '@/api/methods/api-styleguides.js';
+import { ApiCdn } from '@/api/methods/api-cdn.js';
 import { FetchHttpAdapter } from '@/http/fetch-http-adapter.js';
 import type { IHttpAdapter } from '@/http/i-http-adapter.js';
 import type { ApiClientOptions } from '@/types/api-client-options.js';
@@ -38,6 +47,24 @@ export class ApiClient {
 
   public suggestions: ApiSuggestions;
 
+  public organizations: ApiOrganizations;
+
+  public languages: ApiLanguages;
+
+  public branches: ApiBranches;
+
+  public comments: ApiComments;
+
+  public links: ApiLinks;
+
+  public segmentation: ApiSegmentation;
+
+  public tags: ApiTags;
+
+  public styleguides: ApiStyleguides;
+
+  public cdn: ApiCdn;
+
   constructor(options: ApiClientOptions) {
     this.client = new FetchHttpAdapter(options);
 
@@ -52,5 +79,14 @@ export class ApiClient {
     this.webhooks = new ApiWebhooks(this);
     this.screenshots = new ApiScreenshots(this);
     this.suggestions = new ApiSuggestions(this);
+    this.organizations = new ApiOrganizations(this);
+    this.languages = new ApiLanguages(this);
+    this.branches = new ApiBranches(this);
+    this.comments = new ApiComments(this);
+    this.links = new ApiLinks(this);
+    this.segmentation = new ApiSegmentation(this);
+    this.tags = new ApiTags(this);
+    this.styleguides = new ApiStyleguides(this);
+    this.cdn = new ApiCdn(this);
   }
 }

@@ -1,4 +1,6 @@
 import { ApiBase } from '@/api/methods/api-base.js';
+import type { GlossaryCreateManyRequest } from '@/types/glossary-create-many-request.js';
+import type { GlossaryCreateManyResponse } from '@/types/glossary-create-many-response.js';
 import type { GlossaryCreateRequest } from '@/types/glossary-create-request.js';
 import type { GlossaryDeleteRequest } from '@/types/glossary-delete-request.js';
 import type { GlossaryFindRequest } from '@/types/glossary-find-request.js';
@@ -68,6 +70,32 @@ export class ApiGlossary extends ApiBase {
     )) as { result: string };
 
     return response.result;
+  }
+
+  /**
+   * Create several {@link GlossaryRecord  glossary records} in one request.
+   *
+   * Unlike `create()`, a duplicate of an existing term is merged into it instead of being refused.
+   * The whole batch is rejected if it would exceed the 1000-term project limit.
+   *
+   * @param request Glossary create many request config.
+   * @param config Request config.
+   */
+  public async createMany(
+    request: GlossaryCreateManyRequest,
+    config?: RequestConfig,
+  ): Promise<GlossaryCreateManyResponse> {
+    const { project, terms }: GlossaryCreateManyRequest = request;
+    const projectId: string = ApiBase.getId(project, 'project');
+    if (!Array.isArray(terms)) {
+      throw new TypeError('Invalid glossary term list: an array is required.');
+    }
+
+    return (await this.api.client.post(
+      `/projects/${projectId}/glossary/batch`,
+      terms,
+      config,
+    )) as GlossaryCreateManyResponse;
   }
 
   /**
