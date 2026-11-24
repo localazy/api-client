@@ -52,6 +52,12 @@ export class ApiProjects extends ApiBase {
     request: ProjectCreateRequest,
     config?: RequestConfig,
   ): Promise<ProjectCreateResponse> {
-    return (await this.api.client.post('/projects', request, config)) as ProjectCreateResponse;
+    const { sourceLanguage }: ProjectCreateRequest = request;
+    const body =
+      sourceLanguage === undefined
+        ? request
+        : { ...request, sourceLanguage: String(sourceLanguage) };
+
+    return (await this.api.client.post('/projects', body, config)) as ProjectCreateResponse;
   }
 }

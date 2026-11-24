@@ -40,6 +40,19 @@ describe('Projects create', (): void => {
     });
   });
 
+  test('api.projects.create with a numeric source language', async (): Promise<void> => {
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    await api.projects.create({ name: 'My Application', sourceLanguage: 85 });
+
+    expect(spy).toHaveBeenCalledWith(
+      'https://api.localazy.com/projects',
+      expect.objectContaining({
+        body: '{"name":"My Application","sourceLanguage":"85"}',
+        method: 'POST',
+      }),
+    );
+  });
+
   test('api.projects.create with only a name', async (): Promise<void> => {
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.projects.create({ name: 'My Application' });

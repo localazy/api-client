@@ -192,12 +192,19 @@ describe('Organizations', (): void => {
     expect(spy).toHaveBeenCalledWith(`${orgUrl}/search?term=cart`, expectedRequest);
   });
 
+  test('api.organizations.search rejects an empty project list', async (): Promise<void> => {
+    const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
+    await expect(
+      api.organizations.search({ organization: orgId, term: 'cart', projects: [] }),
+    ).rejects.toThrow('Invalid project list');
+    expect(spy).not.toHaveBeenCalled();
+  });
+
   test('api.organizations.search leaves out empty filters', async (): Promise<void> => {
     const spy: MockInstance = vi.spyOn(globalThis, 'fetch');
     await api.organizations.search({
       organization: orgId,
       term: 'cart',
-      projects: [],
       excludeProjects: [],
       match: [],
       langs: [],

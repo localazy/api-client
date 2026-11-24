@@ -15,12 +15,6 @@ export type KeyDetailSource = {
   lang: string;
 
   /**
-   * Version ID as a plain integer. It exceeds `Number.MAX_SAFE_INTEGER`, so `JSON.parse` rounds it:
-   * use it for display or change detection only, never to address a version.
-   */
-  vid: number;
-
-  /**
    * A string, an array of strings, or for a plural key an object keyed by `@`-prefixed plural class.
    */
   value: KeyValue;
@@ -49,7 +43,7 @@ export type KeyDetailReview = {
 };
 
 /**
- * A key in the requested language. `vid`, `value` and `authorId` describe the current (approved)
+ * A key in the requested language. `value` and `authorId` describe the current (approved)
  * version and are absent when the language has none.
  */
 export type KeyDetailTranslation = {
@@ -57,11 +51,6 @@ export type KeyDetailTranslation = {
    * Locale code of the requested language.
    */
   lang: string;
-
-  /**
-   * Version ID as a plain integer, rounded by `JSON.parse` like {@link KeyDetailSource.vid}.
-   */
-  vid?: number;
 
   value?: KeyValue;
 

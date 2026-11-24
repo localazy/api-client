@@ -62,6 +62,9 @@ export class ApiOrganizations extends ApiBase {
       langs,
     }: OrganizationSearchRequest = request;
     const orgId: string = ApiBase.getId(organization, 'organization');
+    if (projects?.length === 0) {
+      throw new Error('Invalid project list: the server reads an empty list as all projects.');
+    }
     const params: Record<string, string> = ApiOrganizations.params(config, {
       term,
       projects: projects && ApiBase.getIds(projects, 'project'),
@@ -181,8 +184,8 @@ export class ApiOrganizations extends ApiBase {
   }
 
   /**
-   * An empty list is sent as an empty value only for `groupBy`, which reads it as "totals only";
-   * elsewhere it would turn a filter into a filter that matches nothing.
+   * An empty list is sent only for `groupBy`, where it means "totals only"; the other list params
+   * treat it as no filter, so it is left out.
    */
   private static params(
     config: RequestConfig | undefined,

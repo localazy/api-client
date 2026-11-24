@@ -21,7 +21,8 @@ export type OrganizationSearchRequest = {
   term: string;
 
   /**
-   * Search only in these projects. At most 1000.
+   * Search only in these projects, 1 to 1000. An empty list is rejected, since the server would read
+   * it as all projects.
    */
   projects?: (Project | string)[];
 

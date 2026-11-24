@@ -30,7 +30,6 @@ const details: KeyDetailsResponse = {
       tags: [{ id: '_e40', name: 'High priority', builtIn: true }],
       source: {
         lang: 'en',
-        vid: 1,
         value: { '@one': '%d item', '@other': '%d items' },
         pluralForms: ['one', 'other'],
       },

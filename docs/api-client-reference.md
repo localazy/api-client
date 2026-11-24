@@ -739,8 +739,7 @@ version waiting for review, and the comments in that language.
 
 Pass 1 to 100 keys per call; a larger set is rejected rather than truncated. Keys the project lacks
 (`not_found`) or that are segmented as a whole (`segmented_key`) are reported in `errors` and do not
-fail the request. `source.vid` and `translation.vid` exceed `Number.MAX_SAFE_INTEGER` and are
-rounded by `JSON.parse`; use `translation.review.versionId` to address a version.
+fail the request. Use `translation.review.versionId` to address a version.
 
 See: [Localazy API Docs](https://localazy.com/docs/api/source-keys#get-key-details)
 
