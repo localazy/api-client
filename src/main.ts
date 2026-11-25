@@ -168,6 +168,7 @@ export * from '@/types/plurals-list-request.js';
 export * from '@/types/plurals.js';
 export * from '@/types/project-create-request.js';
 export * from '@/types/project-create-response.js';
+export * from '@/types/project-custom-role.js';
 export * from '@/types/project-tag-list-request.js';
 export * from '@/types/project-tag.js';
 export * from '@/types/project.js';

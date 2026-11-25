@@ -25,6 +25,11 @@ export type File = {
   module?: string;
 
   /**
+   * The library the file belongs to. Optional and only available if provided.
+   */
+  library?: string;
+
+  /**
    * A list of associated product flavors. Optional and only available if provided.
    */
   productFlavors?: string[];

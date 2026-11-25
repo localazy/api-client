@@ -3,6 +3,7 @@ import type { ProjectType } from '@/enums/project-type.js';
 import type { UserRole } from '@/enums/user-role.js';
 import type { Language } from '@/types/language.js';
 import type { Organization } from '@/types/organization.js';
+import type { ProjectCustomRole } from '@/types/project-custom-role.js';
 
 export type Project = {
   /**
@@ -56,6 +57,11 @@ export type Project = {
   role: `${UserRole}`;
 
   /**
+   * The custom role of the current user; present only when `role` is `custom`.
+   */
+  customRole?: ProjectCustomRole;
+
+  /**
    * The identifier of the source language of the project.
    */
   sourceLanguage: number;
@@ -64,10 +70,10 @@ export type Project = {
    * List of enabled features and available source keys.
    * Only available if the organization query parameter is set to true.
    */
-  organization: Organization;
+  organization?: Organization;
 
   /**
    * List of all languages and their current state. Only available if the languages query parameter is set to true.
    */
-  languages: Language[];
+  languages?: Language[];
 };

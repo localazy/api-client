@@ -5,5 +5,14 @@ export enum UserRole {
   REVIEWER = 'reviewer',
   MANAGER = 'manager',
   OWNER = 'owner',
+  VIEWER = 'viewer',
+  MEMBER = 'member',
+  /**
+   * A custom role of the organization; `Project.customRole` names it.
+   */
+  CUSTOM = 'custom',
+  /**
+   * @deprecated The API never returns this role.
+   */
   DEVELOPER = 'developer',
 }
