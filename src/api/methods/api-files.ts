@@ -9,6 +9,8 @@ import type { File } from '@/types/file.js';
 import type { FilesListRequest } from '@/types/files-list-request.js';
 import type { Key } from '@/types/key.js';
 import type { KeysPaginated } from '@/types/keys-paginated.js';
+import type { PublishedListRequest } from '@/types/published-list-request.js';
+import type { PublishedRecord } from '@/types/published-record.js';
 import type { RequestConfig } from '@/types/request-config.js';
 import type { Blob } from 'node:buffer';
 
@@ -146,5 +148,27 @@ export class ApiFiles extends ApiBase {
       ...config,
       responseType: 'blob',
     })) as Blob;
+  }
+
+  /**
+   * List when the project's current content (`latest`, always first) and each release tag were last
+   * published. Use it to check cheaply for new content: download only when `publishedAt` changed
+   * since the previous call. A publish can come up to 5 minutes after a change.
+   *
+   * @param request Published list request config.
+   * @param config Request config.
+   *
+   * @see {@link https://localazy.com/docs/api/files#list-publish-times  Localazy API Docs}
+   */
+  public async listPublished(
+    request: PublishedListRequest,
+    config?: RequestConfig,
+  ): Promise<PublishedRecord[]> {
+    const projectId: string = ApiBase.getId(request.project, 'project');
+
+    return (await this.api.client.get(
+      `/projects/${projectId}/published`,
+      config,
+    )) as PublishedRecord[];
   }
 }

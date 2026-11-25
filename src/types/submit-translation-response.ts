@@ -1,16 +1,17 @@
 export type SubmitTranslationResponse = {
   /**
-   * Whether the translation was accepted.
+   * `true` when the value was stored or matched an existing version; `false` when the request was
+   * understood but not applied (see `message`).
    */
   result: boolean;
 
   /**
-   * Identifier of the version created for the submitted translation.
+   * ID of the stored (or matched) version. Present only when `result` is `true`.
    */
   versionId?: string;
 
   /**
-   * Additional detail about the outcome.
+   * The reason when `result` is `false`.
    */
   message?: string;
 };

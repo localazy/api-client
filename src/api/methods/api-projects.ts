@@ -1,5 +1,7 @@
 import { ApiBase } from '@/api/methods/api-base.js';
 import type { Project } from '@/types/project.js';
+import type { ProjectCreateRequest } from '@/types/project-create-request.js';
+import type { ProjectCreateResponse } from '@/types/project-create-response.js';
 import type { ProjectsListRequest } from '@/types/projects-list-request.js';
 import type { RequestConfig } from '@/types/request-config.js';
 
@@ -33,5 +35,23 @@ export class ApiProjects extends ApiBase {
     }
 
     throw new Error('Project not found.');
+  }
+
+  /**
+   * Create a {@link Project  project} in the organization of the token. Needs an organization token.
+   *
+   * Rejected when the organization already has 50 projects, or the name, description, source
+   * language or slug is invalid; a slug already in use is rejected too.
+   *
+   * @param request Project create request config.
+   * @param config Request config.
+   *
+   * @see {@link https://localazy.com/docs/api/projects#create-project  Localazy API Docs}
+   */
+  public async create(
+    request: ProjectCreateRequest,
+    config?: RequestConfig,
+  ): Promise<ProjectCreateResponse> {
+    return (await this.api.client.post('/projects', request, config)) as ProjectCreateResponse;
   }
 }
