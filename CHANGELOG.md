@@ -1,5 +1,22 @@
 # Changelog
 
+## 2.5.0 (2026-11-25)
+
+### 🔀 Merged Pull Requests
+- ✨ feat: cover the new public API endpoints [#83](https://github.com/localazy/api-client/pull/83)
+
+### ✨ Features
+- cover the new public API endpoints (*[6a73f08](https://github.com/localazy/api-client/commit/6a73f083b2be147d628968d73a4383a95f7387ec)*) (*[#83](https://github.com/localazy/api-client/pull/83)*)
+
+### 🐛 Bug Fixes
+- **files:** type product flavors as a list (*[d52b4a8](https://github.com/localazy/api-client/commit/d52b4a8ced0c7148f97a1b4ff39979b54398c783)*) (*[#83](https://github.com/localazy/api-client/pull/83)*)
+- tighten the types and filters of the new endpoints (*[bbb2b36](https://github.com/localazy/api-client/commit/bbb2b36b8dd0cbd256be8ed5a4527699ca316aa8)*) (*[#83](https://github.com/localazy/api-client/pull/83)*)
+- match the new endpoints to the server's language parsing and errors (*[b961431](https://github.com/localazy/api-client/commit/b9614316544f98c7286b4f40ee99cb3a99732ff8)*) (*[#83](https://github.com/localazy/api-client/pull/83)*)
+- **projects:** match the project and file types to the API (*[859c075](https://github.com/localazy/api-client/commit/859c0753a39a17ce6a755cad4ba6405a8b4a0b63)*) (*[#83](https://github.com/localazy/api-client/pull/83)*)
+
+### ❤️ Contributors
+- [*Daniel Charvat*](https://github.com/elisiondan)
+
 ## 2.4.0 (2026-11-16)
 
 ### 🔀 Merged Pull Requests
